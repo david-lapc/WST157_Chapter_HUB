@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WST 157 · Chapter 1: Strategy & Website Planning</title>
+  <meta name="description"
+    content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 1: Strategy." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#slide-1">Skip to slides</a>
+
+  <header class="topbar" aria-label="Presentation controls">
+    <div class="brand">
+      <span class="brand-mark">WST</span>
+      <div>
+        <strong>WST 157</strong>
+        <span>Website Planning & Production</span>
+      </div>
+    </div>
+    <nav class="top-actions" aria-label="Deck navigation">
+      <button class="ghost-btn" id="overviewBtn" type="button">Overview</button>
+      <button class="ghost-btn" id="presentBtn" type="button" aria-pressed="false">Present</button>
+      <button class="primary-btn" id="nextTopBtn" type="button">Next</button>
+    </nav>
+  </header>
+
+  <aside class="progress-panel" id="progressPanel" aria-label="Slide progress">
+    <div class="progress-title">Chapter 1 Route</div>
+    <ol id="slideList" class="slide-list"></ol>
+  </aside>
+
+  <main class="deck" id="deck">
+    <section class="slide hero" id="slide-1" data-title="Opening" data-section="Start">
+      <div class="slide-inner two-col hero-grid">
+        <div>
+          <p class="eyebrow">Chapter 1 · Strategy</p>
+          <h1>Planning a website before designing it</h1>
+          <p class="lede">A strong website starts with purpose, audience, priorities, and decisions the team can defend.
+          </p>
+          <div class="big-question">
+            <span>Opening question</span>
+            <strong>What makes a website successful?</strong>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Lesson route">
+          <h2>Today’s path</h2>
+          <ol class="route-list">
+            <li>Define strategy in plain language</li>
+            <li>Separate client wants from user needs</li>
+            <li>Prioritize features and scope</li>
+            <li>Build the first project charter</li>
+          </ol>
+          <p class="small-note">Use the arrow keys or the Next button to move through the deck.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-2" data-title="Strategy" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Main idea</p>
+        <h2>Strategy is not decoration.</h2>
+        <div class="statement-card">
+          <p>A website strategy explains <strong>what the site should accomplish</strong>, <strong>who it
+              serves</strong>, and <strong>how decisions will stay focused</strong>.</p>
+        </div>
+        <div class="comparison-grid">
+          <article>
+            <h3>Weak starting point</h3>
+            <p>“Make it look modern.”</p>
+          </article>
+          <article>
+            <h3>Stronger starting point</h3>
+            <p>“Help first-time visitors understand services and request an appointment in under two minutes.”</p>
+          </article>
+        </div>
+        <p class="takeaway">Design choices become easier when the project has a clear reason to exist.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-3" data-title="3-Part Model" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Planning model</p>
+        <h2>Strategy turns uncertainty into useful next steps.</h2>
+        <div class="process-strip" role="list" aria-label="Strategy planning steps">
+          <div role="listitem">
+            <span class="step-number">1</span>
+            <h3>Diagnose</h3>
+            <p>What problem or opportunity matters most?</p>
+          </div>
+          <div role="listitem">
+            <span class="step-number">2</span>
+            <h3>Guide</h3>
+            <p>What principles will shape decisions?</p>
+          </div>
+          <div role="listitem">
+            <span class="step-number">3</span>
+            <h3>Act</h3>
+            <p>What actions move the project forward?</p>
+          </div>
+        </div>
+        <div class="prompt-card">
+          <span>Discuss</span>
+          <p>Which step is easiest to skip when people rush into building a site?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-4" data-title="Website Purpose" data-section="Try">
+      <div class="slide-inner">
+        <p class="eyebrow">Try this</p>
+        <h2>“We need a website” is not a goal.</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Client scenario</p>
+            <h3 id="clientScenario">A neighborhood bakery wants a new website.</h3>
+            <p id="clientDetails">They sell walk-in pastries, custom cakes, and holiday boxes.</p>
+          </div>
+          <button class="primary-btn" id="newClientBtn" type="button">New client</button>
+        </div>
+        <div class="question-grid">
+          <article><strong>Purpose</strong><span>Why should this site exist?</span></article>
+          <article><strong>Audience</strong><span>Who needs it most?</span></article>
+          <article><strong>Action</strong><span>What should visitors do?</span></article>
+          <article><strong>Success</strong><span>What would change if it worked?</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-5" data-title="Client vs User" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Website planning tension</p>
+        <h2>The client pays for the site. The users decide whether it works.</h2>
+        <div class="split-card">
+          <article>
+            <h3>Client wants</h3>
+            <ul>
+              <li>Beautiful homepage video</li>
+              <li>All services promoted equally</li>
+              <li>Company story near the top</li>
+              <li>Big social media feed</li>
+            </ul>
+          </article>
+          <article>
+            <h3>User needs</h3>
+            <ul>
+              <li>Hours and location</li>
+              <li>Clear pricing or service options</li>
+              <li>Fast appointment request</li>
+              <li>Proof that the business is trustworthy</li>
+            </ul>
+          </article>
+        </div>
+        <p class="takeaway">Good planning respects the client and advocates for the user.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-6" data-title="Priorities" data-section="Try">
+      <div class="slide-inner">
+        <p class="eyebrow">Activity</p>
+        <h2>Pick the first-version priorities.</h2>
+        <p class="lede small" id="priorityScenario">Scenario: A small fitness studio wants a new site. Choose the three
+          features that matter most for launch.</p>
+        <div class="scenario-switcher" id="priorityScenarioSwitcher" aria-label="Scenario options"></div>
+        <div class="choice-toolbar">
+          <button class="ghost-btn" id="resetChoicesBtn" type="button">Reset</button>
+          <span id="choiceCount">0 / 3 selected</span>
+        </div>
+        <div class="feature-grid" id="featureGrid" aria-label="Feature priority choices"></div>
+        <div class="result-panel" id="priorityResult" aria-live="polite">Choose three launch priorities.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-7" data-title="Scope" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Scope control</p>
+        <h2>Every “yes” has a cost.</h2>
+        <div class="slider-card">
+          <label for="scopeSlider">Feature ambition</label>
+          <input type="range" id="scopeSlider" min="1" max="5" value="3" />
+          <div class="scope-output" id="scopeOutput">
+            <strong>Balanced first version</strong>
+            <span>Enough features to be useful, not so many that the project loses focus.</span>
+            <span class="scope-examples">Example launch mix: class schedule, membership pricing, trial booking,
+              testimonials, contact form.</span>
+          </div>
+        </div>
+        <div class="quote-panel">
+          <p>Prioritizing means removing some good ideas so the strongest ideas can succeed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-8" data-title="Site Types" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Types of websites</p>
+        <h2>Different site types need different planning questions.</h2>
+        <div class="site-type-grid">
+          <button class="type-card active" data-type="business" type="button">Business / Service</button>
+          <button class="type-card" data-type="portfolio" type="button">Portfolio</button>
+          <button class="type-card" data-type="store" type="button">Online Store</button>
+          <button class="type-card" data-type="education" type="button">Education</button>
+          <button class="type-card" data-type="news" type="button">News / Media</button>
+          <button class="type-card" data-type="nonprofit" type="button">Nonprofit</button>
+        </div>
+        <div class="type-output" id="typeOutput" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-9" data-title="Roles" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Project governance</p>
+        <h2>Most website problems are decision problems before they are design problems.</h2>
+        <div class="role-board">
+          <article>
+            <span>Approves</span>
+            <strong>Who can say “yes, this is final”?</strong>
+          </article>
+          <article>
+            <span>Creates</span>
+            <strong>Who writes content, designs screens, and builds pages?</strong>
+          </article>
+          <article>
+            <span>Maintains</span>
+            <strong>Who updates the site after launch?</strong>
+          </article>
+          <article>
+            <span>Answers</span>
+            <strong>Who resolves conflicts when goals compete?</strong>
+          </article>
+        </div>
+        <p class="takeaway">Clear roles reduce confusion, delays, and scope creep.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-10" data-title="Road Map" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Site development process</p>
+        <h2>A website is built through connected phases.</h2>
+        <div class="timeline">
+          <div><span>1</span><strong>Strategy</strong><em>Purpose, goals, audience</em></div>
+          <div><span>2</span><strong>Research</strong><em>Users, content, competitors</em></div>
+          <div><span>3</span><strong>Structure</strong><em>Pages, navigation, sitemap</em></div>
+          <div><span>4</span><strong>Interface</strong><em>Wireframes, layout, interaction</em></div>
+          <div><span>5</span><strong>Build</strong><em>HTML, CSS, media, CMS/tools</em></div>
+          <div><span>6</span><strong>Test & Improve</strong><em>Usability, accessibility, revisions</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-11" data-title="Charter" data-section="Build">
+      <div class="slide-inner">
+        <p class="eyebrow">Project charter</p>
+        <h2>The project charter is the first shared map.</h2>
+        <div class="charter-grid">
+          <article><span>01</span><strong>Purpose</strong>
+            <p>Why should this site exist?</p>
+          </article>
+          <article><span>02</span><strong>Goals</strong>
+            <p>What outcomes should it create?</p>
+          </article>
+          <article><span>03</span><strong>Audience</strong>
+            <p>Who must the site work for?</p>
+          </article>
+          <article><span>04</span><strong>Success indicators</strong>
+            <p>How will progress be recognized?</p>
+          </article>
+          <article><span>05</span><strong>Strategies</strong>
+            <p>What approaches support the goals?</p>
+          </article>
+          <article><span>06</span><strong>Tactics</strong>
+            <p>What features or actions support the strategies?</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-12" data-title="Example Charter" data-section="Example">
+      <div class="slide-inner">
+        <p class="eyebrow">Example</p>
+        <h2>Project charter snapshot: mobile car wash</h2>
+        <div class="example-charter">
+          <article><strong>Purpose</strong>
+            <p>Help busy vehicle owners book mobile detailing with confidence.</p>
+          </article>
+          <article><strong>Goals</strong>
+            <p>Increase booking requests, explain service packages, reduce repeated questions.</p>
+          </article>
+          <article><strong>Audience</strong>
+            <p>Local car owners who value convenience, trust, and clear pricing.</p>
+          </article>
+          <article><strong>Success indicators</strong>
+            <p>More booking form submissions, fewer pricing questions, more repeat customers.</p>
+          </article>
+          <article><strong>Strategies</strong>
+            <p>Make booking easy, prove quality visually, keep package comparison simple.</p>
+          </article>
+          <article><strong>Tactics</strong>
+            <p>Booking button, service cards, before/after gallery, FAQ, map/service area, testimonials.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-13" data-title="Charter Studio" data-section="Build">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Build together</p>
+        <h2>Draft a project charter.</h2>
+        <p class="lede small">Fill in short phrases. The goal is a useful first draft, not a perfect document.</p>
+        <div class="charter-builder">
+          <form id="charterForm" class="charter-form">
+            <label>Project / client name <input name="project" placeholder="Example: BrightStart Tutoring" /></label>
+            <label>Purpose <textarea name="purpose" placeholder="Why should this site exist?"></textarea></label>
+            <label>Goals <textarea name="goals" placeholder="What should the site accomplish?"></textarea></label>
+            <label>Target audience <textarea name="audience" placeholder="Who is this for?"></textarea></label>
+            <label>Success indicators <textarea name="success"
+                placeholder="How will success be recognized?"></textarea></label>
+            <label>Strategies <textarea name="strategies"
+                placeholder="What approaches support the goals?"></textarea></label>
+            <label>Tactics <textarea name="tactics"
+                placeholder="What features or actions support the strategies?"></textarea></label>
+          </form>
+          <aside class="charter-preview" aria-label="Project charter preview">
+            <div class="preview-header">
+              <h3>Charter preview</h3>
+              <div class="mini-actions">
+                <button class="ghost-btn" id="copyCharterBtn" type="button">Copy</button>
+                <button class="ghost-btn" id="downloadCharterBtn" type="button">Download</button>
+              </div>
+            </div>
+            <pre id="charterPreview">Start filling in the charter to build a preview.</pre>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-14" data-title="Checkpoint" data-section="Review">
+      <div class="slide-inner">
+        <p class="eyebrow">Checkpoint</p>
+        <h2>Quick review</h2>
+        <div class="quiz-card" id="quizCard">
+          <p class="quiz-question" id="quizQuestion">Which one is a tactic?</p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quizFeedback" id="quizFeedback" aria-live="polite"></div>
+          <button class="primary-btn" id="nextQuizBtn" type="button">Next question</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-15" data-title="Wrap" data-section="End">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Takeaway</p>
+          <h2>A website plan is a decision-making tool.</h2>
+          <p class="lede">It helps a team know what to build, why it matters, who it serves, and how success will be
+            judged.</p>
+        </div>
+        <div class="exit-ticket">
+          <h3>Exit ticket</h3>
+          <p>Complete one sentence:</p>
+          <blockquote>“Before designing a website, the most important thing to clarify is ________ because ________.”
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="deck-controls" aria-label="Slide controls">
+    <button class="ghost-btn" id="prevBtn" type="button">Back</button>
+    <div class="slide-status" id="slideStatus">1 / 15</div>
+    <button class="primary-btn" id="nextBtn" type="button">Next</button>
+  </footer>
+
+  <div class="overview-modal" id="overviewModal" aria-hidden="true" role="dialog" aria-label="Presentation overview">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Presentation overview</h2>
+        <button class="ghost-btn" id="closeOverviewBtn" type="button">Close</button>
+      </div>
+      <p>This deck follows Chapter 1 from strategy to a first project charter.</p>
+      <div class="overview-grid" id="overviewGrid"></div>
+      <p class="source-note">Source material: Web Style Guide, Chapter 1: Strategy by Patrick J. Lynch and Sarah Horton.
+        Course sequence aligned with WST 157 Website Planning & Production syllabus.</p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WST 157 · Chapter 2: Research & Universal Usability</title>
+  <meta name="description" content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 2: Research and Universal Usability." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#slide-1">Skip to slides</a>
+
+  <header class="topbar" aria-label="Presentation controls">
+    <div class="brand">
+      <span class="brand-mark">WST</span>
+      <div>
+        <strong>WST 157</strong>
+        <span>Website Planning & Production</span>
+      </div>
+    </div>
+    <nav class="top-actions" aria-label="Deck navigation">
+      <button class="ghost-btn" id="overviewBtn" type="button">Overview</button>
+      <button class="ghost-btn" id="presentBtn" type="button" aria-pressed="false">Present</button>
+      <button class="primary-btn" id="nextTopBtn" type="button">Next</button>
+    </nav>
+  </header>
+
+  <aside class="progress-panel" id="progressPanel" aria-label="Slide progress">
+    <div class="progress-title">Chapter 2 Route</div>
+    <ol id="slideList" class="slide-list"></ol>
+  </aside>
+
+  <main class="deck" id="deck">
+    <section class="slide hero" id="slide-1" data-title="Opening" data-section="Start">
+      <div class="slide-inner two-col hero-grid">
+        <div>
+          <p class="eyebrow">Chapter 2 · Research & Universal Usability</p>
+          <h1>Design decisions need evidence.</h1>
+          <p class="lede">A website becomes stronger when planning is tested against real users, real goals, and real situations.</p>
+          <div class="big-question">
+            <span>Opening question</span>
+            <strong>How do we know if a website is easy to use?</strong>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Lesson route">
+          <h2>Today’s path</h2>
+          <ol class="route-list">
+            <li>Question assumptions about users</li>
+            <li>Compare research methods</li>
+            <li>Build personas and scenarios</li>
+            <li>Sketch, prototype, and test early</li>
+          </ol>
+          <p class="small-note">Use the arrow keys or the Next button to move through the deck.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-2" data-title="Main Idea" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Main idea</p>
+        <h2>Best practices are not enough.</h2>
+        <div class="statement-card">
+          <p>Good web design uses familiar patterns, but the strongest decisions come from <strong>learning from users throughout the design process</strong>.</p>
+        </div>
+        <div class="comparison-grid">
+          <article>
+            <h3>Assumption</h3>
+            <p>“Users will understand this because it makes sense to us.”</p>
+          </article>
+          <article>
+            <h3>Evidence</h3>
+            <p>“Three test users tried the task. Two got stuck at the same label.”</p>
+          </article>
+        </div>
+        <p class="takeaway">Research turns opinions into better questions, better priorities, and better design decisions.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-3" data-title="Universal Usability" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Universal usability</p>
+        <h2>There is no single “average user.”</h2>
+        <div class="process-strip" role="list" aria-label="Universal usability contexts">
+          <div role="listitem">
+            <span class="step-number">1</span>
+            <h3>People vary</h3>
+            <p>Age, experience, goals, language, confidence, attention, and abilities all affect use.</p>
+          </div>
+          <div role="listitem">
+            <span class="step-number">2</span>
+            <h3>Devices vary</h3>
+            <p>Phones, laptops, tablets, screen readers, slow networks, and different screen sizes change the experience.</p>
+          </div>
+          <div role="listitem">
+            <span class="step-number">3</span>
+            <h3>Situations vary</h3>
+            <p>Users may be rushed, distracted, tired, outdoors, commuting, or trying to finish a task quickly.</p>
+          </div>
+        </div>
+        <div class="prompt-card">
+          <span>Discuss</span>
+          <p>Which user situation is easiest for a designer to forget?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-4" data-title="Context Cards" data-section="Try">
+      <div class="slide-inner">
+        <p class="eyebrow">Try this</p>
+        <h2>Same website. Different user context.</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">User context</p>
+            <h3 id="contextTitle">A first-time visitor is using a phone in a parking lot.</h3>
+            <p id="contextDetail">They need the address, hours, and whether walk-ins are accepted.</p>
+          </div>
+          <button class="primary-btn" id="newContextBtn" type="button">New context</button>
+        </div>
+        <div class="question-grid">
+          <article><strong>Need</strong><span>What is this user trying to accomplish?</span></article>
+          <article><strong>Barrier</strong><span>What could make the task harder?</span></article>
+          <article><strong>Design choice</strong><span>What should be easier to see or do?</span></article>
+          <article><strong>Test</strong><span>How could this be checked quickly?</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-5" data-title="Hear Create Deliver" data-section="Process">
+      <div class="slide-inner">
+        <p class="eyebrow">Research-directed process</p>
+        <h2>Hear → Create → Deliver</h2>
+        <div class="process-strip" role="list" aria-label="Hear create deliver process">
+          <div role="listitem">
+            <span class="step-number">H</span>
+            <h3>Hear</h3>
+            <p>Collect user stories, observe behavior, study goals, and listen before proposing solutions.</p>
+          </div>
+          <div role="listitem">
+            <span class="step-number">C</span>
+            <h3>Create</h3>
+            <p>Group patterns, generate ideas, prioritize needs, and turn research into design directions.</p>
+          </div>
+          <div role="listitem">
+            <span class="step-number">D</span>
+            <h3>Deliver</h3>
+            <p>Prototype, test, refine, and translate the strongest ideas into production plans.</p>
+          </div>
+        </div>
+        <p class="takeaway">The first move is not “open the design tool.” The first move is listening.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-6" data-title="Brainstorming" data-section="Try">
+      <div class="slide-inner">
+        <p class="eyebrow">Activity</p>
+        <h2>Brainstorm first. Filter second.</h2>
+        <p class="lede small">Prompt: A tutoring center wants more parents to request a consultation. Generate ideas before judging them.</p>
+        <div class="choice-toolbar">
+          <button class="ghost-btn" id="resetBrainstormBtn" type="button">Reset</button>
+          <span id="brainstormCount">0 ideas selected</span>
+        </div>
+        <div class="feature-grid" id="brainstormGrid" aria-label="Brainstorm idea choices"></div>
+        <div class="result-panel" id="brainstormResult" aria-live="polite">Select ideas that could be explored as prototypes.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-7" data-title="Idea Filters" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Choosing ideas</p>
+        <h2>Good ideas still need filters.</h2>
+        <div class="process-strip" role="list" aria-label="Idea filters">
+          <div role="listitem">
+            <span class="step-number">D</span>
+            <h3>Desirable</h3>
+            <p>Do users actually want or need this?</p>
+          </div>
+          <div role="listitem">
+            <span class="step-number">F</span>
+            <h3>Feasible</h3>
+            <p>Can the team create it successfully with the available time and skills?</p>
+          </div>
+          <div role="listitem">
+            <span class="step-number">V</span>
+            <h3>Viable</h3>
+            <p>Does it make sense for the client, resources, timeline, and project support?</p>
+          </div>
+        </div>
+        <div class="quote-panel">
+          <p>Research is not just about collecting ideas. It is also about deciding which ideas deserve to become prototypes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-8" data-title="Research Methods" data-section="Methods">
+      <div class="slide-inner">
+        <p class="eyebrow">User research methods</p>
+        <h2>Different methods reveal different kinds of truth.</h2>
+        <div class="site-type-grid method-grid">
+          <button class="type-card active" data-method="survey" type="button">Survey</button>
+          <button class="type-card" data-method="interview" type="button">Interview</button>
+          <button class="type-card" data-method="focus" type="button">Focus Group</button>
+          <button class="type-card" data-method="field" type="button">Field Study</button>
+          <button class="type-card" data-method="analytics" type="button">Analytics</button>
+          <button class="type-card" data-method="test" type="button">Usability Test</button>
+        </div>
+        <div class="type-output" id="methodOutput" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-9" data-title="Say vs Do" data-section="Concept">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Research caution</p>
+          <h2>What people say and what people do are not always the same.</h2>
+          <p class="lede">Surveys and interviews are useful, but observation can reveal behavior users forget to mention or cannot explain clearly.</p>
+        </div>
+        <div class="split-card one-col-stack">
+          <article>
+            <h3>What a user might say</h3>
+            <p>“I always compare all the options carefully.”</p>
+          </article>
+          <article>
+            <h3>What observation might show</h3>
+            <p>The user scans the first three options, misses the filter, and chooses based on price and delivery time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-10" data-title="Goals vs Tasks" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Goal analysis</p>
+        <h2>Design for the goal, not just the task.</h2>
+        <div class="comparison-grid">
+          <article>
+            <h3>Task thinking</h3>
+            <p>“The user needs to fill out a form.”</p>
+          </article>
+          <article>
+            <h3>Goal thinking</h3>
+            <p>“The user needs to request help quickly and feel confident someone will respond.”</p>
+          </article>
+        </div>
+        <div class="prompt-card">
+          <span>Discuss</span>
+          <p>For a travel site, is the real goal “use the search form” or “find a trip that fits time and budget”?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-11" data-title="Persona Builder" data-section="Build">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Build together</p>
+        <h2>Create a quick research-informed persona.</h2>
+        <p class="lede small">A persona is not a random fictional character. It represents user patterns, goals, limits, and motivations.</p>
+        <div class="charter-builder">
+          <form id="personaForm" class="charter-form">
+            <label>Persona name <input name="name" placeholder="Example: Maria Chen" /></label>
+            <label>Context <textarea name="context" placeholder="Where, when, and how is this person using the site?"></textarea></label>
+            <label>Primary goal <textarea name="goal" placeholder="What is this person trying to accomplish?"></textarea></label>
+            <label>Frustrations or barriers <textarea name="barriers" placeholder="What could slow them down, confuse them, or exclude them?"></textarea></label>
+            <label>Design implications <textarea name="implications" placeholder="What should the site make easier because of this persona?"></textarea></label>
+          </form>
+          <aside class="charter-preview" aria-label="Persona preview">
+            <div class="preview-header">
+              <h3>Persona preview</h3>
+              <div class="mini-actions">
+                <button class="ghost-btn" id="copyPersonaBtn" type="button">Copy</button>
+                <button class="ghost-btn" id="downloadPersonaBtn" type="button">Download</button>
+              </div>
+            </div>
+            <pre id="personaPreview">Start filling in the persona to build a preview.</pre>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-12" data-title="Scenario Builder" data-section="Build">
+      <div class="slide-inner">
+        <p class="eyebrow">Scenarios</p>
+        <h2>A scenario tells the story of a user trying to reach a goal.</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Scenario starter</p>
+            <h3 id="scenarioStarter">A parent visits a tutoring center website after work.</h3>
+            <p id="scenarioTask">They need to know if help is available for 9th grade algebra and how to request a consultation.</p>
+          </div>
+          <button class="primary-btn" id="newScenarioBtn" type="button">New scenario</button>
+        </div>
+        <div class="question-grid">
+          <article><strong>Start</strong><span>Where does the user begin?</span></article>
+          <article><strong>Path</strong><span>What steps would they try?</span></article>
+          <article><strong>Friction</strong><span>Where could they hesitate?</span></article>
+          <article><strong>Success</strong><span>How do they know they completed the goal?</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-13" data-title="Wireframes" data-section="Prototype">
+      <div class="slide-inner">
+        <p class="eyebrow">Wireframes & prototypes</p>
+        <h2>Test the flow before polishing the visuals.</h2>
+        <div class="split-card">
+          <article>
+            <h3>Wireframe</h3>
+            <ul>
+              <li>Low-cost page structure</li>
+              <li>Navigation and content placement</li>
+              <li>Easy to change</li>
+              <li>Good for testing labels and flow</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Prototype</h3>
+            <ul>
+              <li>Connected screens or paper cards</li>
+              <li>Simulates a task</li>
+              <li>Lets users try the experience</li>
+              <li>Reveals confusion before code</li>
+            </ul>
+          </article>
+        </div>
+        <p class="takeaway">The cheaper a design is to change, the easier it is to learn from mistakes.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-14" data-title="Usability Test" data-section="Try">
+      <div class="slide-inner">
+        <p class="eyebrow">Mini usability test</p>
+        <h2>Observe. Do not rescue too quickly.</h2>
+        <div class="statement-card">
+          <p>Task: <strong>Find the fastest way to request an appointment on this homepage wireframe.</strong></p>
+        </div>
+        <div class="fake-wireframe" aria-label="Simple homepage wireframe for classroom discussion">
+          <div class="wf-top"><span>Logo</span><span>Home</span><span>Services</span><span>About</span><span>Contact</span></div>
+          <div class="wf-hero"><strong>Professional help, when you need it.</strong><button type="button">Learn More</button></div>
+          <div class="wf-cards"><span>Service 1</span><span>Service 2</span><span>Service 3</span></div>
+          <div class="wf-footer">Questions? Call or message us today.</div>
+        </div>
+        <div class="prompt-card">
+          <span>Think aloud</span>
+          <p>Where would a user click first? What label or button might need to change?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-15" data-title="Checkpoint" data-section="Review">
+      <div class="slide-inner">
+        <p class="eyebrow">Checkpoint</p>
+        <h2>Quick review</h2>
+        <div class="quiz-card" id="quizCard">
+          <p class="quiz-question" id="quizQuestion">Which method is best for seeing what users actually do?</p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quizFeedback" id="quizFeedback" aria-live="polite"></div>
+          <button class="primary-btn" id="nextQuizBtn" type="button">Next question</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-16" data-title="Wrap" data-section="End">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Takeaway</p>
+          <h2>Research keeps design connected to real use.</h2>
+          <p class="lede">The goal is not to guess what users need. The goal is to listen, observe, prototype, test, and improve.</p>
+        </div>
+        <div class="exit-ticket">
+          <h3>Exit ticket</h3>
+          <p>Complete one sentence:</p>
+          <blockquote>“One assumption I would want to test before designing a website is ________.”</blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="deck-controls" aria-label="Slide controls">
+    <button class="ghost-btn" id="prevBtn" type="button">Back</button>
+    <div class="slide-status" id="slideStatus">1 / 16</div>
+    <button class="primary-btn" id="nextBtn" type="button">Next</button>
+  </footer>
+
+  <div class="overview-modal" id="overviewModal" aria-hidden="true" role="dialog" aria-label="Presentation overview">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Presentation overview</h2>
+        <button class="ghost-btn" id="closeOverviewBtn" type="button">Close</button>
+      </div>
+      <p>This deck follows Chapter 2 from research and universal usability to personas, scenarios, prototypes, and usability testing.</p>
+      <div class="overview-grid" id="overviewGrid"></div>
+      <p class="source-note">Source material: Web Style Guide, Chapter 2: Research by Patrick J. Lynch and Sarah Horton. Course sequence aligned with WST 157 Website Planning & Production syllabus.</p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

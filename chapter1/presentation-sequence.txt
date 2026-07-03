@@ -1,0 +1,48 @@
+WST 157 · Chapter 1 Presentation Sequence
+
+1. Opening
+Start with the question: What makes a website successful?
+Expected answers may include appearance, speed, easy navigation, useful information, trust, and completing an action.
+
+2. Strategy
+Use the contrast between “make it look modern” and a measurable website goal.
+Main point: design choices are stronger when the project has a clear reason to exist.
+
+3. Diagnose · Guide · Act
+Connect the three steps to real projects: understand the situation, create decision rules, and choose actions.
+
+4. Website Purpose Activity
+Generate a client. For the selected client, identify purpose, audience, action, and success.
+
+5. Client Wants vs. User Needs
+Compare the two columns. Discuss how good planning balances both sides.
+
+6. Priority Picker
+Select three first-version priorities. Discuss how feature choices affect scope and usefulness.
+
+7. Scope
+Move the slider. Discuss how too little scope can be weak and too much scope can become unmanageable.
+
+8. Site Types
+Click different site types. Notice how planning questions change depending on the type of website.
+
+9. Roles
+Discuss who approves, creates, maintains, and resolves conflicts in a website project.
+
+10. Road Map
+Walk through the phases from strategy to testing and improvement.
+
+11. Project Charter
+Introduce the six sections: purpose, goals, audience, success indicators, strategies, and tactics.
+
+12. Example Charter
+Use the mobile car wash example to show the difference between goals, strategies, and tactics.
+
+13. Charter Studio
+Draft a simple charter. Short phrases are enough for the first version.
+
+14. Checkpoint
+Use the review questions to reinforce purpose, priorities, and tactics.
+
+15. Exit Ticket
+Complete the sentence: Before designing a website, the most important thing to clarify is ________ because ________.
