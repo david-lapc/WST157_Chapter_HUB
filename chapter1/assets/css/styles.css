@@ -101,6 +101,7 @@ textarea:focus-visible {
   font-weight: 900;
   letter-spacing: 0.04em;
   box-shadow: 0 14px 28px rgba(73, 56, 202, 0.28);
+  text-decoration: none;
 }
 
 .brand span:last-child {
