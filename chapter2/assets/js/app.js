@@ -221,29 +221,100 @@ renderMethod('survey');
 // Slide 11 persona builder
 const personaForm = document.querySelector('#personaForm');
 const personaPreview = document.querySelector('#personaPreview');
+const personaStorageKey = 'wst157-ch2-persona-draft';
+const personaExample = {
+  name: 'Maria Chen',
+  role: 'Parent comparing tutoring programs',
+  ageRange: 'Adult (25-44)',
+  expertise: 'Intermediate',
+  device: 'Phone',
+  accessNeeds: ['Low bandwidth', 'Zoom or larger text'],
+  context: 'Usually checks sites on a phone after work while commuting or waiting to pick up her child.',
+  goal: 'Find the right algebra tutoring option and request a consultation quickly.',
+  secondaryTask: 'Compare schedule options and pricing before submitting the form.',
+  barriers: 'Long pages, unclear labels, and forms that ask for too much information up front.',
+  successSignal: 'Can request a consultation in under 2 minutes and sees a clear confirmation.',
+  implications: 'Put services, pricing range, and request actions near the top with clear labels and short forms.',
+  quote: 'I need to compare options fast and know I picked the right one.'
+};
+
 function personaVal(name) {
   const value = personaForm?.elements[name]?.value.trim();
   return value || '—';
 }
+
+function personaList(name) {
+  if (!personaForm) return '—';
+  const values = Array.from(personaForm.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
+  return values.length ? values.join(', ') : '—';
+}
+
+function getPersonaFormData() {
+  if (!personaForm) return {};
+  return {
+    name: personaForm.elements.name?.value || '',
+    role: personaForm.elements.role?.value || '',
+    ageRange: personaForm.elements.ageRange?.value || '',
+    expertise: personaForm.elements.expertise?.value || '',
+    device: personaForm.elements.device?.value || '',
+    accessNeeds: Array.from(personaForm.querySelectorAll('input[name="accessNeeds"]:checked')).map(input => input.value),
+    context: personaForm.elements.context?.value || '',
+    goal: personaForm.elements.goal?.value || '',
+    secondaryTask: personaForm.elements.secondaryTask?.value || '',
+    barriers: personaForm.elements.barriers?.value || '',
+    successSignal: personaForm.elements.successSignal?.value || '',
+    implications: personaForm.elements.implications?.value || '',
+    quote: personaForm.elements.quote?.value || ''
+  };
+}
+
+function applyPersonaFormData(data = {}) {
+  if (!personaForm) return;
+
+  ['name', 'role', 'ageRange', 'expertise', 'device', 'context', 'goal', 'secondaryTask', 'barriers', 'successSignal', 'implications', 'quote'].forEach(field => {
+    if (personaForm.elements[field]) {
+      personaForm.elements[field].value = data[field] || '';
+    }
+  });
+
+  const selectedNeeds = Array.isArray(data.accessNeeds) ? data.accessNeeds : [];
+  personaForm.querySelectorAll('input[name="accessNeeds"]').forEach(input => {
+    input.checked = selectedNeeds.includes(input.value);
+  });
+}
+
 function updatePersonaPreview() {
   if (!personaForm || !personaPreview) return;
-  const output = `QUICK PERSONA\n\nName\n${personaVal('name')}\n\nContext\n${personaVal('context')}\n\nPrimary Goal\n${personaVal('goal')}\n\nFrustrations or Barriers\n${personaVal('barriers')}\n\nDesign Implications\n${personaVal('implications')}`;
+  const output = `QUICK PERSONA\n\nName\n${personaVal('name')}\n\nRole / Audience\n${personaVal('role')}\n\nAge Range\n${personaVal('ageRange')}\n\nWeb Confidence\n${personaVal('expertise')}\n\nPrimary Device\n${personaVal('device')}\n\nAccess Needs / Constraints\n${personaList('accessNeeds')}\n\nContext\n${personaVal('context')}\n\nPrimary Goal\n${personaVal('goal')}\n\nSecondary Task\n${personaVal('secondaryTask')}\n\nFrustrations or Barriers\n${personaVal('barriers')}\n\nSuccess Looks Like\n${personaVal('successSignal')}\n\nDesign Implications\n${personaVal('implications')}\n\nQuote\n${personaVal('quote')}`;
   personaPreview.textContent = output;
-  localStorage.setItem('wst157-ch2-persona-draft', JSON.stringify(Object.fromEntries(new FormData(personaForm).entries())));
+  localStorage.setItem(personaStorageKey, JSON.stringify(getPersonaFormData()));
 }
+
 if (personaForm) {
-  const saved = localStorage.getItem('wst157-ch2-persona-draft');
+  const saved = localStorage.getItem(personaStorageKey);
   if (saved) {
     try {
-      const data = JSON.parse(saved);
-      Object.keys(data).forEach(key => {
-        if (personaForm.elements[key]) personaForm.elements[key].value = data[key];
-      });
-    } catch {}
+      applyPersonaFormData(JSON.parse(saved));
+    } catch { }
   }
+
   personaForm.addEventListener('input', updatePersonaPreview);
+  personaForm.addEventListener('change', updatePersonaPreview);
   updatePersonaPreview();
 }
+
+document.querySelector('#loadPersonaExampleBtn')?.addEventListener('click', () => {
+  applyPersonaFormData(personaExample);
+  updatePersonaPreview();
+});
+
+document.querySelector('#clearPersonaBtn')?.addEventListener('click', () => {
+  if (!personaForm) return;
+  personaForm.reset();
+  localStorage.removeItem(personaStorageKey);
+  updatePersonaPreview();
+});
+
 document.querySelector('#copyPersonaBtn')?.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(personaPreview.textContent);

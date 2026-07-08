@@ -799,6 +799,17 @@ h3 {
   gap: 0.75rem;
 }
 
+.persona-form-tools {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.persona-form-tools .ghost-btn {
+  padding: 0.58rem 0.8rem;
+  font-size: 0.86rem;
+}
+
 .charter-form label {
   display: grid;
   gap: 0.35rem;
@@ -810,7 +821,8 @@ h3 {
 }
 
 .charter-form input,
-.charter-form textarea {
+.charter-form textarea,
+.charter-form select {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -825,6 +837,54 @@ h3 {
 .charter-form textarea {
   min-height: 74px;
   resize: vertical;
+}
+
+.persona-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.persona-chips {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.persona-chips legend {
+  padding: 0 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 900;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.persona-chips label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.38rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.persona-chips input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
 }
 
 .charter-preview {
@@ -1109,6 +1169,10 @@ body.presenting .slide-inner {
   .interactive-card {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .persona-quick-grid {
+    grid-template-columns: 1fr;
   }
 
   .deck-controls {

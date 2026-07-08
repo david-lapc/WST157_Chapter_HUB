@@ -105,7 +105,7 @@
           </div>
         </div>
         <div class="prompt-card">
-          <span>Discuss</span>
+          <span>Group discussion</span>
           <p>Which user situation is easiest for a designer to forget?</p>
         </div>
       </div>
@@ -113,7 +113,7 @@
 
     <section class="slide activity" id="slide-4" data-title="Context Cards" data-section="Try">
       <div class="slide-inner">
-        <p class="eyebrow">Try this</p>
+        <p class="eyebrow">Quick activity</p>
         <h2>Same website. Different user context.</h2>
         <div class="interactive-card">
           <div>
@@ -161,8 +161,8 @@
       <div class="slide-inner">
         <p class="eyebrow">Activity</p>
         <h2>Brainstorm first. Filter second.</h2>
-        <p class="lede small">Prompt: A tutoring center wants more parents to request a consultation. Generate ideas
-          before judging them.</p>
+        <p class="lede small">Scenario: A tutoring center wants more parents to request a consultation. Start by
+          generating ideas before judging them.</p>
         <div class="choice-toolbar">
           <button class="ghost-btn" id="resetBrainstormBtn" type="button">Reset</button>
           <span id="brainstormCount">0 ideas selected</span>
@@ -254,7 +254,7 @@
           </article>
         </div>
         <div class="prompt-card">
-          <span>Discuss</span>
+          <span>Group discussion</span>
           <p>For a travel site, is the real goal “use the search form” or “find a trip that fits time and budget”?</p>
         </div>
       </div>
@@ -262,14 +262,14 @@
 
     <section class="slide activity" id="slide-11" data-title="Persona Builder" data-section="Build">
       <div class="slide-inner wide">
-        <p class="eyebrow">Build together</p>
+        <p class="eyebrow">Persona workshop</p>
         <h2>Create a quick research-informed persona.</h2>
         <p class="lede small">A persona is a fictional representative user built from research, not guesswork. It keeps
           goals, motivations, barriers, and context visible while the team makes design decisions.</p>
         <div class="comparison-grid">
           <article>
             <h3>Research-based stand-in</h3>
-            <p>Personas grow out of surveys, interviews, focus groups, and observation so the class can design for
+            <p>Personas grow out of surveys, interviews, focus groups, and observation so teams can design for
               patterns in real users.</p>
           </article>
           <article>
@@ -280,15 +280,64 @@
         </div>
         <div class="charter-builder">
           <form id="personaForm" class="charter-form">
+            <div class="persona-form-tools" aria-label="Persona form actions">
+              <button class="ghost-btn" id="loadPersonaExampleBtn" type="button">Load example</button>
+              <button class="ghost-btn" id="clearPersonaBtn" type="button">Clear form</button>
+            </div>
             <label>Persona name <input name="name" placeholder="Example: Maria Chen" /></label>
+            <label>Role or audience type <input name="role"
+                placeholder="Example: Parent looking for tutoring support" /></label>
+            <div class="persona-quick-grid">
+              <label>Age range
+                <select name="ageRange">
+                  <option value="">Choose one</option>
+                  <option>Teen (13-17)</option>
+                  <option>Young adult (18-24)</option>
+                  <option>Adult (25-44)</option>
+                  <option>Older adult (45+)</option>
+                </select>
+              </label>
+              <label>Web confidence
+                <select name="expertise">
+                  <option value="">Choose one</option>
+                  <option>Novice</option>
+                  <option>Intermediate</option>
+                  <option>Confident</option>
+                </select>
+              </label>
+              <label>Primary device
+                <select name="device">
+                  <option value="">Choose one</option>
+                  <option>Phone</option>
+                  <option>Laptop</option>
+                  <option>Desktop</option>
+                  <option>Tablet</option>
+                </select>
+              </label>
+            </div>
+            <fieldset class="persona-chips" aria-label="Access needs or constraints">
+              <legend>Access needs or constraints</legend>
+              <label><input type="checkbox" name="accessNeeds" value="Screen reader" /> Screen reader</label>
+              <label><input type="checkbox" name="accessNeeds" value="Keyboard navigation" /> Keyboard
+                navigation</label>
+              <label><input type="checkbox" name="accessNeeds" value="Zoom or larger text" /> Zoom or larger
+                text</label>
+              <label><input type="checkbox" name="accessNeeds" value="Low bandwidth" /> Low bandwidth</label>
+            </fieldset>
             <label>Context <textarea name="context"
                 placeholder="Where, when, and how is this person using the site?"></textarea></label>
             <label>Primary goal <textarea name="goal"
-                placeholder="What is this person trying to accomplish?"></textarea></label>
+                placeholder="What is the main outcome this person wants?"></textarea></label>
+            <label>Secondary task <input name="secondaryTask"
+                placeholder="Example: Compare options before submitting a request" /></label>
             <label>Frustrations or barriers <textarea name="barriers"
                 placeholder="What could slow them down, confuse them, or exclude them?"></textarea></label>
+            <label>Success looks like <input name="successSignal"
+                placeholder="Example: Finishes task in under 2 minutes without help" /></label>
             <label>Design implications <textarea name="implications"
                 placeholder="What should the site make easier because of this persona?"></textarea></label>
+            <label>Quote from this persona <input name="quote"
+                placeholder='Example: "I just need to find the answer quickly."' /></label>
           </form>
           <aside class="charter-preview" aria-label="Persona preview">
             <div class="preview-header">
@@ -371,7 +420,7 @@
           <div class="wf-footer">Questions? Call or message us today.</div>
         </div>
         <div class="prompt-card">
-          <span>Think aloud</span>
+          <span>Talk it through</span>
           <p>Where would a user click first? What label or button might need to change?</p>
         </div>
       </div>
@@ -379,7 +428,7 @@
 
     <section class="slide activity" id="slide-15" data-title="Checkpoint" data-section="Review">
       <div class="slide-inner">
-        <p class="eyebrow">Checkpoint</p>
+        <p class="eyebrow">Knowledge check</p>
         <h2>Quick review</h2>
         <div class="quiz-card" id="quizCard">
           <p class="quiz-question" id="quizQuestion">Which method is best for seeing what users actually do?</p>
