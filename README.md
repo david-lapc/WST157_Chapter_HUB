@@ -6,6 +6,7 @@ A collection of interactive chapter presentations for WST 157: Website Planning 
 
 - [Chapter 1: Strategy & Website Planning](chapter1/index.html)
 - [Chapter 2: Research & Universal Usability](chapter2/index.html)
+- [Chapter 3: Information Architecture](chapter3/index.html)
 
 ## Live Site
 
