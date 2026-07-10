@@ -208,9 +208,48 @@ updatePlan();
 // Slide 7: scope builder
 const scopeForm = document.querySelector('#scopeForm');
 const scopePreview = document.querySelector('#scopePreview');
+const fillScopeExampleBtn = document.querySelector('#fillScopeExampleBtn');
+const scopeExampleLabel = document.querySelector('#scopeExampleLabel');
+const scopeExamples = [
+  {
+    project: 'Campus Night Market',
+    is: 'A promotional website for a campus night market with event overview, vendor highlights, schedule, RSVP, FAQ, and location details.',
+    isnot: 'A vendor payment platform, inventory tracker, mobile app, or live operations dashboard during the event.',
+    must: 'Clear event date and time, location map, vendor lineup, schedule, RSVP form, and mobile-friendly navigation.',
+    future: 'Interactive venue map, SMS reminders, digital ticketing, and a vendor portal for updating booth details.'
+  },
+  {
+    project: 'Unused Digital Subscription Recovery Service',
+    is: 'A website that helps users discover and manage unused digital subscriptions and credits, such as stock media plans, AI tool credits, and SaaS subscriptions.',
+    isnot: 'A direct billing processor, bank account replacement, password manager, or full personal finance application.',
+    must: 'Service overview, supported subscription categories, secure account connection explanation, plan comparison, signup flow, and privacy policy.',
+    future: 'Automated renewal alerts, cancellation assistant, savings dashboard, provider API integrations, and team account management.'
+  },
+  {
+    project: 'Neighborhood Health Clinic Website',
+    is: 'An informational website for a local health clinic with services, doctor profiles, location details, office hours, and appointment requests.',
+    isnot: 'A telemedicine platform, insurance-claim processor, emergency hotline replacement, or patient medical records system.',
+    must: 'Services page, provider bios, contact details, new-patient instructions, appointment request form, and accessibility-first page structure.',
+    future: 'Secure patient portal login, appointment reminders, multilingual content, online payments, and health resource library updates.'
+  }
+];
+let scopeExampleIndex = -1;
+
 function scopeVal(name) {
   const value = scopeForm?.elements[name]?.value.trim();
   return value || '—';
+}
+function applyScopeExample(index) {
+  if (!scopeForm) return;
+  const example = scopeExamples[index];
+  if (!example) return;
+  Object.entries(example).forEach(([key, value]) => {
+    if (scopeForm.elements[key]) scopeForm.elements[key].value = value;
+  });
+  updateScopePreview();
+  if (scopeExampleLabel) {
+    scopeExampleLabel.textContent = `Loaded example ${index + 1} of ${scopeExamples.length}: ${example.project}`;
+  }
 }
 function updateScopePreview() {
   if (!scopeForm || !scopePreview) return;
@@ -224,11 +263,15 @@ if (scopeForm) {
     try {
       const data = JSON.parse(saved);
       Object.keys(data).forEach(key => { if (scopeForm.elements[key]) scopeForm.elements[key].value = data[key]; });
-    } catch {}
+    } catch { }
   }
   scopeForm.addEventListener('input', updateScopePreview);
   updateScopePreview();
 }
+fillScopeExampleBtn?.addEventListener('click', () => {
+  scopeExampleIndex = (scopeExampleIndex + 1) % scopeExamples.length;
+  applyScopeExample(scopeExampleIndex);
+});
 document.querySelector('#copyScopeBtn')?.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(scopePreview.textContent);
