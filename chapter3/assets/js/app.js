@@ -1,565 +1,487 @@
 const slides = Array.from(document.querySelectorAll('.slide'));
-const slideList = document.getElementById('slideList');
-const overviewGrid = document.getElementById('overviewGrid');
-const slideStatus = document.getElementById('slideStatus');
-const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
-const nextTopBtn = document.getElementById('nextTopBtn');
-const overviewBtn = document.getElementById('overviewBtn');
-const closeOverviewBtn = document.getElementById('closeOverviewBtn');
-const overviewModal = document.getElementById('overviewModal');
-const presentBtn = document.getElementById('presentBtn');
 let current = 0;
+const slideList = document.querySelector('#slideList');
+const overviewGrid = document.querySelector('#overviewGrid');
+const status = document.querySelector('#slideStatus');
+const nextBtn = document.querySelector('#nextBtn');
+const prevBtn = document.querySelector('#prevBtn');
+const nextTopBtn = document.querySelector('#nextTopBtn');
+const presentBtn = document.querySelector('#presentBtn');
+const overviewBtn = document.querySelector('#overviewBtn');
+const overviewModal = document.querySelector('#overviewModal');
+const closeOverviewBtn = document.querySelector('#closeOverviewBtn');
 
-function goToSlide(index) {
+function makeSlideButton(slide, index, compact = false) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.dataset.index = index;
+  button.innerHTML = compact
+    ? `<strong>${String(index + 1).padStart(2, '0')}. ${slide.dataset.title}</strong><span>${slide.dataset.section}</span>`
+    : `<span class="num">${index + 1}</span><span><span class="name">${slide.dataset.title}</span><span class="section">${slide.dataset.section}</span></span>`;
+  button.addEventListener('click', () => goTo(index));
+  return button;
+}
+
+slides.forEach((slide, index) => {
+  const li = document.createElement('li');
+  li.appendChild(makeSlideButton(slide, index));
+  slideList.appendChild(li);
+  overviewGrid.appendChild(makeSlideButton(slide, index, true));
+});
+const navButtons = Array.from(slideList.querySelectorAll('button'));
+
+function goTo(index) {
   current = Math.max(0, Math.min(slides.length - 1, index));
   slides[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
-  updateUI();
+  updateState();
+  closeOverview();
 }
 
-function updateUI() {
-  slideStatus.textContent = `${current + 1} / ${slides.length}`;
-  document.querySelectorAll('.slide-list button').forEach((btn, i) => btn.classList.toggle('active', i === current));
-  document.querySelectorAll('.overview-grid button').forEach((btn, i) => btn.classList.toggle('active', i === current));
+function updateState() {
+  status.textContent = `${current + 1} / ${slides.length}`;
+  navButtons.forEach((btn, index) => btn.classList.toggle('active', index === current));
   prevBtn.disabled = current === 0;
-  nextBtn.disabled = current === slides.length - 1;
+  nextBtn.textContent = current === slides.length - 1 ? 'Start over' : 'Next';
+  nextTopBtn.textContent = current === slides.length - 1 ? 'Start over' : 'Next';
 }
 
-function buildNavigation() {
-  slides.forEach((slide, index) => {
-    const title = slide.dataset.title || `Slide ${index + 1}`;
-    const section = slide.dataset.section || '';
-
-    const li = document.createElement('li');
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.innerHTML = `<span class="num">${index + 1}</span><span><span class="name">${title}</span><span class="section">${section}</span></span>`;
-    btn.addEventListener('click', () => goToSlide(index));
-    li.appendChild(btn);
-    slideList.appendChild(li);
-
-    const overview = document.createElement('button');
-    overview.type = 'button';
-    overview.innerHTML = `<strong>${index + 1}. ${title}</strong><span>${section}</span>`;
-    overview.addEventListener('click', () => {
-      overviewModal.setAttribute('aria-hidden', 'true');
-      goToSlide(index);
-    });
-    overviewGrid.appendChild(overview);
-  });
+function nextSlide() {
+  if (current === slides.length - 1) goTo(0);
+  else goTo(current + 1);
 }
+function prevSlide() { goTo(current - 1); }
 
-nextBtn.addEventListener('click', () => goToSlide(current + 1));
-prevBtn.addEventListener('click', () => goToSlide(current - 1));
-nextTopBtn.addEventListener('click', () => goToSlide(current + 1));
-overviewBtn.addEventListener('click', () => overviewModal.setAttribute('aria-hidden', 'false'));
-closeOverviewBtn.addEventListener('click', () => overviewModal.setAttribute('aria-hidden', 'true'));
-overviewModal.addEventListener('click', (event) => {
-  if (event.target === overviewModal) overviewModal.setAttribute('aria-hidden', 'true');
-});
-presentBtn.addEventListener('click', () => {
-  document.body.classList.toggle('presenting');
-  const isPresenting = document.body.classList.contains('presenting');
-  presentBtn.setAttribute('aria-pressed', String(isPresenting));
-  presentBtn.textContent = isPresenting ? 'Exit Present' : 'Present';
-});
+nextBtn.addEventListener('click', nextSlide);
+nextTopBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'ArrowRight' || event.key === 'PageDown') goToSlide(current + 1);
-  if (event.key === 'ArrowLeft' || event.key === 'PageUp') goToSlide(current - 1);
-  if (event.key.toLowerCase() === 'f') presentBtn.click();
-  if (event.key === 'Escape') overviewModal.setAttribute('aria-hidden', 'true');
+  const activeTag = document.activeElement?.tagName?.toLowerCase();
+  const isTyping = activeTag === 'input' || activeTag === 'textarea';
+  if (isTyping) return;
+  if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+    event.preventDefault();
+    nextSlide();
+  }
+  if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+    event.preventDefault();
+    prevSlide();
+  }
+  if (event.key.toLowerCase() === 'f') togglePresent();
+  if (event.key === 'Escape') closeOverview();
 });
 
-function initInventory() {
-  const grid = document.getElementById('inventoryGrid');
-  if (!grid) return;
-  const result = document.getElementById('inventoryResult');
-  const status = document.getElementById('inventoryStatus');
-  const reset = document.getElementById('resetInventoryBtn');
-  const items = [
-    ['Date + time', 'Must answer the first visitor question.'],
-    ['Location + entrance', 'Reduces hesitation and confusion.'],
-    ['Vendor lineup', 'Builds interest and helps people plan.'],
-    ['Performers schedule', 'Time-sensitive content users may check repeatedly.'],
-    ['Parking / transit', 'Important mobile task before arrival.'],
-    ['Sponsor history', 'Useful, but probably not top priority.'],
-    ['Full event photo archive', 'Could be added after the event.'],
-    ['Vendor application', 'Important for a different audience.'],
-    ['Long welcome letter', 'May not support user tasks.'],
-    ['FAQ', 'Answers objections and prevents repeated questions.'],
-    ['Emergency procedures', 'Important, but needs careful placement and wording.'],
-    ['Social feed embed', 'Nice, but may slow the page or distract.']
-  ];
-  const statuses = ['now', 'later', 'cut'];
-  const labels = { now: 'Version 1', later: 'Later', cut: 'Cut / rethink' };
-  grid.innerHTML = '';
-  items.forEach(([title, note], index) => {
+function togglePresent() {
+  const active = document.body.classList.toggle('presenting');
+  presentBtn.setAttribute('aria-pressed', String(active));
+  presentBtn.textContent = active ? 'Exit Present' : 'Present';
+}
+presentBtn.addEventListener('click', togglePresent);
+
+function openOverview() { overviewModal.setAttribute('aria-hidden', 'false'); }
+function closeOverview() { overviewModal.setAttribute('aria-hidden', 'true'); }
+overviewBtn.addEventListener('click', openOverview);
+closeOverviewBtn.addEventListener('click', closeOverview);
+overviewModal.addEventListener('click', (event) => { if (event.target === overviewModal) closeOverview(); });
+
+// Slide 4: role matching
+const roleSituations = [
+  {
+    title: 'The client wants to add a members-only portal two weeks before launch.',
+    details: 'The feature was not in the original charter or timeline.',
+    answer: 'Project lead',
+    feedback: 'The project lead should guide the scope decision and connect it back to goals, budget, and timeline.'
+  },
+  {
+    title: 'The site needs a consistent voice for all service descriptions.',
+    details: 'The pages are accurate, but each one sounds like a different person wrote it.',
+    answer: 'Production / editor',
+    feedback: 'The editor or production lead protects tone, consistency, proofreading, and content quality.'
+  },
+  {
+    title: 'A form will collect personal information from visitors.',
+    details: 'The team needs to decide how the data is stored and protected.',
+    answer: 'Technology lead',
+    feedback: 'The technology lead should evaluate data handling, security, hosting, and technical risk.'
+  },
+  {
+    title: 'Test users cannot find the main appointment path.',
+    details: 'The design looks nice, but the task is failing.',
+    answer: 'UX lead',
+    feedback: 'The UX lead should investigate user behavior and improve the experience with the team.'
+  },
+  {
+    title: 'The homepage design feels inconsistent with the brand.',
+    details: 'The layout works, but the visual direction does not feel right.',
+    answer: 'Design lead',
+    feedback: 'The design lead owns visual direction, layout systems, typography, and overall look and feel.'
+  },
+  {
+    title: 'The final version needs approval before launch.',
+    details: 'The team needs a clear yes/no decision from the person funding the project.',
+    answer: 'Project sponsor',
+    feedback: 'The sponsor has authority to approve the final outcome and provide resources.'
+  }
+];
+const roleChoices = ['Project sponsor', 'Project lead', 'UX lead', 'Design lead', 'Technology lead', 'Production / editor'];
+let roleIndex = 0;
+const roleSituation = document.querySelector('#roleSituation');
+const roleDetails = document.querySelector('#roleDetails');
+const roleChoiceGrid = document.querySelector('#roleChoiceGrid');
+const roleResult = document.querySelector('#roleResult');
+function renderRoleSituation() {
+  const item = roleSituations[roleIndex];
+  roleSituation.textContent = item.title;
+  roleDetails.textContent = item.details;
+  roleResult.textContent = 'Choose the role that should lead the decision.';
+  roleChoiceGrid.innerHTML = '';
+  roleChoices.forEach(choice => {
     const button = document.createElement('button');
-    button.className = 'sort-card';
     button.type = 'button';
-    button.dataset.status = index < 5 ? 'now' : (index < 9 ? 'later' : 'cut');
-    button.innerHTML = `<strong>${title}</strong><small>${note}</small><div class="status-row"><span class="status-pill active">${labels[button.dataset.status]}</span></div>`;
+    button.className = 'type-card';
+    button.textContent = choice;
     button.addEventListener('click', () => {
-      const currentIndex = statuses.indexOf(button.dataset.status);
-      button.dataset.status = statuses[(currentIndex + 1) % statuses.length];
-      button.querySelector('.status-pill').textContent = labels[button.dataset.status];
-      summarize();
-    });
-    grid.appendChild(button);
-  });
-  function summarize() {
-    const cards = Array.from(grid.querySelectorAll('.sort-card'));
-    const counts = statuses.reduce((acc, s) => ({ ...acc, [s]: cards.filter(card => card.dataset.status === s).length }), {});
-    status.textContent = `${counts.now} in version 1 · ${counts.later} later · ${counts.cut} cut/rethink`;
-    result.textContent = `A stronger inventory does not keep everything. It exposes priorities: what users need first, what supports goals, and what creates unnecessary scope.`;
-  }
-  reset.addEventListener('click', initInventory);
-  summarize();
-}
-
-function initLabelLab() {
-  const lab = document.getElementById('labelLab');
-  if (!lab) return;
-  const feedback = document.getElementById('labelFeedback');
-  const groups = [
-    {
-      title: 'A visitor wants basic event facts.',
-      options: ['Things to Know', 'Info Zone', 'Plan Your Visit', 'Helpful Details'],
-      correct: 2,
-      feedback: '“Plan Your Visit” is task-oriented and specific. It suggests date, location, parking, cost, and arrival details.'
-    },
-    {
-      title: 'A visitor wants to see who will be there.',
-      options: ['Participants', 'People Stuff', 'Lineup', 'Event Things'],
-      correct: 2,
-      feedback: '“Lineup” is short, familiar, and broad enough for vendors, performers, and featured creators.'
-    },
-    {
-      title: 'A vendor wants to apply for a booth.',
-      options: ['Join as a Vendor', 'Vendorization', 'Business Portal', 'Extra Forms'],
-      correct: 0,
-      feedback: '“Join as a Vendor” uses plain language and makes the action clear.'
-    },
-    {
-      title: 'A visitor wants answers to repeated questions.',
-      options: ['Knowledge Base', 'FAQ', 'Support Matrix', 'Info Dump'],
-      correct: 1,
-      feedback: '“FAQ” is conventional, recognizable, and easy to scan in navigation.'
-    }
-  ];
-  lab.innerHTML = '';
-  groups.forEach((group, groupIndex) => {
-    const wrapper = document.createElement('article');
-    wrapper.className = 'wireframe-panel';
-    wrapper.innerHTML = `<h3>${group.title}</h3>`;
-    group.options.forEach((option, optionIndex) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'label-option';
-      btn.textContent = option;
-      btn.addEventListener('click', () => {
-        wrapper.querySelectorAll('button').forEach(b => b.classList.remove('correct', 'incorrect'));
-        btn.classList.add(optionIndex === group.correct ? 'correct' : 'incorrect');
-        feedback.textContent = optionIndex === group.correct ? group.feedback : `This might be understood by some users, but it is less clear or less consistent than “${group.options[group.correct]}.”`;
+      Array.from(roleChoiceGrid.children).forEach(btn => {
+        btn.disabled = true;
+        btn.classList.toggle('correct-choice', btn.textContent === item.answer);
+        btn.classList.toggle('incorrect-choice', btn.textContent === choice && choice !== item.answer);
       });
-      wrapper.appendChild(btn);
+      roleResult.textContent = item.feedback;
     });
-    lab.appendChild(wrapper);
+    roleChoiceGrid.appendChild(button);
   });
 }
+document.querySelector('#newRoleBtn')?.addEventListener('click', () => {
+  roleIndex = (roleIndex + 1) % roleSituations.length;
+  renderRoleSituation();
+});
+renderRoleSituation();
 
-function initStructures() {
-  const output = document.getElementById('structureOutput');
-  if (!output) return;
-  const buttons = document.querySelectorAll('[data-structure]');
-  const templates = {
-    sequence: {
-      title: 'Sequence',
-      text: 'A sequence guides users through one main path. Read it as: begin, complete each step, then finish.',
-      bullets: [
-        'Best for tutorials, onboarding, forms, and checkout.',
-        'The risk: users feel stuck if they cannot skip or go back.',
-        'Typical path: Start -> Step 1 -> Step 2 -> Finish.'
-      ],
-      html: `<div class="sequence-chart"><span class="diagram-node">Start</span><span class="arrow">→</span><span class="diagram-node">Step 1</span><span class="arrow">→</span><span class="diagram-node">Step 2</span><span class="arrow">→</span><span class="diagram-node">Finish</span></div>`,
-      legend: ''
-    },
-    hierarchy: {
-      title: 'Hierarchy',
-      text: 'A hierarchy moves from broad categories to specific pages. Read it top-down: Home, section, then detail page.',
-      bullets: [
-        'Best for school sites, company sites, and stores with categories.',
-        'The benefit: users can predict where information belongs.',
-        'Typical path: Home -> category -> specific detail page.'
-      ],
-      html: `<div class="hierarchy-chart"><span class="diagram-node">Home</span><span class="diagram-line"></span><div class="hierarchy-row"><span class="diagram-node">Visit</span><span class="diagram-node">Lineup</span><span class="diagram-node">Vendors</span><span class="diagram-node">FAQ</span></div><span class="diagram-line"></span><div class="hierarchy-row"><span class="diagram-node">Parking</span><span class="diagram-node">Schedule</span><span class="diagram-node">Food</span><span class="diagram-node">Policies</span></div></div>`,
-      legend: ''
-    },
-    web: {
-      title: 'Web',
-      text: 'A web structure supports exploration by association. Read it as: start anywhere, follow related links, discover more.',
-      bullets: [
-        'Best for related content, recommendations, tags, and portfolios.',
-        'The risk: users may lose orientation without clear labels and a home path.',
-        'Typical path: one item -> related item -> another related item.'
-      ],
-      html: `<div class="web-chart"><span class="diagram-node web-hub">Featured artist</span><span class="diagram-node">Related vendor</span><span class="diagram-node">Similar category</span><span class="diagram-node">Instagram</span><span class="diagram-node">Map area</span><span class="diagram-node">Past event</span></div>`,
-      legend: '<div class="diagram-legend"><span>Orange = current focus page</span><span>Green = related links around it</span></div>'
-    }
-  };
-  function render(key) {
-    const template = templates[key];
-    output.innerHTML = `<h3>${template.title}</h3><p class="lede small">${template.text}</p><ul class="structure-explain">${template.bullets.map(item => `<li>${item}</li>`).join('')}</ul>${template.legend}${template.html}`;
-  }
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      render(btn.dataset.structure);
-    });
+// Slide 6: project plan checklist
+const planItems = [
+  ['Project overview', true, 'The elevator-pitch version of what the site will provide and why it matters.'],
+  ['Success metrics', true, 'What will be measured before and after launch.'],
+  ['Project scope', true, 'What is included, what is not included, and what counts as launch-ready.'],
+  ['Roles and responsibilities', true, 'Who owns decisions, work, approvals, and maintenance.'],
+  ['Budget and timeline', true, 'People, tools, hosting, content, QA, contingency, and schedule.'],
+  ['Accessibility plan', true, 'Accessibility should be included throughout the process, not patched on at the end.'],
+  ['Security / support plan', true, 'Interactive sites and data need technical care after launch.'],
+  ['Maintenance plan', true, 'Sites age immediately; content and links need ownership.'],
+  ['Final color palette only', false, 'Useful later, but not enough to define an implementation plan.'],
+  ['Favorite websites list only', false, 'References can help, but the plan needs decisions and responsibilities.'],
+  ['A folder of stock photos', false, 'Assets matter, but they are not the process plan.']
+];
+const planGrid = document.querySelector('#planGrid');
+const planCount = document.querySelector('#planCount');
+const planResult = document.querySelector('#planResult');
+let selectedPlan = new Set();
+planItems.forEach(([name, correct, note]) => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'feature-card';
+  button.dataset.correct = correct;
+  button.innerHTML = `<strong>${name}</strong><span>${note}</span>`;
+  button.addEventListener('click', () => {
+    if (selectedPlan.has(name)) selectedPlan.delete(name);
+    else selectedPlan.add(name);
+    updatePlan();
   });
-  render('sequence');
+  planGrid.appendChild(button);
+});
+function updatePlan() {
+  const buttons = Array.from(planGrid.querySelectorAll('button'));
+  buttons.forEach(btn => btn.classList.toggle('selected', selectedPlan.has(btn.querySelector('strong').textContent)));
+  const correctSelected = planItems.filter(([name, correct]) => correct && selectedPlan.has(name)).length;
+  const wrongSelected = planItems.filter(([name, correct]) => !correct && selectedPlan.has(name)).length;
+  planCount.textContent = `${correctSelected} / 8 selected`;
+  if (correctSelected === 8 && wrongSelected === 0) {
+    planResult.textContent = 'Strong plan: it covers purpose, measurements, scope, roles, resources, accessibility, support, and maintenance.';
+  } else if (wrongSelected > 0) {
+    planResult.textContent = 'Some selected items may be useful references, but they do not replace core project planning decisions.';
+  } else {
+    planResult.textContent = 'Keep going. A useful implementation plan makes hidden responsibilities visible.';
+  }
 }
+document.querySelector('#resetPlanBtn')?.addEventListener('click', () => { selectedPlan.clear(); updatePlan(); });
+updatePlan();
 
-function initCardSort() {
-  const bank = document.getElementById('cardBank');
-  const board = document.getElementById('sortBoard');
-  const status = document.getElementById('sortStatus');
-  const reset = document.getElementById('resetSortBtn');
-  if (!bank || !board) return;
-  const cards = [
-    ['Ticket price', 'Visit'], ['Parking lot map', 'Visit'], ['Food vendor list', 'Lineup'], ['DJ set times', 'Lineup'], ['Vendor booth rules', 'Vendors'], ['Application deadline', 'Vendors'], ['Can pets attend?', 'FAQ'], ['Refund policy', 'FAQ'], ['Volunteer sign-up', 'Get Involved']
-  ];
-  const cats = ['Visit', 'Lineup', 'Vendors', 'FAQ', 'Get Involved'];
-  let selected = null;
-  let placements = {};
-  function render() {
-    bank.innerHTML = '';
-    cards.forEach(([title, answer], index) => {
-      if (placements[index]) return;
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'sort-card';
-      btn.innerHTML = `<strong>${title}</strong><small>Click, then choose a category.</small>`;
-      btn.addEventListener('click', () => {
-        selected = index;
-        bank.querySelectorAll('.sort-card').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-      });
-      bank.appendChild(btn);
-    });
-    board.innerHTML = '';
-    cats.forEach(cat => {
-      const bucket = document.createElement('div');
-      bucket.className = 'bucket';
-      bucket.innerHTML = `<h3>${cat}</h3><p>Drop content that fits this user question.</p><div class="sort-cards"></div>`;
-      bucket.addEventListener('click', () => {
-        if (selected === null) return;
-        placements[selected] = cat;
-        selected = null;
-        render();
-      });
-      const list = bucket.querySelector('.sort-cards');
-      Object.entries(placements).forEach(([idx, placedCat]) => {
-        if (placedCat !== cat) return;
-        const [title, answer] = cards[idx];
-        const item = document.createElement('button');
-        item.type = 'button';
-        item.className = 'mini-card';
-        const correct = placedCat === answer;
-        item.innerHTML = `<strong>${title}</strong><small>${correct ? 'Strong fit' : `Could confuse users; expected ${answer}.`}</small>`;
-        item.style.borderLeft = correct ? '8px solid var(--accent-3)' : '8px solid var(--accent-2)';
-        item.addEventListener('click', (event) => {
-          event.stopPropagation();
-          delete placements[idx];
-          render();
-        });
-        list.appendChild(item);
-      });
-      board.appendChild(bucket);
-    });
-    const placed = Object.keys(placements).length;
-    const correct = Object.entries(placements).filter(([idx, cat]) => cat === cards[idx][1]).length;
-    status.textContent = `${placed} cards placed · ${correct} strong fits`;
-  }
-  reset.addEventListener('click', () => { placements = {}; selected = null; render(); });
-  render();
+// Slide 7: scope builder
+const scopeForm = document.querySelector('#scopeForm');
+const scopePreview = document.querySelector('#scopePreview');
+function scopeVal(name) {
+  const value = scopeForm?.elements[name]?.value.trim();
+  return value || '—';
 }
-
-function initSitemapBuilder() {
-  const choices = document.getElementById('navChoices');
-  const map = document.getElementById('generatedMap');
-  const reset = document.getElementById('resetMapBtn');
-  const status = document.getElementById('mapStatus');
-  if (!choices || !map || !status) return;
-  const sections = [
-    {
-      key: 'visit',
-      label: 'Plan Your Visit',
-      role: 'core',
-      why: 'Most visitors need time, location, and arrival info quickly.',
-      children: ['Date + time', 'Location', 'Parking / transit', 'Accessibility']
-    },
-    {
-      key: 'lineup',
-      label: 'Lineup',
-      role: 'core',
-      why: 'People decide whether to attend based on who and what is featured.',
-      children: ['Food vendors', 'Artists', 'Music schedule', 'Featured creators']
-    },
-    {
-      key: 'tickets',
-      label: 'Tickets / RSVP',
-      role: 'core',
-      why: 'Visitors need a clear action path for entry and confirmation.',
-      children: ['Ticket options', 'Group info', 'Confirmation details']
-    },
-    {
-      key: 'faq',
-      label: 'FAQ',
-      role: 'core',
-      why: 'A fast answer path lowers friction and repeated support questions.',
-      children: ['Payment', 'Weather', 'Pets', 'Refunds']
-    },
-    {
-      key: 'vendors',
-      label: 'Join as a Vendor',
-      role: 'support',
-      why: 'Important for a smaller audience than general visitors.',
-      children: ['Who can apply', 'Booth rules', 'Application form']
-    },
-    {
-      key: 'about',
-      label: 'About',
-      role: 'support',
-      why: 'Useful context, but usually not the first task path.',
-      children: ['Event purpose', 'Partners', 'Contact']
-    }
-  ];
-  const layoutCycle = ['primary', 'secondary', 'none'];
-  let placement = {
-    visit: 'primary',
-    lineup: 'primary',
-    tickets: 'primary',
-    faq: 'primary',
-    vendors: 'secondary',
-    about: 'secondary'
-  };
-
-  function getStateLabel(state) {
-    if (state === 'primary') return 'Primary nav';
-    if (state === 'secondary') return 'Secondary / utility';
-    return 'Not included';
+function updateScopePreview() {
+  if (!scopeForm || !scopePreview) return;
+  const output = `SCOPE STATEMENT\n\nProject\n${scopeVal('project')}\n\nThe site is...\n${scopeVal('is')}\n\nThe site is not...\n${scopeVal('isnot')}\n\nLaunch must-haves\n${scopeVal('must')}\n\nFuture ideas\n${scopeVal('future')}`;
+  scopePreview.textContent = output;
+  localStorage.setItem('wst157-ch3-scope-draft', JSON.stringify(Object.fromEntries(new FormData(scopeForm).entries())));
+}
+if (scopeForm) {
+  const saved = localStorage.getItem('wst157-ch3-scope-draft');
+  if (saved) {
+    try {
+      const data = JSON.parse(saved);
+      Object.keys(data).forEach(key => { if (scopeForm.elements[key]) scopeForm.elements[key].value = data[key]; });
+    } catch {}
   }
-
-  function nextState(currentState) {
-    return layoutCycle[(layoutCycle.indexOf(currentState) + 1) % layoutCycle.length];
+  scopeForm.addEventListener('input', updateScopePreview);
+  updateScopePreview();
+}
+document.querySelector('#copyScopeBtn')?.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(scopePreview.textContent);
+    document.querySelector('#copyScopeBtn').textContent = 'Copied';
+    setTimeout(() => document.querySelector('#copyScopeBtn').textContent = 'Copy', 1200);
+  } catch {
+    alert('Copy failed. Select the preview text and copy manually.');
   }
+});
+document.querySelector('#downloadScopeBtn')?.addEventListener('click', () => {
+  const blob = new Blob([scopePreview.textContent], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const project = scopeVal('project').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'project-scope';
+  a.href = url;
+  a.download = `${project}-scope-statement.txt`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
 
-  function render() {
-    choices.innerHTML = '';
-    sections.forEach(section => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      const sectionState = placement[section.key];
-      btn.className = `nav-choice is-${sectionState}`;
-      btn.innerHTML = `<strong>${section.label}</strong><small>${section.why}</small><span class="choice-pill">${getStateLabel(sectionState)}</span>`;
-      btn.addEventListener('click', () => {
-        placement[section.key] = nextState(sectionState);
-        render();
-      });
-      choices.appendChild(btn);
-    });
-
-    const primarySections = sections.filter(s => placement[s.key] === 'primary');
-    const secondarySections = sections.filter(s => placement[s.key] === 'secondary');
-    const coreSectionsInPrimary = primarySections.filter(s => s.role === 'core').length;
-
-    let feedback = '';
-    if (primarySections.length < 4) {
-      feedback = 'Primary navigation is too sparse. Add at least one more top-level item so key tasks are visible.';
-    } else if (primarySections.length > 6) {
-      feedback = 'Primary navigation is crowded. Move lower-priority items to secondary utility to reduce scanning effort.';
-    } else if (coreSectionsInPrimary < 3) {
-      feedback = 'Core visitor tasks are underrepresented in primary navigation. Promote more high-frequency tasks.';
-    } else {
-      feedback = 'This is a strong working structure: focused primary navigation with supporting items placed in secondary utility.';
-    }
-
-    status.textContent = `${primarySections.length} primary · ${secondarySections.length} secondary · ${sections.length - primarySections.length - secondarySections.length} not included`;
-
-    map.innerHTML = `<div class="hierarchy-chart"><span class="diagram-node">Home</span><span class="diagram-line"></span><div class="hierarchy-row">${primarySections.map(s => `<span class="diagram-node">${s.label}</span>`).join('')}</div></div><p class="map-feedback">${feedback}</p>${secondarySections.length ? `<div class="utility-strip"><h3>Secondary / utility navigation</h3><div class="utility-tags">${secondarySections.map(s => `<span>${s.label}</span>`).join('')}</div></div>` : ''}`;
-
-    primarySections.forEach(section => {
-      const group = document.createElement('div');
-      group.innerHTML = `<h3>${section.label}</h3><ul>${section.children.map(child => `<li>${child}</li>`).join('')}</ul>`;
-      map.appendChild(group);
-    });
+// Slide 8: process model selector
+const modelData = {
+  waterfall: {
+    title: 'Waterfall',
+    description: 'A more linear process: define requirements, design, build, test, launch. It can help with tracking and approvals, but late changes are costly.',
+    questions: ['Are requirements stable?', 'Are approvals formal?', 'Will late changes be expensive?']
+  },
+  agile: {
+    title: 'Agile',
+    description: 'An iterative process: build in smaller chunks, review often, and adapt. It works best when collaboration and feedback are frequent.',
+    questions: ['Can the work be split into useful pieces?', 'Can feedback happen often?', 'Can priorities change responsibly?']
+  },
+  hybrid: {
+    title: 'Hybrid',
+    description: 'A practical mix: define enough direction early, then build and improve in iterations. Many web projects use some version of this.',
+    questions: ['What must be planned before build?', 'What can be tested and refined?', 'Where does flexibility help?']
+  },
+  lean: {
+    title: 'Lean UX',
+    description: 'A lightweight, learning-focused process: validate ideas early, prototype quickly, solve user problems, and measure real outcomes.',
+    questions: ['What assumption should be tested first?', 'What is the smallest useful prototype?', 'What evidence shows value?']
   }
+};
+const modelCards = Array.from(document.querySelectorAll('.process-model-grid .type-card'));
+const modelOutput = document.querySelector('#modelOutput');
+function renderModel(model) {
+  const data = modelData[model];
+  modelOutput.innerHTML = `<h3>${data.title}</h3><p>${data.description}</p><ul>${data.questions.map(q => `<li>${q}</li>`).join('')}</ul>`;
+  modelCards.forEach(card => card.classList.toggle('active', card.dataset.model === model));
+}
+modelCards.forEach(card => card.addEventListener('click', () => renderModel(card.dataset.model)));
+renderModel('waterfall');
 
-  reset.addEventListener('click', () => {
-    placement = {
-      visit: 'primary',
-      lineup: 'primary',
-      tickets: 'primary',
-      faq: 'primary',
-      vendors: 'secondary',
-      about: 'secondary'
-    };
-    render();
+// Slide 9: development life cycle builder
+const cycleStages = [
+  ['Site definition and planning', 'Goals, scope, technology needs, resources, and approval path.'],
+  ['Content inventory', 'Existing and needed content becomes visible.'],
+  ['Information architecture', 'Content gets organized into pages, labels, and navigation.'],
+  ['Site design', 'Templates, grids, visual direction, interactions, and prototypes.'],
+  ['Site construction', 'Pages, code, CMS templates, navigation, and media are assembled.'],
+  ['Site marketing', 'Launch communication and audience awareness.'],
+  ['Tracking, evaluation, and maintenance', 'Analytics, fixes, updates, and long-term care.']
+];
+const cycleGrid = document.querySelector('#cycleGrid');
+const cycleCount = document.querySelector('#cycleCount');
+const cycleOutput = document.querySelector('#cycleOutput');
+let selectedCycle = [];
+cycleStages.forEach(([name, note]) => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'feature-card';
+  button.innerHTML = `<strong>${name}</strong><span>${note}</span>`;
+  button.addEventListener('click', () => {
+    if (!selectedCycle.includes(name)) selectedCycle.push(name);
+    updateCycle();
   });
-
-  render();
+  cycleGrid.appendChild(button);
+});
+function updateCycle() {
+  Array.from(cycleGrid.querySelectorAll('button')).forEach(btn => btn.classList.toggle('selected', selectedCycle.includes(btn.querySelector('strong').textContent)));
+  cycleCount.textContent = `${selectedCycle.length} / 7 stages`;
+  if (selectedCycle.length === 0) {
+    cycleOutput.textContent = 'Choose the first stage.';
+    return;
+  }
+  cycleOutput.innerHTML = selectedCycle.map((name, index) => `<span class="timeline-chip"><span>${index + 1}</span>${name}</span>`).join('');
+  const expected = cycleStages.map(([name]) => name);
+  if (selectedCycle.length === expected.length) {
+    const isCorrect = selectedCycle.every((name, index) => name === expected[index]);
+    const message = document.createElement('p');
+    message.className = 'takeaway';
+    message.textContent = isCorrect
+      ? 'Strong sequence: building comes after planning, content, architecture, and design decisions mature.'
+      : 'This order creates a useful debate. Which stages would suffer if page construction happened too early?';
+    cycleOutput.appendChild(message);
+  }
 }
+document.querySelector('#resetCycleBtn')?.addEventListener('click', () => { selectedCycle = []; updateCycle(); });
+updateCycle();
 
-function initWireframes() {
-  const box = document.getElementById('wireframeBox');
-  if (!box) return;
-  const title = document.getElementById('wireTitle');
-  const text = document.getElementById('wireText');
-  const notes = {
-    identity: ['Site identity', 'Helps users confirm where they are and what site they are using.'],
-    utility: ['Search / utility links', 'Supports quick access to repeated tasks such as search, contact, or language options.'],
-    global: ['Global navigation', 'Shows the main categories and keeps the site structure visible across pages.'],
-    primary: ['Primary message + action', 'Makes the page purpose clear and points users toward the most important next step.'],
-    section1: ['Section card', 'Chunks related content so users can scan options instead of reading everything.'],
-    section2: ['Section card', 'Repeated structures make content easier to compare and maintain.'],
-    section3: ['Section card', 'Cards can represent categories, tasks, people, products, or featured content.'],
-    footer: ['Footer / contact / policies', 'Provides stable backup navigation, contact information, and required site details.']
-  };
-  box.querySelectorAll('.wire-el').forEach(el => {
-    el.addEventListener('click', () => {
-      box.querySelectorAll('.wire-el').forEach(item => item.classList.remove('active'));
-      el.classList.add('active');
-      const [h, p] = notes[el.dataset.wf];
-      title.textContent = h;
-      text.textContent = p;
+// Slide 11 risk meter
+const riskText = [
+  ['Critical risk', 'The project is missing basic planning for access, safety, support, and long-term care.'],
+  ['High risk', 'The project may look cheaper than it really is because important work is missing from the plan.'],
+  ['Moderate risk', 'Some essentials are accounted for, but gaps could still appear late.'],
+  ['Managed risk', 'The project has time and responsibility assigned for important hidden work.'],
+  ['Strong planning', 'Accessibility, security, support, content, and maintenance are treated as part of the project from the start.']
+];
+const riskSlider = document.querySelector('#riskSlider');
+const riskOutput = document.querySelector('#riskOutput');
+riskSlider?.addEventListener('input', () => {
+  const [title, detail] = riskText[Number(riskSlider.value) - 1];
+  riskOutput.innerHTML = `<strong>${title}</strong><span>${detail}</span>`;
+});
+
+// Slide 13 mishap fixer
+const mishaps = [
+  {
+    text: 'The team builds ten pages before anyone has approved the navigation.',
+    hint: 'The problem is not effort. The problem is the order of work.',
+    answer: 'Approve architecture first',
+    feedback: 'A site diagram or navigation plan should be tested and approved before page construction expands.'
+  },
+  {
+    text: 'The homepage is polished, but the client has not provided final service descriptions.',
+    hint: 'The design is ahead of the content reality.',
+    answer: 'Start content production early',
+    feedback: 'Real content should appear in prototypes and page layouts as early as possible.'
+  },
+  {
+    text: 'The site launches, then nobody knows who updates hours, photos, or outdated links.',
+    hint: 'The project treated launch as the end.',
+    answer: 'Assign maintenance ownership',
+    feedback: 'Maintenance is part of the original plan, not a problem discovered after launch.'
+  },
+  {
+    text: 'A new feature keeps getting bigger every week and the deadline stays the same.',
+    hint: 'A flexible idea has become an unmanaged commitment.',
+    answer: 'Use scope control',
+    feedback: 'Use is/is not scope statements, priorities, and approval rules to protect the project.'
+  },
+  {
+    text: 'Usability testing happens only after all pages are final.',
+    hint: 'Feedback arrives too late to be useful.',
+    answer: 'Test earlier with prototypes',
+    feedback: 'Testing should happen while changes are still affordable.'
+  }
+];
+const mishapChoices = ['Approve architecture first', 'Start content production early', 'Assign maintenance ownership', 'Use scope control', 'Test earlier with prototypes'];
+let mishapIndex = 0;
+const mishapText = document.querySelector('#mishapText');
+const mishapHint = document.querySelector('#mishapHint');
+const mishapChoiceGrid = document.querySelector('#mishapChoiceGrid');
+const mishapResult = document.querySelector('#mishapResult');
+function renderMishap() {
+  const item = mishaps[mishapIndex];
+  mishapText.textContent = item.text;
+  mishapHint.textContent = item.hint;
+  mishapResult.textContent = 'Choose the best fix.';
+  mishapChoiceGrid.innerHTML = '';
+  mishapChoices.forEach(choice => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'type-card';
+    button.textContent = choice;
+    button.addEventListener('click', () => {
+      Array.from(mishapChoiceGrid.children).forEach(btn => {
+        btn.disabled = true;
+        btn.classList.toggle('correct-choice', btn.textContent === item.answer);
+        btn.classList.toggle('incorrect-choice', btn.textContent === choice && choice !== item.answer);
+      });
+      mishapResult.textContent = item.feedback;
     });
+    mishapChoiceGrid.appendChild(button);
   });
 }
+document.querySelector('#newMishapBtn')?.addEventListener('click', () => {
+  mishapIndex = (mishapIndex + 1) % mishaps.length;
+  renderMishap();
+});
+renderMishap();
 
-function initPathTest() {
-  const prompt = document.getElementById('pathPrompt');
-  const options = document.getElementById('pathOptions');
-  const feedback = document.getElementById('pathFeedback');
-  const next = document.getElementById('newPathBtn');
-  if (!prompt || !options) return;
-  const tasks = [
-    {
-      q: 'A visitor wants to know whether cash is needed for food vendors. Where should that information be easiest to find?',
-      opts: ['About the event', 'FAQ or Plan Your Visit', 'Sponsor page', 'Photo gallery'],
-      a: 1,
-      f: 'Payment expectations are a practical visitor question, so FAQ or Plan Your Visit fits the task.'
-    },
-    {
-      q: 'A vendor wants to know the booth application deadline. Where should that information be easiest to find?',
-      opts: ['Join as a Vendor', 'Lineup', 'Contact', 'Homepage hero only'],
-      a: 0,
-      f: 'The label should match the vendor’s role and action: joining or applying.'
-    },
-    {
-      q: 'A first-time visitor wants to decide if the event is worth attending. What section should be easy to browse?',
-      opts: ['Lineup / Featured vendors', 'Privacy policy', 'Internal planning notes', '404 page'],
-      a: 0,
-      f: 'The lineup provides concrete reasons to attend: food, artists, music, and activities.'
-    },
-    {
-      q: 'A visitor is already nearby and needs parking instructions quickly. Where should the path begin?',
-      opts: ['Plan Your Visit', 'About the founder', 'Past events archive', 'Newsletter signup'],
-      a: 0,
-      f: 'Parking is a visit-planning task, especially on mobile and close to arrival time.'
-    }
-  ];
-  let i = 0;
-  function render() {
-    const task = tasks[i % tasks.length];
-    prompt.textContent = task.q;
-    feedback.textContent = '';
-    options.innerHTML = '';
-    task.opts.forEach((opt, idx) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = opt;
-      btn.addEventListener('click', () => {
-        options.querySelectorAll('button').forEach(b => b.classList.remove('correct', 'incorrect'));
-        btn.classList.add(idx === task.a ? 'correct' : 'incorrect');
-        feedback.textContent = idx === task.a ? task.f : `This path could make sense to the team, but users may not predict it. Stronger answer: ${task.opts[task.a]}.`;
-      });
-      options.appendChild(btn);
-    });
+// Slide 14 quiz
+const quiz = [
+  {
+    question: 'What does the project implementation plan add to the charter?',
+    options: ['Only colors and fonts', 'People, content, technology, scope, schedule, budget, testing, and maintenance', 'A list of favorite websites', 'A finished homepage'],
+    answer: 1,
+    feedback: 'The implementation plan translates the charter into practical decisions and responsibilities.'
+  },
+  {
+    question: 'Why is real content important early in the process?',
+    options: ['It makes every page longer', 'It replaces user research', 'It exposes real structure, writing, media, and maintenance needs', 'It removes the need for design'],
+    answer: 2,
+    feedback: 'Real content reveals what the site actually needs and prevents fake layouts from hiding problems.'
+  },
+  {
+    question: 'Which stage should not be treated as the beginning of a well-planned project?',
+    options: ['Site definition and planning', 'Content inventory', 'Site construction', 'Information architecture'],
+    answer: 2,
+    feedback: 'Construction should happen after major planning, content, architecture, and design decisions are mature enough.'
+  },
+  {
+    question: 'What is one purpose of a maintenance plan?',
+    options: ['To make launch unnecessary', 'To keep content, links, standards, and functionality healthy after launch', 'To avoid assigning responsibilities', 'To remove accessibility concerns'],
+    answer: 1,
+    feedback: 'A website keeps changing after launch, so maintenance needs ownership and time.'
   }
-  next.addEventListener('click', () => { i++; render(); });
-  render();
-}
-
-function initQuiz() {
-  const question = document.getElementById('quizQuestion');
-  const options = document.getElementById('quizOptions');
-  const feedback = document.getElementById('quizFeedback');
-  const next = document.getElementById('nextQuizBtn');
-  if (!question || !options) return;
-  const questions = [
-    {
-      q: 'What is the main purpose of information architecture?',
-      opts: ['Choose colors and fonts', 'Organize content and paths so users can find information', 'Write final code', 'Add animation to pages'],
-      a: 1,
-      f: 'IA focuses on content organization, labels, structure, navigation concepts, and user paths.'
-    },
-    {
-      q: 'What does a content inventory help reveal?',
-      opts: ['Only the homepage design', 'Content gaps, duplicates, ownership, and scope', 'The final color palette', 'Which font to use'],
-      a: 1,
-      f: 'An inventory makes the content situation visible before design and production.'
-    },
-    {
-      q: 'Which structure is usually best for complex sites with categories and subcategories?',
-      opts: ['Hierarchy', 'Random web', 'One very long page', 'Hidden menu only'],
-      a: 0,
-      f: 'Hierarchies work well for many complex websites because users understand broad-to-specific organization.'
-    },
-    {
-      q: 'What is a wireframe best used for at this stage?',
-      opts: ['Final artwork', 'Testing content priority and page structure', 'Replacing all user research', 'Writing legal copy'],
-      a: 1,
-      f: 'Wireframes keep attention on structure, priority, and pathways before final visual design.'
-    },
-    {
-      q: 'Why test labels and categories with users?',
-      opts: ['To see if users predict where information belongs', 'To make the site slower', 'To avoid making a sitemap', 'To skip content planning'],
-      a: 0,
-      f: 'If users cannot predict labels or categories, the architecture needs revision.'
-    }
-  ];
-  let index = 0;
-  function render() {
-    const item = questions[index % questions.length];
-    question.textContent = item.q;
-    feedback.textContent = '';
-    options.innerHTML = '';
-    item.opts.forEach((opt, optIndex) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = opt;
-      btn.addEventListener('click', () => {
-        options.querySelectorAll('button').forEach(b => b.classList.remove('correct', 'incorrect'));
-        btn.classList.add(optIndex === item.a ? 'correct' : 'incorrect');
-        feedback.textContent = optIndex === item.a ? item.f : `Not quite. Better answer: ${item.opts[item.a]}.`;
+];
+let quizIndex = 0;
+const quizQuestion = document.querySelector('#quizQuestion');
+const quizOptions = document.querySelector('#quizOptions');
+const quizFeedback = document.querySelector('#quizFeedback');
+function renderQuiz() {
+  const q = quiz[quizIndex];
+  quizQuestion.textContent = q.question;
+  quizFeedback.textContent = '';
+  quizOptions.innerHTML = '';
+  q.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = option;
+    button.addEventListener('click', () => {
+      Array.from(quizOptions.children).forEach((btn, btnIndex) => {
+        btn.disabled = true;
+        btn.classList.toggle('correct', btnIndex === q.answer);
+        btn.classList.toggle('incorrect', btnIndex === index && index !== q.answer);
       });
-      options.appendChild(btn);
+      quizFeedback.textContent = q.feedback;
     });
-  }
-  next.addEventListener('click', () => { index++; render(); });
-  render();
+    quizOptions.appendChild(button);
+  });
 }
+document.querySelector('#nextQuizBtn')?.addEventListener('click', () => {
+  quizIndex = (quizIndex + 1) % quiz.length;
+  renderQuiz();
+});
+renderQuiz();
 
-buildNavigation();
-updateUI();
-initInventory();
-initLabelLab();
-initStructures();
-initCardSort();
-initSitemapBuilder();
-initWireframes();
-initPathTest();
-initQuiz();
+// Track slide position when scrolling manually on mobile
+const observer = new IntersectionObserver((entries) => {
+  const visible = entries
+    .filter(entry => entry.isIntersecting)
+    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (!visible) return;
+  const index = slides.indexOf(visible.target);
+  if (index !== -1 && index !== current) {
+    current = index;
+    updateState();
+  }
+}, { threshold: [0.55] });
+slides.forEach(slide => observer.observe(slide));
+
+updateState();

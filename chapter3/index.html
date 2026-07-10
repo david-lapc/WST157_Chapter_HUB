@@ -1,15 +1,12 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WST 157 · Chapter 3: Information Architecture</title>
-  <meta name="description"
-    content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 3: Information Architecture." />
+  <title>WST 157 · Chapter 3: Process</title>
+  <meta name="description" content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 3: Process." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-
 <body>
   <a class="skip-link" href="#slide-1">Skip to slides</a>
 
@@ -37,433 +34,300 @@
     <section class="slide hero" id="slide-1" data-title="Opening" data-section="Start">
       <div class="slide-inner two-col hero-grid">
         <div>
-          <p class="eyebrow">Chapter 3 · Information Architecture</p>
-          <h1>Make information findable.</h1>
-          <p class="lede">A website is more than pages. It is a system of content, labels, pathways, and decisions that
-            help people know where to go next.</p>
+          <p class="eyebrow">Chapter 3 · Process</p>
+          <h1>Turning the plan into a real project</h1>
+          <p class="lede">A project charter says what matters. A process explains how the team will actually make it happen.</p>
           <div class="big-question">
             <span>Opening question</span>
-            <strong>When a website feels confusing, what usually went wrong?</strong>
+            <strong>Why do website projects go off track?</strong>
           </div>
         </div>
         <div class="hero-card" aria-label="Lesson route">
           <h2>Today’s path</h2>
           <ol class="route-list">
-            <li>Turn messy content into organized content</li>
-            <li>Choose clear labels and categories</li>
-            <li>Compare sequences, hierarchies, and webs</li>
-            <li>Create site diagrams and rough wireframes</li>
-            <li>Test the organization before building</li>
+            <li>Move from charter to implementation plan</li>
+            <li>Identify the team roles and responsibilities</li>
+            <li>Compare process models and tradeoffs</li>
+            <li>Map the development life cycle</li>
+            <li>Spot common project risks before launch</li>
           </ol>
           <p class="small-note">Use the arrow keys or the Next button to move through the deck.</p>
         </div>
       </div>
     </section>
 
-    <section class="slide" id="slide-2" data-title="Main Idea" data-section="Concept">
+    <section class="slide" id="slide-2" data-title="From Charter to Plan" data-section="Concept">
       <div class="slide-inner">
         <p class="eyebrow">Main idea</p>
-        <h2>Information architecture is the plan behind the pages.</h2>
-        <div class="statement-card">
-          <p>Information architecture organizes content so users can form a mental map of the site and move through it
-            with confidence.</p>
-        </div>
+        <h2>The charter sets direction. The process turns direction into action.</h2>
         <div class="comparison-grid">
           <article>
-            <h3>Without IA</h3>
-            <p>Pages are added as ideas come up. Navigation grows randomly. Users guess where things are.</p>
+            <h3>Project charter</h3>
+            <p>Purpose, goals, audience, success indicators, strategies, and tactics.</p>
           </article>
           <article>
-            <h3>With IA</h3>
-            <p>Content is inventoried, grouped, labeled, diagrammed, and tested before the site is fully designed.</p>
+            <h3>Implementation plan</h3>
+            <p>People, content, technology, schedule, budget, approvals, testing, and maintenance.</p>
           </article>
         </div>
-        <p class="takeaway">Good visual design cannot fully rescue a confusing structure.</p>
+        <p class="takeaway">Process protects the project from vague decisions, late content, unclear roles, and accidental scope creep.</p>
       </div>
     </section>
 
-    <section class="slide" id="slide-3" data-title="From Strategy to Structure" data-section="Bridge">
+    <section class="slide" id="slide-3" data-title="Core Team" data-section="Concept">
       <div class="slide-inner">
-        <p class="eyebrow">Where Chapter 3 fits</p>
-        <h2>Strategy tells us why. Research tells us who. IA tells us where everything goes.</h2>
-        <div class="process-strip" role="list" aria-label="Course flow from strategy to information architecture">
+        <p class="eyebrow">Project resources</p>
+        <h2>A website needs more than one kind of skill.</h2>
+        <div class="charter-grid compact-grid">
+          <article><span>01</span><strong>Strategy</strong><p>Purpose, goals, priorities, and value.</p></article>
+          <article><span>02</span><strong>Project management</strong><p>Timeline, budget, scope, approvals, and coordination.</p></article>
+          <article><span>03</span><strong>UX + information architecture</strong><p>Research, content organization, user tasks, and usability.</p></article>
+          <article><span>04</span><strong>Design</strong><p>Visual direction, layout, interaction, and consistency.</p></article>
+          <article><span>05</span><strong>Technology</strong><p>HTML/CSS/JS, CMS, hosting, data, security, and performance.</p></article>
+          <article><span>06</span><strong>Production</strong><p>Pages, content entry, media, QA, publishing, and updates.</p></article>
+        </div>
+        <p class="takeaway">On small projects, one person may wear several hats. The responsibilities still exist.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-4" data-title="Role Match" data-section="Try">
+      <div class="slide-inner">
+        <p class="eyebrow">Try this</p>
+        <h2>Who should own this decision?</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Project situation</p>
+            <h3 id="roleSituation">The client wants to add a members-only portal two weeks before launch.</h3>
+            <p id="roleDetails">The feature was not in the original charter or timeline.</p>
+          </div>
+          <button class="primary-btn" id="newRoleBtn" type="button">New situation</button>
+        </div>
+        <div class="site-type-grid role-choice-grid" id="roleChoiceGrid" aria-label="Role choices"></div>
+        <div class="result-panel" id="roleResult" aria-live="polite">Choose the role that should lead the decision.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-5" data-title="Team Workflow" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Collaboration</p>
+        <h2>“Throw it over the wall” creates avoidable problems.</h2>
+        <div class="split-card">
+          <article>
+            <h3>Disconnected workflow</h3>
+            <ul>
+              <li>Strategy finishes, then disappears</li>
+              <li>Design happens without content</li>
+              <li>Developers receive late surprises</li>
+              <li>Testing happens after decisions feel final</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Cross-disciplinary workflow</h3>
+            <ul>
+              <li>Research, content, design, and tech talk early</li>
+              <li>Risks surface before build</li>
+              <li>Design uses real content and constraints</li>
+              <li>Testing improves the project while changes are still possible</li>
+            </ul>
+          </article>
+        </div>
+        <p class="takeaway">Better process does not remove conflict. It makes conflict visible early enough to solve.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-6" data-title="Project Plan" data-section="Build">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Build the plan</p>
+        <h2>What belongs in the project implementation plan?</h2>
+        <p class="lede small">Select the items that should be clear before budget and deadlines become fixed.</p>
+        <div class="choice-toolbar">
+          <button class="ghost-btn" id="resetPlanBtn" type="button">Reset</button>
+          <span id="planCount">0 / 8 selected</span>
+        </div>
+        <div class="feature-grid" id="planGrid" aria-label="Project plan choices"></div>
+        <div class="result-panel" id="planResult" aria-live="polite">Choose the project plan items.</div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-7" data-title="Scope Statement" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Scope control</p>
+        <h2>A strong scope says what the site is and what it is not.</h2>
+        <div class="charter-builder scope-builder">
+          <form id="scopeForm" class="charter-form">
+            <label>Project name <input name="project" placeholder="Example: Campus Night Market" /></label>
+            <label>The site is... <textarea name="is" placeholder="A promotional website with event details, vendor lineup, schedule, RSVP, and FAQ."></textarea></label>
+            <label>The site is not... <textarea name="isnot" placeholder="A vendor dashboard, payment platform, mobile app, or real-time event management system."></textarea></label>
+            <label>Launch must-haves <textarea name="must" placeholder="Date/time, location, RSVP, schedule, vendor cards, mobile-friendly page."></textarea></label>
+            <label>Future ideas <textarea name="future" placeholder="Interactive map, user accounts, live updates, ticket payment, vendor portal."></textarea></label>
+          </form>
+          <aside class="charter-preview" aria-label="Scope preview">
+            <div class="preview-header">
+              <h3>Scope preview</h3>
+              <div class="mini-actions">
+                <button class="ghost-btn" id="copyScopeBtn" type="button">Copy</button>
+                <button class="ghost-btn" id="downloadScopeBtn" type="button">Download</button>
+              </div>
+            </div>
+            <pre id="scopePreview">Start filling in the scope statement to build a preview.</pre>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-8" data-title="Process Models" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Project management</p>
+        <h2>Different processes fit different projects.</h2>
+        <div class="site-type-grid process-model-grid">
+          <button class="type-card active" data-model="waterfall" type="button">Waterfall</button>
+          <button class="type-card" data-model="agile" type="button">Agile</button>
+          <button class="type-card" data-model="hybrid" type="button">Hybrid</button>
+          <button class="type-card" data-model="lean" type="button">Lean UX</button>
+        </div>
+        <div class="type-output" id="modelOutput" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-9" data-title="Life Cycle" data-section="Build">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Development life cycle</p>
+        <h2>Put the project stages in a useful order.</h2>
+        <p class="lede small">Click stages to build a sequence. The goal is not memorization; it is seeing why pages should not be built too early.</p>
+        <div class="choice-toolbar">
+          <button class="ghost-btn" id="resetCycleBtn" type="button">Reset</button>
+          <span id="cycleCount">0 / 7 stages</span>
+        </div>
+        <div class="feature-grid" id="cycleGrid" aria-label="Development life cycle stages"></div>
+        <div class="timeline-builder" id="cycleOutput" aria-live="polite">Choose the first stage.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-10" data-title="Content Reality" data-section="Concept">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Content development</p>
+          <h2>The site cannot be finished if the content is imaginary.</h2>
+          <p class="lede">Real content exposes real problems: missing pages, unclear labels, weak copy, image needs, legal issues, and maintenance responsibilities.</p>
+        </div>
+        <div class="hero-card warning-card">
+          <h3>The lorem ipsum trap</h3>
+          <p>A layout can look “done” with fake text. The project is not done until real content fits the structure, voice, and user task.</p>
+          <p class="small-note">Content production should begin early and continue through testing and launch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-11" data-title="Risk Meter" data-section="Try">
+      <div class="slide-inner">
+        <p class="eyebrow">Budget and timeline</p>
+        <h2>Small hidden costs can become large project risks.</h2>
+        <div class="slider-card">
+          <label for="riskSlider">How much has the project planned for accessibility, security, support, content, and maintenance?</label>
+          <input type="range" id="riskSlider" min="1" max="5" value="2" />
+          <div class="scope-output" id="riskOutput">
+            <strong>High risk</strong>
+            <span>The project may look cheaper than it really is because important work is missing from the plan.</span>
+          </div>
+        </div>
+        <div class="question-grid">
+          <article><strong>Accessibility</strong><span>Can people with different abilities use it?</span></article>
+          <article><strong>Security</strong><span>What data or systems need protection?</span></article>
+          <article><strong>Support</strong><span>Who fixes problems after launch?</span></article>
+          <article><strong>Maintenance</strong><span>Who keeps content fresh and accurate?</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-12" data-title="Construction" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Site construction</p>
+        <h2>Building pages is one of the last major stages, not the first.</h2>
+        <div class="process-strip" role="list" aria-label="What should be ready before construction">
           <div role="listitem">
             <span class="step-number">1</span>
-            <h3>Strategy</h3>
-            <p>Purpose, goals, audience, success indicators, and project scope.</p>
+            <h3>Architecture</h3>
+            <p>The pages, labels, and navigation structure are understood.</p>
           </div>
           <div role="listitem">
             <span class="step-number">2</span>
-            <h3>Research</h3>
-            <p>User needs, scenarios, tasks, barriers, contexts, and evidence.</p>
+            <h3>Content</h3>
+            <p>Text, images, media, and data needs are known.</p>
           </div>
           <div role="listitem">
             <span class="step-number">3</span>
-            <h3>Architecture</h3>
-            <p>Content inventory, labels, categories, site structure, diagrams, and wireframes.</p>
+            <h3>Design system</h3>
+            <p>Templates, layout patterns, and interface behavior are ready to apply.</p>
           </div>
         </div>
-        <div class="prompt-card">
-          <span>Group discussion</span>
-          <p>What happens when a team starts designing pages before knowing the content?</p>
-        </div>
+        <p class="takeaway">Rushing into page construction creates rework. Good process turns building into assembly, testing, and refinement.</p>
       </div>
     </section>
 
-    <section class="slide" id="slide-4" data-title="IA Toolbox" data-section="Process">
-      <div class="slide-inner">
-        <p class="eyebrow">Information architecture toolbox</p>
-        <h2>Five moves turn content into a usable website.</h2>
-        <div class="timeline" aria-label="Five steps in organizing information">
-          <div><span>1</span><strong>Inventory</strong><em>List what content exists and what still needs to be
-              created.</em></div>
-          <div><span>2</span><strong>Group</strong><em>Create categories and use consistent names for them.</em></div>
-          <div><span>3</span><strong>Chunk</strong><em>Break large content into smaller, reusable, scannable units.</em>
-          </div>
-          <div><span>4</span><strong>Diagram</strong><em>Show the site structure and page relationships visually.</em>
-          </div>
-          <div><span>5</span><strong>Test</strong><em>Check whether real users understand where things belong.</em>
-          </div>
-        </div>
-        <p class="takeaway">The goal is not to make a pretty sitemap. The goal is to make content easier to find,
-          understand, and maintain.</p>
-      </div>
-    </section>
-
-    <section class="slide activity" id="slide-5" data-title="Content Inventory" data-section="Try">
+    <section class="slide activity" id="slide-13" data-title="Mishap Fixer" data-section="Try">
       <div class="slide-inner wide">
-        <p class="eyebrow">Quick activity</p>
-        <h2>Content inventory: what do we actually have?</h2>
-        <p class="lede small">Sample project: a one-night community pop-up event website. Decide what belongs in the
-          first version, what can wait, and what should be cut.</p>
-        <div class="choice-toolbar">
-          <button class="ghost-btn" id="resetInventoryBtn" type="button">Reset</button>
-          <span id="inventoryStatus">Click a card to change its status.</span>
-        </div>
-        <div class="feature-grid" id="inventoryGrid" aria-label="Content inventory cards"></div>
-        <div class="result-panel" id="inventoryResult" aria-live="polite">Start by separating essential event content
-          from nice-to-have content.</div>
-      </div>
-    </section>
-
-    <section class="slide" id="slide-6" data-title="Inventory Table" data-section="Example">
-      <div class="slide-inner wide">
-        <p class="eyebrow">Example</p>
-        <h2>A content inventory is more than a list of pages.</h2>
-        <table class="inventory-table" aria-label="Sample content inventory table">
-          <thead>
-            <tr>
-              <th>Content item</th>
-              <th>Purpose</th>
-              <th>Owner</th>
-              <th>Status</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Event date + time</td>
-              <td>Answer the first visitor question</td>
-              <td>Event team</td>
-              <td>Ready</td>
-              <td>Must appear near top</td>
-            </tr>
-            <tr>
-              <td>Vendor lineup</td>
-              <td>Build interest and help visitors plan</td>
-              <td>Vendor lead</td>
-              <td>Partial</td>
-              <td>Needs photos and categories</td>
-            </tr>
-            <tr>
-              <td>Parking / transit info</td>
-              <td>Reduce uncertainty before attending</td>
-              <td>Operations</td>
-              <td>Missing</td>
-              <td>High priority for mobile visitors</td>
-            </tr>
-            <tr>
-              <td>Sponsor logos</td>
-              <td>Show support and credibility</td>
-              <td>Marketing</td>
-              <td>Partial</td>
-              <td>Not more important than event info</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="takeaway">Inventory helps reveal gaps, duplicates, weak content, ownership, and scope problems before
-          production starts.</p>
-      </div>
-    </section>
-
-    <section class="slide activity" id="slide-7" data-title="Labels" data-section="Try">
-      <div class="slide-inner">
-        <p class="eyebrow">Controlled vocabulary</p>
-        <h2>Clear labels reduce guessing.</h2>
-        <p class="lede small">Pick the strongest label for each navigation problem. The best labels match user
-          expectations and stay consistent across the site.</p>
-        <div class="label-lab" id="labelLab" aria-label="Navigation label choices"></div>
-        <div class="result-panel" id="labelFeedback" aria-live="polite">Choose a label set to reveal the discussion
-          point.</div>
-      </div>
-    </section>
-
-    <section class="slide" id="slide-8" data-title="Chunking" data-section="Concept">
-      <div class="slide-inner wide">
-        <p class="eyebrow">Chunking</p>
-        <h2>Break content into meaningful pieces.</h2>
-        <div class="chunk-demo">
-          <div class="chunk-text">
-            <h3>Before</h3>
-            <p>The event will take place on Saturday from 5 PM to 10 PM and will include food vendors, student artists,
-              music, small business booths, and a community resource table. Visitors should enter through the main
-              courtyard, bring a digital or printed ticket, and use the parking lot behind the building. Some vendors
-              may accept cash only, and guests are encouraged to arrive early because popular food items may sell out.
-            </p>
-          </div>
-          <div class="chunk-result">
-            <h3>After</h3>
-            <div class="info-card"><strong>When</strong><span>Saturday · 5 PM–10 PM</span></div>
-            <div class="info-card"><strong>What to expect</strong><span>Food, artists, music, small businesses, and
-                community resources.</span></div>
-            <div class="info-card"><strong>Before you go</strong><span>Bring a ticket, enter through the courtyard, and
-                check vendor payment options.</span></div>
-            <div class="info-card"><strong>Parking</strong><span>Use the lot behind the building.</span></div>
-          </div>
-        </div>
-        <p class="takeaway">Chunking makes content easier to scan, reuse, rearrange, and turn into page sections or
-          components.</p>
-      </div>
-    </section>
-
-    <section class="slide activity" id="slide-9" data-title="Structures" data-section="Compare">
-      <div class="slide-inner wide">
-        <p class="eyebrow">Site structure</p>
-        <h2>Different structures create different user paths.</h2>
-        <div class="site-type-grid">
-          <button class="type-card active" data-structure="sequence" type="button">Sequence</button>
-          <button class="type-card" data-structure="hierarchy" type="button">Hierarchy</button>
-          <button class="type-card" data-structure="web" type="button">Web</button>
-        </div>
-        <div class="diagram-stage" id="structureOutput" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="slide" id="slide-10" data-title="Choosing Structure" data-section="Concept">
-      <div class="slide-inner">
-        <p class="eyebrow">Structure decision</p>
-        <h2>Most websites use a mix, but one structure usually leads.</h2>
-        <div class="comparison-grid">
-          <article>
-            <h3>Sequence</h3>
-            <p>Best when the user should move through steps in a specific order: lessons, checkout, onboarding,
-              tutorials.</p>
-          </article>
-          <article>
-            <h3>Hierarchy</h3>
-            <p>Best when content needs clear categories and subcategories: schools, companies, directories, stores.</p>
-          </article>
-          <article>
-            <h3>Web</h3>
-            <p>Best when users explore by association: related articles, tags, recommendations, portfolios, knowledge
-              bases.</p>
-          </article>
-          <article>
-            <h3>Mixed</h3>
-            <p>A site might use a hierarchy for navigation, sequences for forms, and web links for related content.</p>
-          </article>
-        </div>
-        <div class="prompt-card"><span>Group discussion</span>
-          <p>What structure would be easiest for a restaurant website? What about an online course?</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide activity" id="slide-11" data-title="Card Sort" data-section="Try">
-      <div class="slide-inner wide">
-        <p class="eyebrow">Card-sort activity</p>
-        <h2>Card sort: where should content belong?</h2>
-        <p class="lede small">Click a content card, then choose the category where it belongs. This models how card
-          sorting can reveal whether categories make sense to users.</p>
-        <div class="map-board">
+        <p class="eyebrow">Common project mishaps</p>
+        <h2>What would reduce this risk?</h2>
+        <div class="interactive-card">
           <div>
-            <div class="choice-toolbar"><button class="ghost-btn" id="resetSortBtn" type="button">Reset</button><span
-                id="sortStatus">0 cards placed</span></div>
-            <div class="card-bank" id="cardBank" aria-label="Content cards to sort"></div>
+            <p class="label">Mishap</p>
+            <h3 id="mishapText">The team builds ten pages before anyone has approved the navigation.</h3>
+            <p id="mishapHint">The problem is not effort. The problem is the order of work.</p>
           </div>
-          <div class="card-sort-board" id="sortBoard" aria-label="Sort categories"></div>
+          <button class="primary-btn" id="newMishapBtn" type="button">New mishap</button>
         </div>
+        <div class="site-type-grid mishap-choice-grid" id="mishapChoiceGrid" aria-label="Mishap fixes"></div>
+        <div class="result-panel" id="mishapResult" aria-live="polite">Choose the best fix.</div>
       </div>
     </section>
 
-    <section class="slide activity" id="slide-12" data-title="Site Diagram Builder" data-section="Build">
-      <div class="slide-inner wide">
-        <p class="eyebrow">Diagram workshop</p>
-        <h2>Site diagram builder: decide what belongs in primary navigation.</h2>
-        <p class="lede small">Click each section to cycle it through Primary nav, Secondary/utility, and Not included.
-          Build a structure that is easy to scan and supports core visitor tasks.</p>
-        <div class="sitemap-builder">
-          <div>
-            <p class="small-note">Goal: keep primary navigation focused (about 4-6 top-level items), and move less
-              frequent tasks to secondary areas.</p>
-            <div class="nav-choice-grid" id="navChoices" aria-label="Top-level section choices"></div>
-            <div class="status-row"><button class="ghost-btn" id="resetMapBtn" type="button">Reset layout</button>
-            </div>
-            <p class="small-note" id="mapStatus" aria-live="polite"></p>
-          </div>
-          <div class="generated-map" id="generatedMap" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" id="slide-13" data-title="Diagram vs File Structure" data-section="Production">
+    <section class="slide activity" id="slide-14" data-title="Checkpoint" data-section="Review">
       <div class="slide-inner">
-        <p class="eyebrow">From diagram to production</p>
-        <h2>The site map should help the build make sense.</h2>
-        <div class="comparison-grid">
-          <article>
-            <h3>Visible structure</h3>
-            <p>Home → Vendors → Food Vendors → Tacos La Calle</p>
-          </article>
-          <article>
-            <h3>Possible file structure</h3>
-            <p><code>/vendors/food/tacos-la-calle/</code></p>
-          </article>
-        </div>
-        <div class="quote-panel">
-          <p>A clear information architecture helps designers, developers, clients, and users talk about the same
-            structure.</p>
+        <p class="eyebrow">Checkpoint</p>
+        <h2>Quick review</h2>
+        <div class="quiz-card" id="quizCard">
+          <p class="quiz-question" id="quizQuestion">What does the project implementation plan add to the charter?</p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quizFeedback" id="quizFeedback" aria-live="polite"></div>
+          <button class="primary-btn" id="nextQuizBtn" type="button">Next question</button>
         </div>
       </div>
     </section>
 
-    <section class="slide activity" id="slide-14" data-title="Wireframes" data-section="Build">
-      <div class="slide-inner wide">
-        <p class="eyebrow">Presenting information architecture</p>
-        <h2>Wireframes show content priority before visual style.</h2>
-        <div class="wireframe-hotspots">
-          <div class="wireframe-panel">
-            <div class="wireframe-box" id="wireframeBox" aria-label="Wireframe sample">
-              <div class="wire-row two">
-                <div class="wire-el" data-wf="identity">Site identity</div>
-                <div class="wire-el" data-wf="utility">Search / utility links</div>
-              </div>
-              <div class="wire-row">
-                <div class="wire-el" data-wf="global">Global navigation</div>
-              </div>
-              <div class="wire-row">
-                <div class="wire-el hero" data-wf="primary">Primary message + action</div>
-              </div>
-              <div class="wire-row three">
-                <div class="wire-el" data-wf="section1">Section card</div>
-                <div class="wire-el" data-wf="section2">Section card</div>
-                <div class="wire-el" data-wf="section3">Section card</div>
-              </div>
-              <div class="wire-row">
-                <div class="wire-el" data-wf="footer">Footer / contact / policies</div>
-              </div>
-            </div>
-          </div>
-          <div class="wireframe-panel">
-            <p class="label">Click a wireframe area</p>
-            <h3 id="wireTitle">Site identity</h3>
-            <p id="wireText">A wireframe marks where identity and core orientation elements appear, without deciding
-              final colors, fonts, or imagery.</p>
-            <p class="takeaway">A wireframe is not a finished design. It is a conversation about priority, structure,
-              and user paths.</p>
-          </div>
+    <section class="slide" id="slide-15" data-title="Wrap" data-section="End">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Takeaway</p>
+          <h2>Process is how a website survives real-world complexity.</h2>
+          <p class="lede">A good process connects people, roles, content, technology, scope, testing, launch, and maintenance.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="slide activity" id="slide-15" data-title="Task Path Test" data-section="Test">
-      <div class="slide-inner">
-        <p class="eyebrow">Testing the architecture</p>
-        <h2>Can users predict where to go?</h2>
-        <div class="quiz-card">
-          <p class="quiz-question" id="pathPrompt">A visitor wants to know whether cash is needed for food vendors.
-            Where should that information be easiest to find?</p>
-          <div class="path-options" id="pathOptions" aria-label="Task path choices"></div>
-          <p class="quizFeedback" id="pathFeedback" aria-live="polite"></p>
-          <button class="ghost-btn" id="newPathBtn" type="button">New task</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" id="slide-16" data-title="What to Submit" data-section="Checkpoint">
-      <div class="slide-inner">
-        <p class="eyebrow">Chapter 3 checkpoint</p>
-        <h2>Information architecture deliverables</h2>
-        <div class="charter-grid">
-          <article><span>01</span><strong>Content inventory</strong>
-            <p>A list of planned content, ownership/status, and what belongs in version 1.</p>
-          </article>
-          <article><span>02</span><strong>Navigation labels</strong>
-            <p>Clear names for the major sections and repeated content types.</p>
-          </article>
-          <article><span>03</span><strong>Site diagram</strong>
-            <p>A visual map showing pages, categories, and relationships.</p>
-          </article>
-          <article><span>04</span><strong>User task paths</strong>
-            <p>Examples of how a user moves through the site to complete important tasks.</p>
-          </article>
-          <article><span>05</span><strong>Wireframes</strong>
-            <p>Rough page layouts showing content priority and navigation placement.</p>
-          </article>
-          <article><span>06</span><strong>Test notes</strong>
-            <p>Feedback from users about labels, categories, or paths that caused confusion.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide activity" id="slide-17" data-title="Review Quiz" data-section="Review">
-      <div class="slide-inner">
-        <p class="eyebrow">Quick review</p>
-        <h2>Check the concepts.</h2>
-        <div class="quiz-card">
-          <p class="quiz-question" id="quizQuestion">Question loads here.</p>
-          <div class="quiz-options" id="quizOptions" aria-label="Quiz answer choices"></div>
-          <p class="quizFeedback" id="quizFeedback" aria-live="polite"></p>
-          <button class="ghost-btn" id="nextQuizBtn" type="button">Next question</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" id="slide-18" data-title="Exit Ticket" data-section="Close">
-      <div class="slide-inner">
-        <p class="eyebrow">Exit ticket</p>
-        <h2>Finish the sentence.</h2>
         <div class="exit-ticket">
-          <blockquote>“A website’s structure matters because ________.”</blockquote>
+          <h3>Exit ticket</h3>
+          <p>Complete one sentence:</p>
+          <blockquote>“A website process matters because ________.”</blockquote>
         </div>
-        <p class="takeaway">Chapter 3 takeaway: before pages are polished, content needs a clear home, clear labels, and
-          clear paths.</p>
-        <p class="source-note">Source anchor: Web Style Guide, Chapter 3: Information Architecture.</p>
       </div>
     </section>
   </main>
 
-  <div class="deck-controls" aria-label="Slide controls">
+  <footer class="deck-controls" aria-label="Slide controls">
     <button class="ghost-btn" id="prevBtn" type="button">Back</button>
-    <div class="slide-status" id="slideStatus">1 / 18</div>
+    <div class="slide-status" id="slideStatus">1 / 15</div>
     <button class="primary-btn" id="nextBtn" type="button">Next</button>
-  </div>
+  </footer>
 
-  <div class="overview-modal" id="overviewModal" aria-hidden="true" role="dialog" aria-label="Slide overview">
+  <div class="overview-modal" id="overviewModal" aria-hidden="true" role="dialog" aria-label="Presentation overview">
     <div class="modal-card">
       <div class="modal-header">
-        <div>
-          <p class="eyebrow">Overview</p>
-          <h2>Chapter 3 slides</h2>
-        </div>
+        <h2>Presentation overview</h2>
         <button class="ghost-btn" id="closeOverviewBtn" type="button">Close</button>
       </div>
+      <p>This deck follows Chapter 3 from project planning to construction, evaluation, and maintenance.</p>
       <div class="overview-grid" id="overviewGrid"></div>
+      <p class="source-note">Source material: Web Style Guide, Chapter 3: Process by Patrick J. Lynch and Sarah Horton.</p>
     </div>
   </div>
 
   <script src="assets/js/app.js"></script>
 </body>
-
 </html>

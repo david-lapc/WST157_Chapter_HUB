@@ -1,6 +1,6 @@
-# WST 157 · Chapter 3: Information Architecture
+# WST 157 · Chapter 3: Process
 
-This is a public classroom presentation website for WST 157 Website Planning & Production.
+Interactive classroom presentation website for Chapter 3 of Web Style Guide: Process.
 
 ## Open
 
@@ -8,24 +8,15 @@ Open `index.html` in a browser.
 
 ## Controls
 
-- Next / Back buttons move through the deck.
-- Arrow keys also move through slides.
-- Overview opens a slide picker.
-- Present hides the top bar and side progress panel.
-- Press F to toggle Present mode.
+- Next / Back buttons
+- Left / Right arrow keys
+- Overview button
+- Present button or `F` key
 
-## Chapter focus
+## Folder structure
 
-This deck covers Chapter 3 concepts:
+- `index.html`
+- `assets/css/styles.css`
+- `assets/js/app.js`
 
-- Information architecture
-- Content inventories
-- Controlled vocabulary and navigation labels
-- Chunking content
-- Site structures: sequence, hierarchy, and web
-- Card sorting
-- Site diagrams
-- Wireframes
-- Testing user task paths
-
-All visible language is intended to be safe for classroom screensharing or student access.
+Visible slide text is written for classroom display and sharing.
