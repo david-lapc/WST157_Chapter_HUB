@@ -365,6 +365,8 @@ const selectedCategoryLabel = document.querySelector('#selectedCategoryLabel');
 const subpageNameInput = document.querySelector('#subpageNameInput');
 const addSubpageBtn = document.querySelector('#addSubpageBtn');
 const subpageList = document.querySelector('#subpageList');
+const downloadDiagramBtn = document.querySelector('#downloadDiagramBtn');
+const diagramDownloadStatus = document.querySelector('#diagramDownloadStatus');
 const diagramTitle = document.querySelector('#diagramTitle');
 const diagramOutput = document.querySelector('#diagramOutput');
 
@@ -527,6 +529,33 @@ function renderDiagram() {
   renderDiagramControls();
 }
 
+function makeSafeFilename(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'site-diagram';
+}
+
+function downloadDiagramAsJson() {
+  diagramModel.siteName = siteNameInput.value.trim() || 'Project Site';
+  const exportData = {
+    siteName: diagramModel.siteName,
+    home: 'Home',
+    categories: diagramModel.categories.map((category) => ({
+      name: category.name,
+      subpages: [...category.subpages]
+    }))
+  };
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+  const fileName = `${makeSafeFilename(diagramModel.siteName)}-diagram.json`;
+  const downloadUrl = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = downloadUrl;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(downloadUrl);
+  diagramDownloadStatus.textContent = `Downloaded ${fileName}`;
+}
+
 addCategoryBtn.addEventListener('click', () => {
   const name = categoryNameInput.value.trim();
   if (!name) return;
@@ -558,6 +587,7 @@ subpageNameInput.addEventListener('keydown', (event) => {
 });
 
 siteNameInput.addEventListener('input', renderDiagram);
+downloadDiagramBtn.addEventListener('click', downloadDiagramAsJson);
 renderDiagram();
 
 // Slide 14: wireframe areas

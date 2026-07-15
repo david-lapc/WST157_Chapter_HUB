@@ -1441,6 +1441,20 @@ body.presenting .slide-inner {
   align-content: start;
 }
 
+.diagram-actions {
+  display: grid;
+  gap: .45rem;
+}
+
+.diagram-actions .primary-btn {
+  width: fit-content;
+}
+
+#diagramDownloadStatus {
+  min-height: 1.2rem;
+  margin: 0;
+}
+
 .diagram-control-block {
   display: grid;
   gap: .55rem;
