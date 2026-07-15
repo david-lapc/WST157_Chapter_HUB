@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WST 157 · Chapter 5: Site Structure</title>
-  <meta name="description" content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 5: Site Structure." />
+  <meta name="description"
+    content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 5: Site Structure." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
   <a class="skip-link" href="#slide-1">Skip to slides</a>
 
   <header class="topbar" aria-label="Presentation controls">
     <div class="brand">
-      <span class="brand-mark">WST</span>
+      <a href="../" class="brand-mark">WST</a>
       <div>
         <strong>WST 157</strong>
         <span>Website Planning &amp; Production</span>
@@ -36,7 +39,8 @@
         <div>
           <p class="eyebrow">Chapter 5 · Site Structure</p>
           <h1>The structure behind the screen</h1>
-          <p class="lede">A website is not only what visitors see. It is also the HTML, files, folders, content systems, links, metadata, and search structure that help the site work over time.</p>
+          <p class="lede">A website is not only what visitors see. It is also the HTML, files, folders, content systems,
+            links, metadata, and search structure that help the site work over time.</p>
           <div class="big-question">
             <span>Opening question</span>
             <strong>What makes a website “well built” even before it looks good?</strong>
@@ -62,15 +66,29 @@
         <p class="eyebrow">Main idea</p>
         <h2>Site structure is the foundation under the design.</h2>
         <div class="statement-card">
-          <p>Color, typography, and layout sit on top of a deeper structure. If the structure is weak, the site becomes harder to update, harder to search, harder to access, and harder to trust.</p>
+          <p>Color, typography, and layout sit on top of a deeper structure. If the structure is weak, the site becomes
+            harder to update, harder to search, harder to access, and harder to trust.</p>
         </div>
         <div class="foundation-grid">
-          <article class="foundation-card"><div class="icon">H</div><strong>HTML</strong><p>Gives content meaning and structure.</p></article>
-          <article class="foundation-card"><div class="icon">C</div><strong>CSS</strong><p>Controls presentation across pages and devices.</p></article>
-          <article class="foundation-card"><div class="icon">J</div><strong>JavaScript</strong><p>Adds interactive behavior when needed.</p></article>
-          <article class="foundation-card"><div class="icon">S</div><strong>Search</strong><p>Uses links, text, markup, metadata, and reliability to find pages.</p></article>
+          <article class="foundation-card">
+            <div class="icon">H</div><strong>HTML</strong>
+            <p>Gives content meaning and structure.</p>
+          </article>
+          <article class="foundation-card">
+            <div class="icon">C</div><strong>CSS</strong>
+            <p>Controls presentation across pages and devices.</p>
+          </article>
+          <article class="foundation-card">
+            <div class="icon">J</div><strong>JavaScript</strong>
+            <p>Adds interactive behavior when needed.</p>
+          </article>
+          <article class="foundation-card">
+            <div class="icon">S</div><strong>Search</strong>
+            <p>Uses links, text, markup, metadata, and reliability to find pages.</p>
+          </article>
         </div>
-        <p class="takeaway">A strong site is not only attractive. It is understandable to browsers, screen readers, search engines, editors, and future developers.</p>
+        <p class="takeaway">A strong site is not only attractive. It is understandable to browsers, screen readers,
+          search engines, editors, and future developers.</p>
       </div>
     </section>
 
@@ -79,14 +97,32 @@
         <div>
           <p class="eyebrow">Separate the layers</p>
           <h2>Content, presentation, and behavior should not be tangled together.</h2>
-          <p class="lede">A page is easier to maintain when each layer has a clear job. HTML describes the content. CSS styles it. JavaScript adds behavior.</p>
-          <p class="takeaway">When the layers are separated, one change can improve many pages instead of becoming a one-page patch.</p>
+          <p class="lede">A page is easier to maintain when each layer has a clear job. HTML describes the content. CSS
+            styles it. JavaScript adds behavior.</p>
+          <p class="takeaway">When the layers are separated, one change can improve many pages instead of becoming a
+            one-page patch.</p>
         </div>
         <div class="layer-stack" aria-label="Site layer stack">
-          <div class="layer"><code>.html</code><div><strong>Content and meaning</strong><p>Headings, paragraphs, lists, links, images, forms, sections.</p></div></div>
-          <div class="layer"><code>.css</code><div><strong>Presentation</strong><p>Layout, color, typography, spacing, responsive rules.</p></div></div>
-          <div class="layer"><code>.js</code><div><strong>Behavior</strong><p>Menus, interactions, validation, filtering, dynamic updates.</p></div></div>
-          <div class="layer"><code>assets</code><div><strong>Media and support files</strong><p>Images, icons, video, documents, fonts, downloadable files.</p></div></div>
+          <div class="layer"><code>.html</code>
+            <div><strong>Content and meaning</strong>
+              <p>Headings, paragraphs, lists, links, images, forms, sections.</p>
+            </div>
+          </div>
+          <div class="layer"><code>.css</code>
+            <div><strong>Presentation</strong>
+              <p>Layout, color, typography, spacing, responsive rules.</p>
+            </div>
+          </div>
+          <div class="layer"><code>.js</code>
+            <div><strong>Behavior</strong>
+              <p>Menus, interactions, validation, filtering, dynamic updates.</p>
+            </div>
+          </div>
+          <div class="layer"><code>assets</code>
+            <div><strong>Media and support files</strong>
+              <p>Images, icons, video, documents, fonts, downloadable files.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -95,7 +131,8 @@
       <div class="slide-inner wide">
         <p class="eyebrow">Semantic markup</p>
         <h2>HTML should describe what content means, not just how it looks.</h2>
-        <p class="lede small">A heading marked as a heading, a list marked as a list, and a button marked as a button can be understood by more than the human eye.</p>
+        <p class="lede small">A heading marked as a heading, a list marked as a list, and a button marked as a button
+          can be understood by more than the human eye.</p>
         <div class="code-compare">
           <article class="code-box bad">
             <h3>Weak structure</h3>
@@ -114,7 +151,8 @@
 &lt;button type="button"&gt;RSVP&lt;/button&gt;</pre>
           </article>
         </div>
-        <p class="takeaway">Semantic markup supports accessibility, responsive display, search visibility, and cleaner maintenance.</p>
+        <p class="takeaway">Semantic markup supports accessibility, responsive display, search visibility, and cleaner
+          maintenance.</p>
       </div>
     </section>
 
@@ -140,8 +178,10 @@
         <div>
           <p class="eyebrow">Head and body</p>
           <h2>Every page needs structure that supports both humans and machines.</h2>
-          <p class="lede">The <code>&lt;head&gt;</code> prepares the page: title, metadata, stylesheets, scripts, and responsive settings. The <code>&lt;body&gt;</code> holds the content people interact with.</p>
-          <p class="takeaway">A page title, headings, landmarks, links, image descriptions, and clean structure make the site easier to use and easier to find.</p>
+          <p class="lede">The <code>&lt;head&gt;</code> prepares the page: title, metadata, stylesheets, scripts, and
+            responsive settings. The <code>&lt;body&gt;</code> holds the content people interact with.</p>
+          <p class="takeaway">A page title, headings, landmarks, links, image descriptions, and clean structure make the
+            site easier to use and easier to find.</p>
         </div>
         <div class="code-box good">
           <h3>Basic page skeleton</h3>
@@ -178,13 +218,18 @@
           <div class="viewport-frame tablet" id="viewportFrame" aria-label="Responsive layout preview">
             <div class="responsive-grid">
               <div class="responsive-block wide"><strong>Header / navigation</strong></div>
-              <div class="responsive-block"><strong>Main content</strong><p>Event details, vendor cards, or article text.</p></div>
-              <div class="responsive-block accent"><strong>Side content</strong><p>Hours, tags, call to action, or related links.</p></div>
+              <div class="responsive-block"><strong>Main content</strong>
+                <p>Event details, vendor cards, or article text.</p>
+              </div>
+              <div class="responsive-block accent"><strong>Side content</strong>
+                <p>Hours, tags, call to action, or related links.</p>
+              </div>
               <div class="responsive-block wide"><strong>Footer</strong></div>
             </div>
           </div>
         </div>
-        <p class="takeaway">Structure and responsive styling work together: the same content should remain usable when the layout changes.</p>
+        <p class="takeaway">Structure and responsive styling work together: the same content should remain usable when
+          the layout changes.</p>
       </div>
     </section>
 
@@ -193,8 +238,10 @@
         <div>
           <p class="eyebrow">Files and folders</p>
           <h2>A clear file structure makes the site easier to build, move, update, and debug.</h2>
-          <p class="lede">Files should live in predictable places. Names should be lowercase, descriptive, and stable. Important pages should have clear, readable URLs.</p>
-          <p class="takeaway">A good folder system is boring in the best way: anyone on the team can understand where things belong.</p>
+          <p class="lede">Files should live in predictable places. Names should be lowercase, descriptive, and stable.
+            Important pages should have clear, readable URLs.</p>
+          <p class="takeaway">A good folder system is boring in the best way: anyone on the team can understand where
+            things belong.</p>
         </div>
         <div class="tree-card" aria-label="Example website folder structure">
           <div><span class="folder">site/</span></div>
@@ -202,8 +249,8 @@
           <div>├── <span class="file">about.html</span></div>
           <div>├── <span class="file">schedule.html</span></div>
           <div>├── <span class="folder">vendors/</span></div>
-          <div>│   ├── <span class="file">index.html</span></div>
-          <div>│   └── <span class="file">taco-pop-up.html</span></div>
+          <div>│ ├── <span class="file">index.html</span></div>
+          <div>│ └── <span class="file">taco-pop-up.html</span></div>
           <div>└── <span class="folder">assets/</span></div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="asset">css/styles.css</span></div>
           <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="asset">js/app.js</span></div>
@@ -233,12 +280,21 @@
       <div class="slide-inner">
         <p class="eyebrow">Content management systems</p>
         <h2>A CMS is not only a page builder. It is a publishing system.</h2>
-        <p class="lede">A content management system can separate content from layout, manage roles, store reusable pieces, schedule updates, and create a workflow for writing, reviewing, approving, and publishing.</p>
+        <p class="lede">A content management system can separate content from layout, manage roles, store reusable
+          pieces, schedule updates, and create a workflow for writing, reviewing, approving, and publishing.</p>
         <div class="charter-grid compact-grid">
-          <article><span>Role</span><strong>Writer</strong><p>Creates or edits content drafts.</p></article>
-          <article><span>Role</span><strong>Reviewer</strong><p>Checks accuracy, tone, details, and completeness.</p></article>
-          <article><span>Role</span><strong>Editor</strong><p>Improves clarity, structure, and consistency.</p></article>
-          <article><span>Role</span><strong>Publisher</strong><p>Approves release, scheduling, removal, and major updates.</p></article>
+          <article><span>Role</span><strong>Writer</strong>
+            <p>Creates or edits content drafts.</p>
+          </article>
+          <article><span>Role</span><strong>Reviewer</strong>
+            <p>Checks accuracy, tone, details, and completeness.</p>
+          </article>
+          <article><span>Role</span><strong>Editor</strong>
+            <p>Improves clarity, structure, and consistency.</p>
+          </article>
+          <article><span>Role</span><strong>Publisher</strong>
+            <p>Approves release, scheduling, removal, and major updates.</p>
+          </article>
         </div>
         <p class="takeaway">The more people involved, the more the website needs structure behind the scenes.</p>
       </div>
@@ -248,7 +304,8 @@
       <div class="slide-inner wide">
         <p class="eyebrow">Publishing workflow</p>
         <h2>What should happen before a page goes live?</h2>
-        <p class="lede small">Click the steps in a reasonable order. The goal is not one perfect workflow; the goal is to avoid publishing confusion.</p>
+        <p class="lede small">Click the steps in a reasonable order. The goal is not one perfect workflow; the goal is
+          to avoid publishing confusion.</p>
         <div class="workflow-grid" id="workflowGrid" aria-label="Workflow steps"></div>
         <div class="result-panel" id="workflowResult" aria-live="polite">Build the workflow order.</div>
         <button class="ghost-btn" id="resetWorkflowBtn" type="button">Reset workflow</button>
@@ -260,8 +317,10 @@
         <div>
           <p class="eyebrow">Search visibility</p>
           <h2>SEO starts with good structure, not tricks.</h2>
-          <p class="lede">Search engines read page text, links, titles, markup, metadata, URLs, image descriptions, and site maps. A messy site can hide good content from search.</p>
-          <p class="takeaway">Good SEO overlaps with good accessibility and good organization: clear headings, descriptive links, useful content, alt text, readable URLs, and working pages.</p>
+          <p class="lede">Search engines read page text, links, titles, markup, metadata, URLs, image descriptions, and
+            site maps. A messy site can hide good content from search.</p>
+          <p class="takeaway">Good SEO overlaps with good accessibility and good organization: clear headings,
+            descriptive links, useful content, alt text, readable URLs, and working pages.</p>
         </div>
         <div class="checklist-columns">
           <article class="check-card">
@@ -312,9 +371,18 @@
         <p class="eyebrow">Apply it</p>
         <h2>Before a site is “finished,” check the invisible structure.</h2>
         <div class="score-board">
-          <article><strong>1</strong><h3>Can the content be understood without the styling?</h3><p>Headings, lists, links, and page sections should still make sense.</p></article>
-          <article><strong>2</strong><h3>Can the files be understood by someone new?</h3><p>Folders, names, paths, and assets should be predictable.</p></article>
-          <article><strong>3</strong><h3>Can the site be found, updated, and maintained?</h3><p>Search, metadata, links, CMS workflow, and reliability matter after launch.</p></article>
+          <article><strong>1</strong>
+            <h3>Can the content be understood without the styling?</h3>
+            <p>Headings, lists, links, and page sections should still make sense.</p>
+          </article>
+          <article><strong>2</strong>
+            <h3>Can the files be understood by someone new?</h3>
+            <p>Folders, names, paths, and assets should be predictable.</p>
+          </article>
+          <article><strong>3</strong>
+            <h3>Can the site be found, updated, and maintained?</h3>
+            <p>Search, metadata, links, CMS workflow, and reliability matter after launch.</p>
+          </article>
         </div>
         <div class="big-question">
           <span>Class project check</span>
@@ -374,4 +442,5 @@
 
   <script src="assets/js/app.js"></script>
 </body>
+
 </html>
