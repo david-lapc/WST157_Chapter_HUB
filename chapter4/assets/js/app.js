@@ -358,32 +358,206 @@ renderStructure();
 
 // Slide 13: site diagram builder
 const siteNameInput = document.querySelector('#siteNameInput');
-const categoriesInput = document.querySelector('#categoriesInput');
-const subpagesInput = document.querySelector('#subpagesInput');
+const categoryNameInput = document.querySelector('#categoryNameInput');
+const addCategoryBtn = document.querySelector('#addCategoryBtn');
+const categoryTabs = document.querySelector('#categoryTabs');
+const selectedCategoryLabel = document.querySelector('#selectedCategoryLabel');
+const subpageNameInput = document.querySelector('#subpageNameInput');
+const addSubpageBtn = document.querySelector('#addSubpageBtn');
+const subpageList = document.querySelector('#subpageList');
 const diagramTitle = document.querySelector('#diagramTitle');
 const diagramOutput = document.querySelector('#diagramOutput');
+
+const diagramModel = {
+  siteName: 'Project Site',
+  categories: [
+    { name: 'About', subpages: ['Overview', 'FAQ'] },
+    { name: 'Services', subpages: ['Packages', 'Pricing'] },
+    { name: 'Events', subpages: ['Schedule', 'Vendors'] },
+    { name: 'Resources', subpages: ['Guides', 'Downloads'] },
+    { name: 'Contact', subpages: ['Location', 'Form'] }
+  ]
+};
+let selectedCategoryIndex = 0;
+
+function normalizeDiagramSelection() {
+  if (diagramModel.categories.length === 0) {
+    selectedCategoryIndex = -1;
+    return;
+  }
+  selectedCategoryIndex = Math.max(0, Math.min(selectedCategoryIndex, diagramModel.categories.length - 1));
+}
+
+function getSelectedCategory() {
+  normalizeDiagramSelection();
+  if (selectedCategoryIndex < 0) return null;
+  return diagramModel.categories[selectedCategoryIndex];
+}
+
+function renderDiagramControls() {
+  categoryTabs.innerHTML = '';
+
+  if (diagramModel.categories.length === 0) {
+    selectedCategoryLabel.textContent = 'None';
+    addSubpageBtn.disabled = true;
+    subpageList.innerHTML = '<p class="subpage-empty">Add a main category to start building subpages.</p>';
+    const emptyChip = document.createElement('p');
+    emptyChip.className = 'subpage-empty';
+    emptyChip.textContent = 'No categories yet.';
+    categoryTabs.appendChild(emptyChip);
+    return;
+  }
+
+  addSubpageBtn.disabled = false;
+  diagramModel.categories.forEach((category, index) => {
+    const chip = document.createElement('div');
+    chip.className = `category-chip${index === selectedCategoryIndex ? ' active' : ''}`;
+
+    const selectButton = document.createElement('button');
+    selectButton.type = 'button';
+    selectButton.className = 'category-chip-select';
+    selectButton.textContent = category.name;
+    selectButton.setAttribute('aria-pressed', String(index === selectedCategoryIndex));
+    selectButton.addEventListener('click', () => {
+      selectedCategoryIndex = index;
+      renderDiagram();
+    });
+
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.className = 'category-chip-remove';
+    removeButton.textContent = 'Remove';
+    removeButton.setAttribute('aria-label', `Remove category ${category.name}`);
+    removeButton.addEventListener('click', () => {
+      diagramModel.categories.splice(index, 1);
+      if (selectedCategoryIndex >= diagramModel.categories.length) {
+        selectedCategoryIndex = diagramModel.categories.length - 1;
+      }
+      renderDiagram();
+    });
+
+    chip.appendChild(selectButton);
+    chip.appendChild(removeButton);
+    categoryTabs.appendChild(chip);
+  });
+
+  const selectedCategory = getSelectedCategory();
+  selectedCategoryLabel.textContent = selectedCategory ? selectedCategory.name : 'None';
+  subpageList.innerHTML = '';
+  if (!selectedCategory || selectedCategory.subpages.length === 0) {
+    const empty = document.createElement('p');
+    empty.className = 'subpage-empty';
+    empty.textContent = 'No subpages yet. Add one using the field above.';
+    subpageList.appendChild(empty);
+    return;
+  }
+
+  selectedCategory.subpages.forEach((subpage, index) => {
+    const row = document.createElement('div');
+    row.className = 'subpage-item';
+
+    const name = document.createElement('span');
+    name.textContent = subpage;
+
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'subpage-remove';
+    remove.textContent = 'Remove';
+    remove.setAttribute('aria-label', `Remove subpage ${subpage}`);
+    remove.addEventListener('click', () => {
+      selectedCategory.subpages.splice(index, 1);
+      renderDiagram();
+    });
+
+    row.appendChild(name);
+    row.appendChild(remove);
+    subpageList.appendChild(row);
+  });
+}
+
 function renderDiagram() {
-  const siteName = siteNameInput.value.trim() || 'Project Site';
-  const categories = categoriesInput.value.split('\n').map(item => item.trim()).filter(Boolean).slice(0, 8);
-  const subpageRows = subpagesInput.value.split('\n').map(row => row.split(',').map(item => item.trim()).filter(Boolean));
-  diagramTitle.textContent = siteName;
+  diagramModel.siteName = siteNameInput.value.trim() || 'Project Site';
+  normalizeDiagramSelection();
+  diagramTitle.textContent = diagramModel.siteName;
   diagramOutput.innerHTML = '';
+
   const home = document.createElement('div');
   home.className = 'diagram-home';
   home.textContent = 'Home';
+
   const cats = document.createElement('div');
   cats.className = 'diagram-categories';
-  categories.forEach((cat, index) => {
+  diagramModel.categories.forEach((category) => {
     const block = document.createElement('div');
     block.className = 'diagram-category';
-    const subitems = subpageRows[index] || [];
-    block.innerHTML = `<strong>${cat}</strong><ul>${subitems.map(item => `<li>${item}</li>`).join('')}</ul>`;
+
+    const heading = document.createElement('div');
+    heading.className = 'diagram-category-heading';
+
+    const name = document.createElement('strong');
+    name.textContent = category.name;
+    const count = document.createElement('span');
+    const subpageCount = category.subpages.length;
+    count.textContent = `${subpageCount} ${subpageCount === 1 ? 'subpage' : 'subpages'}`;
+
+    heading.appendChild(name);
+    heading.appendChild(count);
+
+    const list = document.createElement('ul');
+    if (subpageCount === 0) {
+      const empty = document.createElement('li');
+      empty.className = 'diagram-empty-subpage';
+      empty.textContent = 'No subpages yet';
+      list.appendChild(empty);
+    } else {
+      category.subpages.forEach((subpage) => {
+        const item = document.createElement('li');
+        item.textContent = subpage;
+        list.appendChild(item);
+      });
+    }
+
+    block.appendChild(heading);
+    block.appendChild(list);
     cats.appendChild(block);
   });
+
   diagramOutput.appendChild(home);
   diagramOutput.appendChild(cats);
+  renderDiagramControls();
 }
-[siteNameInput, categoriesInput, subpagesInput].forEach(el => el?.addEventListener('input', renderDiagram));
+
+addCategoryBtn.addEventListener('click', () => {
+  const name = categoryNameInput.value.trim();
+  if (!name) return;
+  diagramModel.categories.push({ name, subpages: [] });
+  selectedCategoryIndex = diagramModel.categories.length - 1;
+  categoryNameInput.value = '';
+  renderDiagram();
+});
+
+addSubpageBtn.addEventListener('click', () => {
+  const selectedCategory = getSelectedCategory();
+  const subpage = subpageNameInput.value.trim();
+  if (!selectedCategory || !subpage) return;
+  selectedCategory.subpages.push(subpage);
+  subpageNameInput.value = '';
+  renderDiagram();
+});
+
+categoryNameInput.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter') return;
+  event.preventDefault();
+  addCategoryBtn.click();
+});
+
+subpageNameInput.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter') return;
+  event.preventDefault();
+  addSubpageBtn.click();
+});
+
+siteNameInput.addEventListener('input', renderDiagram);
 renderDiagram();
 
 // Slide 14: wireframe areas

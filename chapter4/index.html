@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WST 157 · Chapter 4: Information Architecture</title>
-  <meta name="description" content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 4: Information Architecture." />
+  <meta name="description"
+    content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 4: Information Architecture." />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body>
   <a class="skip-link" href="#slide-1">Skip to slides</a>
 
@@ -36,7 +39,8 @@
         <div>
           <p class="eyebrow">Chapter 4 · Information Architecture</p>
           <h1>Making information findable</h1>
-          <p class="lede">Information architecture is the structure behind a website: the categories, labels, pages, paths, and relationships that help people find what they need.</p>
+          <p class="lede">Information architecture is the structure behind a website: the categories, labels, pages,
+            paths, and relationships that help people find what they need.</p>
           <div class="big-question">
             <span>Opening question</span>
             <strong>Where would a visitor click first?</strong>
@@ -62,7 +66,8 @@
         <p class="eyebrow">Main idea</p>
         <h2>Visual design cannot rescue confusing structure.</h2>
         <div class="statement-card">
-          <p>A site can look polished and still fail if the content is hard to understand, hard to browse, or labeled in a way users do not expect.</p>
+          <p>A site can look polished and still fail if the content is hard to understand, hard to browse, or labeled in
+            a way users do not expect.</p>
         </div>
         <div class="comparison-grid">
           <article>
@@ -74,7 +79,8 @@
             <p>Pages, categories, labels, navigation, relationships, diagrams, metadata, and task paths.</p>
           </article>
         </div>
-        <p class="takeaway">Information architecture decides how the site makes sense before it decides how the site looks.</p>
+        <p class="takeaway">Information architecture decides how the site makes sense before it decides how the site
+          looks.</p>
       </div>
     </section>
 
@@ -83,12 +89,24 @@
         <p class="eyebrow">What IA does</p>
         <h2>Information architecture turns a pile of content into a usable system.</h2>
         <div class="charter-grid compact-grid">
-          <article><span>01</span><strong>Organize</strong><p>Group content into taxonomies, sections, and hierarchies.</p></article>
-          <article><span>02</span><strong>Label</strong><p>Use consistent names so similar things are called the same thing.</p></article>
-          <article><span>03</span><strong>Navigate</strong><p>Plan paths that help people move through the site.</p></article>
-          <article><span>04</span><strong>Map</strong><p>Communicate the structure with outlines, diagrams, and wireframes.</p></article>
-          <article><span>05</span><strong>Test</strong><p>Check whether the organization matches real user expectations.</p></article>
-          <article><span>06</span><strong>Maintain</strong><p>Plan standards for content, metadata, accessibility, search, and updates.</p></article>
+          <article><span>01</span><strong>Organize</strong>
+            <p>Group content into taxonomies, sections, and hierarchies.</p>
+          </article>
+          <article><span>02</span><strong>Label</strong>
+            <p>Use consistent names so similar things are called the same thing.</p>
+          </article>
+          <article><span>03</span><strong>Navigate</strong>
+            <p>Plan paths that help people move through the site.</p>
+          </article>
+          <article><span>04</span><strong>Map</strong>
+            <p>Communicate the structure with outlines, diagrams, and wireframes.</p>
+          </article>
+          <article><span>05</span><strong>Test</strong>
+            <p>Check whether the organization matches real user expectations.</p>
+          </article>
+          <article><span>06</span><strong>Maintain</strong>
+            <p>Plan standards for content, metadata, accessibility, search, and updates.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -100,11 +118,13 @@
         <div class="timeline ia-steps">
           <div><span>1</span><strong>Inventory</strong><em>What content exists? What content is missing?</em></div>
           <div><span>2</span><strong>Outline</strong><em>What are the major categories and relationships?</em></div>
-          <div><span>3</span><strong>Chunk</strong><em>How can long information become modular, scannable pieces?</em></div>
+          <div><span>3</span><strong>Chunk</strong><em>How can long information become modular, scannable pieces?</em>
+          </div>
           <div><span>4</span><strong>Diagram</strong><em>How will the site and page structures be shown?</em></div>
           <div><span>5</span><strong>Test</strong><em>Can real users find things through the structure?</em></div>
         </div>
-        <p class="takeaway">The goal is not to make a perfect first map. The goal is to make a structure that can be discussed, tested, and improved.</p>
+        <p class="takeaway">The goal is not to make a perfect first map. The goal is to make a structure that can be
+          discussed, tested, and improved.</p>
       </div>
     </section>
 
@@ -112,7 +132,8 @@
       <div class="slide-inner wide">
         <p class="eyebrow">Try it</p>
         <h2>What action should each content item get?</h2>
-        <p class="lede small">A content inventory lists what exists, what it is for, who owns it, and what should happen to it.</p>
+        <p class="lede small">A content inventory lists what exists, what it is for, who owns it, and what should happen
+          to it.</p>
         <div class="interactive-card">
           <div>
             <p class="label">Inventory item</p>
@@ -121,7 +142,8 @@
           </div>
           <button class="primary-btn" id="newInventoryBtn" type="button">New item</button>
         </div>
-        <div class="site-type-grid inventory-choice-grid" id="inventoryChoiceGrid" aria-label="Content action choices"></div>
+        <div class="site-type-grid inventory-choice-grid" id="inventoryChoiceGrid" aria-label="Content action choices">
+        </div>
         <div class="result-panel" id="inventoryResult" aria-live="polite">Choose an inventory action.</div>
       </div>
     </section>
@@ -131,7 +153,8 @@
         <div>
           <p class="eyebrow">Taxonomy and hierarchy</p>
           <h2>Start broad. Then get specific.</h2>
-          <p class="lede">A hierarchy helps users move from general categories to more specific pages. It also becomes the foundation for navigation and search.</p>
+          <p class="lede">A hierarchy helps users move from general categories to more specific pages. It also becomes
+            the foundation for navigation and search.</p>
           <p class="takeaway">If the hierarchy matches the user’s mental model, the site feels easier to predict.</p>
         </div>
         <div class="diagram-card hierarchy-diagram" aria-label="Example hierarchy diagram">
@@ -225,7 +248,8 @@
       <div class="slide-inner wide">
         <p class="eyebrow">Content mapping</p>
         <h2>Card sorting tests whether categories make sense.</h2>
-        <p class="lede small">Pick a card. Then choose where it belongs. Watch how a proposed navigation structure starts to form.</p>
+        <p class="lede small">Pick a card. Then choose where it belongs. Watch how a proposed navigation structure
+          starts to form.</p>
         <div class="card-sort-board">
           <div class="sort-deck" aria-label="Unsorted cards">
             <h3>Cards</h3>
@@ -246,13 +270,17 @@
         <div>
           <p class="eyebrow">Segmenting information</p>
           <h2>Most web content should be chunked for scanning.</h2>
-          <p class="lede">Users often come to a website with a specific question. Headings, short sections, lists, and consistent patterns help them find the relevant piece faster.</p>
-          <p class="takeaway">Chunking is not just shorter writing. It is content divided into useful, reusable pieces.</p>
+          <p class="lede">Users often come to a website with a specific question. Headings, short sections, lists, and
+            consistent patterns help them find the relevant piece faster.</p>
+          <p class="takeaway">Chunking is not just shorter writing. It is content divided into useful, reusable pieces.
+          </p>
         </div>
         <div class="chunk-card">
           <div class="bad-chunk">
             <h3>Unchunked</h3>
-            <p>The event has many things happening and visitors should know about the food, location, parking, schedule, vendor rules, ticket policies, and contact information before they arrive, especially because some activities change depending on time and weather.</p>
+            <p>The event has many things happening and visitors should know about the food, location, parking, schedule,
+              vendor rules, ticket policies, and contact information before they arrive, especially because some
+              activities change depending on time and weather.</p>
           </div>
           <div class="good-chunk">
             <h3>Chunked</h3>
@@ -290,30 +318,36 @@
         <h2>A site diagram turns organization into a shared map.</h2>
         <div class="diagram-builder">
           <div class="charter-form diagram-form">
+            <p class="small-note">Build the map one category at a time. Add as many subpages as needed for each
+              category.</p>
             <label>Site name
               <input id="siteNameInput" value="Project Site" />
             </label>
-            <label>Main categories
-              <textarea id="categoriesInput">About
-Services
-Events
-Resources
-Contact</textarea>
-            </label>
-            <label>Example subpages
-              <textarea id="subpagesInput">Overview, FAQ
-Packages, Pricing
-Schedule, Vendors
-Guides, Downloads
-Location, Form</textarea>
-            </label>
+            <div class="diagram-control-block">
+              <p class="label">Main categories</p>
+              <div class="diagram-add-row">
+                <input id="categoryNameInput" placeholder="Add a main category" aria-label="New category name" />
+                <button class="ghost-btn" id="addCategoryBtn" type="button">Add category</button>
+              </div>
+              <div class="category-tabs" id="categoryTabs" aria-label="Current categories"></div>
+            </div>
+            <div class="diagram-control-block">
+              <p class="label">Subpages</p>
+              <p class="small-note">Selected category: <strong id="selectedCategoryLabel">About</strong></p>
+              <div class="diagram-add-row">
+                <input id="subpageNameInput" placeholder="Add a subpage" aria-label="New subpage name" />
+                <button class="ghost-btn" id="addSubpageBtn" type="button">Add subpage</button>
+              </div>
+              <div id="subpageList" class="subpage-list" aria-live="polite"></div>
+            </div>
           </div>
           <div class="diagram-preview" aria-label="Generated site diagram">
             <h3 id="diagramTitle">Project Site</h3>
             <div id="diagramOutput" class="diagram-output"></div>
           </div>
         </div>
-        <p class="small-note">Site diagrams stay focused on structure: what exists, how it connects, and where users can go.</p>
+        <p class="small-note">Site diagrams stay focused on structure: what exists, how it connects, and where users can
+          go.</p>
       </div>
     </section>
 
@@ -336,7 +370,8 @@ Location, Form</textarea>
             <p>Each area has a purpose before it has a final visual style.</p>
           </div>
         </div>
-        <p class="takeaway">A wireframe should answer: what goes here, why is it here, and how does it support navigation or content?</p>
+        <p class="takeaway">A wireframe should answer: what goes here, why is it here, and how does it support
+          navigation or content?</p>
       </div>
     </section>
 
@@ -375,12 +410,14 @@ Location, Form</textarea>
         <div>
           <p class="eyebrow">Takeaway</p>
           <h2>Information architecture is how a site becomes understandable.</h2>
-          <p class="lede">Good IA helps people predict where things are, understand what labels mean, and move through a site with confidence.</p>
+          <p class="lede">Good IA helps people predict where things are, understand what labels mean, and move through a
+            site with confidence.</p>
         </div>
         <div class="exit-ticket">
           <h3>Exit ticket</h3>
           <p>Complete one sentence:</p>
-          <blockquote>“A website is easier to use when its information is organized by ________ instead of ________.”</blockquote>
+          <blockquote>“A website is easier to use when its information is organized by ________ instead of ________.”
+          </blockquote>
         </div>
       </div>
     </section>
@@ -398,12 +435,15 @@ Location, Form</textarea>
         <h2>Presentation overview</h2>
         <button class="ghost-btn" id="closeOverviewBtn" type="button">Close</button>
       </div>
-      <p>This deck follows Chapter 4 from content inventory to categories, labels, diagrams, wireframes, and IA testing.</p>
+      <p>This deck follows Chapter 4 from content inventory to categories, labels, diagrams, wireframes, and IA testing.
+      </p>
       <div class="overview-grid" id="overviewGrid"></div>
-      <p class="source-note">Source material: Web Style Guide, Chapter 4: Information Architecture by Patrick J. Lynch and Sarah Horton.</p>
+      <p class="source-note">Source material: Web Style Guide, Chapter 4: Information Architecture by Patrick J. Lynch
+        and Sarah Horton.</p>
     </div>
   </div>
 
   <script src="assets/js/app.js"></script>
 </body>
+
 </html>
