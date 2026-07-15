@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WST 157 · Chapter 5: Site Structure</title>
+  <meta name="description" content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 5: Site Structure." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#slide-1">Skip to slides</a>
+
+  <header class="topbar" aria-label="Presentation controls">
+    <div class="brand">
+      <span class="brand-mark">WST</span>
+      <div>
+        <strong>WST 157</strong>
+        <span>Website Planning &amp; Production</span>
+      </div>
+    </div>
+    <nav class="top-actions" aria-label="Deck navigation">
+      <button class="ghost-btn" id="overviewBtn" type="button">Overview</button>
+      <button class="ghost-btn" id="presentBtn" type="button" aria-pressed="false">Present</button>
+      <button class="primary-btn" id="nextTopBtn" type="button">Next</button>
+    </nav>
+  </header>
+
+  <aside class="progress-panel" id="progressPanel" aria-label="Slide progress">
+    <div class="progress-title">Chapter 5 Route</div>
+    <ol id="slideList" class="slide-list"></ol>
+  </aside>
+
+  <main class="deck" id="deck">
+    <section class="slide hero" id="slide-1" data-title="Opening" data-section="Start">
+      <div class="slide-inner two-col hero-grid">
+        <div>
+          <p class="eyebrow">Chapter 5 · Site Structure</p>
+          <h1>The structure behind the screen</h1>
+          <p class="lede">A website is not only what visitors see. It is also the HTML, files, folders, content systems, links, metadata, and search structure that help the site work over time.</p>
+          <div class="big-question">
+            <span>Opening question</span>
+            <strong>What makes a website “well built” even before it looks good?</strong>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Lesson route">
+          <h2>Today’s path</h2>
+          <ol class="route-list">
+            <li>Separate content, presentation, and behavior</li>
+            <li>Use semantic HTML to communicate meaning</li>
+            <li>Structure documents with useful head and body content</li>
+            <li>Organize files so the site can grow</li>
+            <li>Understand CMS workflow and publishing roles</li>
+            <li>Make pages findable through clean links, metadata, and SEO basics</li>
+          </ol>
+          <p class="small-note">Use the arrow keys or the Next button to move through the deck.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-2" data-title="Foundation" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Main idea</p>
+        <h2>Site structure is the foundation under the design.</h2>
+        <div class="statement-card">
+          <p>Color, typography, and layout sit on top of a deeper structure. If the structure is weak, the site becomes harder to update, harder to search, harder to access, and harder to trust.</p>
+        </div>
+        <div class="foundation-grid">
+          <article class="foundation-card"><div class="icon">H</div><strong>HTML</strong><p>Gives content meaning and structure.</p></article>
+          <article class="foundation-card"><div class="icon">C</div><strong>CSS</strong><p>Controls presentation across pages and devices.</p></article>
+          <article class="foundation-card"><div class="icon">J</div><strong>JavaScript</strong><p>Adds interactive behavior when needed.</p></article>
+          <article class="foundation-card"><div class="icon">S</div><strong>Search</strong><p>Uses links, text, markup, metadata, and reliability to find pages.</p></article>
+        </div>
+        <p class="takeaway">A strong site is not only attractive. It is understandable to browsers, screen readers, search engines, editors, and future developers.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-3" data-title="Three Layers" data-section="Concept">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Separate the layers</p>
+          <h2>Content, presentation, and behavior should not be tangled together.</h2>
+          <p class="lede">A page is easier to maintain when each layer has a clear job. HTML describes the content. CSS styles it. JavaScript adds behavior.</p>
+          <p class="takeaway">When the layers are separated, one change can improve many pages instead of becoming a one-page patch.</p>
+        </div>
+        <div class="layer-stack" aria-label="Site layer stack">
+          <div class="layer"><code>.html</code><div><strong>Content and meaning</strong><p>Headings, paragraphs, lists, links, images, forms, sections.</p></div></div>
+          <div class="layer"><code>.css</code><div><strong>Presentation</strong><p>Layout, color, typography, spacing, responsive rules.</p></div></div>
+          <div class="layer"><code>.js</code><div><strong>Behavior</strong><p>Menus, interactions, validation, filtering, dynamic updates.</p></div></div>
+          <div class="layer"><code>assets</code><div><strong>Media and support files</strong><p>Images, icons, video, documents, fonts, downloadable files.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-4" data-title="Semantic HTML" data-section="Concept">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Semantic markup</p>
+        <h2>HTML should describe what content means, not just how it looks.</h2>
+        <p class="lede small">A heading marked as a heading, a list marked as a list, and a button marked as a button can be understood by more than the human eye.</p>
+        <div class="code-compare">
+          <article class="code-box bad">
+            <h3>Weak structure</h3>
+            <pre>&lt;div class="big-text"&gt;Event Schedule&lt;/div&gt;
+&lt;div&gt;6:00 PM - Doors Open&lt;/div&gt;
+&lt;div&gt;7:00 PM - Music Starts&lt;/div&gt;
+&lt;div onclick="go()"&gt;RSVP&lt;/div&gt;</pre>
+          </article>
+          <article class="code-box good">
+            <h3>Stronger structure</h3>
+            <pre>&lt;h1&gt;Event Schedule&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;time&gt;6:00 PM&lt;/time&gt; Doors Open&lt;/li&gt;
+  &lt;li&gt;&lt;time&gt;7:00 PM&lt;/time&gt; Music Starts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;button type="button"&gt;RSVP&lt;/button&gt;</pre>
+          </article>
+        </div>
+        <p class="takeaway">Semantic markup supports accessibility, responsive display, search visibility, and cleaner maintenance.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-5" data-title="Tag Choice" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Try it</p>
+        <h2>Which HTML element matches the content?</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Content item</p>
+            <h3 id="tagPrompt">The most important page title.</h3>
+            <p>Choose the element that best communicates the meaning.</p>
+          </div>
+          <button class="primary-btn" id="newTagBtn" type="button">New item</button>
+        </div>
+        <div class="tag-choice-grid" id="tagChoiceGrid" aria-label="HTML tag choices"></div>
+        <div class="result-panel" id="tagResult" aria-live="polite">Choose a tag.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-6" data-title="Document Structure" data-section="Concept">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Head and body</p>
+          <h2>Every page needs structure that supports both humans and machines.</h2>
+          <p class="lede">The <code>&lt;head&gt;</code> prepares the page: title, metadata, stylesheets, scripts, and responsive settings. The <code>&lt;body&gt;</code> holds the content people interact with.</p>
+          <p class="takeaway">A page title, headings, landmarks, links, image descriptions, and clean structure make the site easier to use and easier to find.</p>
+        </div>
+        <div class="code-box good">
+          <h3>Basic page skeleton</h3>
+          <pre>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Vendor Lineup · Night Market&lt;/title&gt;
+  &lt;meta name="description" content="Food, art, music, and student creators."&gt;
+  &lt;link rel="stylesheet" href="assets/css/styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main&gt;...&lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-7" data-title="Responsive CSS" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">CSS structure</p>
+        <h2>One shared stylesheet can adapt the same content to different screens.</h2>
+        <p class="lede small">Responsive CSS changes layout without changing the meaning of the content.</p>
+        <div class="viewport-demo">
+          <div class="mock-actions" role="group" aria-label="Viewport choices">
+            <button class="ghost-btn viewport-btn" type="button" data-size="mobile">Mobile</button>
+            <button class="ghost-btn viewport-btn" type="button" data-size="tablet">Tablet</button>
+            <button class="ghost-btn viewport-btn" type="button" data-size="desktop">Desktop</button>
+          </div>
+          <div class="viewport-frame tablet" id="viewportFrame" aria-label="Responsive layout preview">
+            <div class="responsive-grid">
+              <div class="responsive-block wide"><strong>Header / navigation</strong></div>
+              <div class="responsive-block"><strong>Main content</strong><p>Event details, vendor cards, or article text.</p></div>
+              <div class="responsive-block accent"><strong>Side content</strong><p>Hours, tags, call to action, or related links.</p></div>
+              <div class="responsive-block wide"><strong>Footer</strong></div>
+            </div>
+          </div>
+        </div>
+        <p class="takeaway">Structure and responsive styling work together: the same content should remain usable when the layout changes.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-8" data-title="File Structure" data-section="Concept">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Files and folders</p>
+          <h2>A clear file structure makes the site easier to build, move, update, and debug.</h2>
+          <p class="lede">Files should live in predictable places. Names should be lowercase, descriptive, and stable. Important pages should have clear, readable URLs.</p>
+          <p class="takeaway">A good folder system is boring in the best way: anyone on the team can understand where things belong.</p>
+        </div>
+        <div class="tree-card" aria-label="Example website folder structure">
+          <div><span class="folder">site/</span></div>
+          <div>├── <span class="file">index.html</span></div>
+          <div>├── <span class="file">about.html</span></div>
+          <div>├── <span class="file">schedule.html</span></div>
+          <div>├── <span class="folder">vendors/</span></div>
+          <div>│   ├── <span class="file">index.html</span></div>
+          <div>│   └── <span class="file">taco-pop-up.html</span></div>
+          <div>└── <span class="folder">assets/</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="asset">css/styles.css</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="asset">js/app.js</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="asset">images/hero-market.jpg</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-9" data-title="URL Check" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Friendly URLs</p>
+        <h2>Readable paths help people, teams, and search engines understand the site.</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Page goal</p>
+            <h3 id="urlPrompt">A page showing the food vendor lineup.</h3>
+            <p>Which URL is the clearest?</p>
+          </div>
+          <button class="primary-btn" id="newUrlBtn" type="button">New goal</button>
+        </div>
+        <div class="seo-choice-grid" id="urlChoiceGrid" aria-label="URL choices"></div>
+        <div class="result-panel" id="urlResult" aria-live="polite">Choose a URL.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-10" data-title="CMS Workflow" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Content management systems</p>
+        <h2>A CMS is not only a page builder. It is a publishing system.</h2>
+        <p class="lede">A content management system can separate content from layout, manage roles, store reusable pieces, schedule updates, and create a workflow for writing, reviewing, approving, and publishing.</p>
+        <div class="charter-grid compact-grid">
+          <article><span>Role</span><strong>Writer</strong><p>Creates or edits content drafts.</p></article>
+          <article><span>Role</span><strong>Reviewer</strong><p>Checks accuracy, tone, details, and completeness.</p></article>
+          <article><span>Role</span><strong>Editor</strong><p>Improves clarity, structure, and consistency.</p></article>
+          <article><span>Role</span><strong>Publisher</strong><p>Approves release, scheduling, removal, and major updates.</p></article>
+        </div>
+        <p class="takeaway">The more people involved, the more the website needs structure behind the scenes.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-11" data-title="Workflow Order" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Publishing workflow</p>
+        <h2>What should happen before a page goes live?</h2>
+        <p class="lede small">Click the steps in a reasonable order. The goal is not one perfect workflow; the goal is to avoid publishing confusion.</p>
+        <div class="workflow-grid" id="workflowGrid" aria-label="Workflow steps"></div>
+        <div class="result-panel" id="workflowResult" aria-live="polite">Build the workflow order.</div>
+        <button class="ghost-btn" id="resetWorkflowBtn" type="button">Reset workflow</button>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-12" data-title="SEO Structure" data-section="Concept">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Search visibility</p>
+          <h2>SEO starts with good structure, not tricks.</h2>
+          <p class="lede">Search engines read page text, links, titles, markup, metadata, URLs, image descriptions, and site maps. A messy site can hide good content from search.</p>
+          <p class="takeaway">Good SEO overlaps with good accessibility and good organization: clear headings, descriptive links, useful content, alt text, readable URLs, and working pages.</p>
+        </div>
+        <div class="checklist-columns">
+          <article class="check-card">
+            <h3>Helps findability</h3>
+            <ul>
+              <li>Clear page title</li>
+              <li>Descriptive meta description</li>
+              <li>Meaningful headings</li>
+              <li>Readable URLs</li>
+              <li>Linked pages and site map</li>
+              <li>Alt text for meaningful images</li>
+            </ul>
+          </article>
+          <article class="check-card">
+            <h3>Hurts findability</h3>
+            <ul>
+              <li>Broken links</li>
+              <li>Important text only inside images</li>
+              <li>Generic titles</li>
+              <li>Unclear link text</li>
+              <li>Slow or unreliable pages</li>
+              <li>Duplicate or outdated content</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-13" data-title="SEO Choice" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Structure audit</p>
+        <h2>Which improvement would help the page most?</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Page problem</p>
+            <h3 id="seoPrompt">The page title says “Home” but the page is about the vendor lineup.</h3>
+            <p>Choose the strongest structural fix.</p>
+          </div>
+          <button class="primary-btn" id="newSeoBtn" type="button">New problem</button>
+        </div>
+        <div class="seo-choice-grid" id="seoChoiceGrid" aria-label="SEO structure choices"></div>
+        <div class="result-panel" id="seoResult" aria-live="polite">Choose a fix.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-14" data-title="Structural Review" data-section="Apply">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Apply it</p>
+        <h2>Before a site is “finished,” check the invisible structure.</h2>
+        <div class="score-board">
+          <article><strong>1</strong><h3>Can the content be understood without the styling?</h3><p>Headings, lists, links, and page sections should still make sense.</p></article>
+          <article><strong>2</strong><h3>Can the files be understood by someone new?</h3><p>Folders, names, paths, and assets should be predictable.</p></article>
+          <article><strong>3</strong><h3>Can the site be found, updated, and maintained?</h3><p>Search, metadata, links, CMS workflow, and reliability matter after launch.</p></article>
+        </div>
+        <div class="big-question">
+          <span>Class project check</span>
+          <strong>What structure decisions should be made before the first visual mockup?</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-15" data-title="Review Quiz" data-section="Review">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Quick review</p>
+        <h2>Chapter 5 check</h2>
+        <div class="quiz-card">
+          <h3 id="quizQuestion">Loading question…</h3>
+          <div class="quiz-options" id="quizOptions" aria-label="Quiz options"></div>
+          <div class="result-panel" id="quizResult" aria-live="polite">Choose an answer.</div>
+          <button class="primary-btn" id="nextQuizBtn" type="button">Next question</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-16" data-title="Exit Ticket" data-section="Close">
+      <div class="slide-inner">
+        <p class="eyebrow">Exit ticket</p>
+        <h2>Complete the sentence.</h2>
+        <div class="exit-ticket">
+          <p>“A site’s structure matters because ____________________________.”</p>
+          <textarea id="exitText" rows="5" placeholder="Write one sentence here..."></textarea>
+          <div class="mock-actions">
+            <button class="primary-btn" id="copyExitBtn" type="button">Copy response</button>
+            <button class="ghost-btn" id="clearExitBtn" type="button">Clear</button>
+          </div>
+          <p class="small-note" id="copyNote" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom-controls" aria-label="Slide controls">
+    <button class="ghost-btn" id="prevBtn" type="button">Back</button>
+    <div class="slide-status" id="slideStatus">1 / 16</div>
+    <button class="primary-btn" id="nextBtn" type="button">Next</button>
+  </footer>
+
+  <div class="overview-modal" id="overviewModal" aria-hidden="true" role="dialog" aria-label="Slide overview">
+    <div class="overview-card">
+      <div class="overview-header">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2>Chapter 5 slides</h2>
+        </div>
+        <button class="ghost-btn" id="closeOverviewBtn" type="button">Close</button>
+      </div>
+      <div class="overview-grid" id="overviewGrid"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

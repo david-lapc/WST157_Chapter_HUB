@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WST 157 · Chapter 4: Information Architecture</title>
+  <meta name="description" content="Interactive class presentation for WST 157 Website Planning and Production, Chapter 4: Information Architecture." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#slide-1">Skip to slides</a>
+
+  <header class="topbar" aria-label="Presentation controls">
+    <div class="brand">
+      <span class="brand-mark">WST</span>
+      <div>
+        <strong>WST 157</strong>
+        <span>Website Planning &amp; Production</span>
+      </div>
+    </div>
+    <nav class="top-actions" aria-label="Deck navigation">
+      <button class="ghost-btn" id="overviewBtn" type="button">Overview</button>
+      <button class="ghost-btn" id="presentBtn" type="button" aria-pressed="false">Present</button>
+      <button class="primary-btn" id="nextTopBtn" type="button">Next</button>
+    </nav>
+  </header>
+
+  <aside class="progress-panel" id="progressPanel" aria-label="Slide progress">
+    <div class="progress-title">Chapter 4 Route</div>
+    <ol id="slideList" class="slide-list"></ol>
+  </aside>
+
+  <main class="deck" id="deck">
+    <section class="slide hero" id="slide-1" data-title="Opening" data-section="Start">
+      <div class="slide-inner two-col hero-grid">
+        <div>
+          <p class="eyebrow">Chapter 4 · Information Architecture</p>
+          <h1>Making information findable</h1>
+          <p class="lede">Information architecture is the structure behind a website: the categories, labels, pages, paths, and relationships that help people find what they need.</p>
+          <div class="big-question">
+            <span>Opening question</span>
+            <strong>Where would a visitor click first?</strong>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Lesson route">
+          <h2>Today’s path</h2>
+          <ol class="route-list">
+            <li>Inventory what the site has and what it needs</li>
+            <li>Group content into useful categories</li>
+            <li>Name things consistently</li>
+            <li>Choose a structure that matches user expectations</li>
+            <li>Sketch diagrams and wireframes before visual design</li>
+            <li>Test the organization with real tasks</li>
+          </ol>
+          <p class="small-note">Use the arrow keys or the Next button to move through the deck.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-2" data-title="IA Is Structure" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Main idea</p>
+        <h2>Visual design cannot rescue confusing structure.</h2>
+        <div class="statement-card">
+          <p>A site can look polished and still fail if the content is hard to understand, hard to browse, or labeled in a way users do not expect.</p>
+        </div>
+        <div class="comparison-grid">
+          <article>
+            <h3>Surface design</h3>
+            <p>Colors, type, images, spacing, motion, and visual style.</p>
+          </article>
+          <article>
+            <h3>Information architecture</h3>
+            <p>Pages, categories, labels, navigation, relationships, diagrams, metadata, and task paths.</p>
+          </article>
+        </div>
+        <p class="takeaway">Information architecture decides how the site makes sense before it decides how the site looks.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-3" data-title="IA Jobs" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">What IA does</p>
+        <h2>Information architecture turns a pile of content into a usable system.</h2>
+        <div class="charter-grid compact-grid">
+          <article><span>01</span><strong>Organize</strong><p>Group content into taxonomies, sections, and hierarchies.</p></article>
+          <article><span>02</span><strong>Label</strong><p>Use consistent names so similar things are called the same thing.</p></article>
+          <article><span>03</span><strong>Navigate</strong><p>Plan paths that help people move through the site.</p></article>
+          <article><span>04</span><strong>Map</strong><p>Communicate the structure with outlines, diagrams, and wireframes.</p></article>
+          <article><span>05</span><strong>Test</strong><p>Check whether the organization matches real user expectations.</p></article>
+          <article><span>06</span><strong>Maintain</strong><p>Plan standards for content, metadata, accessibility, search, and updates.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-4" data-title="IA Workflow" data-section="Process">
+      <div class="slide-inner">
+        <p class="eyebrow">Five-step workflow</p>
+        <h2>A practical path for organizing site content.</h2>
+        <div class="timeline ia-steps">
+          <div><span>1</span><strong>Inventory</strong><em>What content exists? What content is missing?</em></div>
+          <div><span>2</span><strong>Outline</strong><em>What are the major categories and relationships?</em></div>
+          <div><span>3</span><strong>Chunk</strong><em>How can long information become modular, scannable pieces?</em></div>
+          <div><span>4</span><strong>Diagram</strong><em>How will the site and page structures be shown?</em></div>
+          <div><span>5</span><strong>Test</strong><em>Can real users find things through the structure?</em></div>
+        </div>
+        <p class="takeaway">The goal is not to make a perfect first map. The goal is to make a structure that can be discussed, tested, and improved.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-5" data-title="Content Inventory" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Try it</p>
+        <h2>What action should each content item get?</h2>
+        <p class="lede small">A content inventory lists what exists, what it is for, who owns it, and what should happen to it.</p>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Inventory item</p>
+            <h3 id="inventoryTitle">Old homepage welcome paragraph</h3>
+            <p id="inventoryDetails">Long, generic, and not connected to the current project goals.</p>
+          </div>
+          <button class="primary-btn" id="newInventoryBtn" type="button">New item</button>
+        </div>
+        <div class="site-type-grid inventory-choice-grid" id="inventoryChoiceGrid" aria-label="Content action choices"></div>
+        <div class="result-panel" id="inventoryResult" aria-live="polite">Choose an inventory action.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-6" data-title="Hierarchy" data-section="Concept">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Taxonomy and hierarchy</p>
+          <h2>Start broad. Then get specific.</h2>
+          <p class="lede">A hierarchy helps users move from general categories to more specific pages. It also becomes the foundation for navigation and search.</p>
+          <p class="takeaway">If the hierarchy matches the user’s mental model, the site feels easier to predict.</p>
+        </div>
+        <div class="diagram-card hierarchy-diagram" aria-label="Example hierarchy diagram">
+          <div class="node home">Home</div>
+          <div class="branch-row">
+            <div class="node">Visit</div>
+            <div class="node">Lineup</div>
+            <div class="node">Vendors</div>
+          </div>
+          <div class="branch-row small-nodes">
+            <div class="node">Hours</div>
+            <div class="node">Parking</div>
+            <div class="node">FAQ</div>
+            <div class="node">Apply</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-7" data-title="Label Check" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Controlled vocabulary</p>
+        <h2>One idea should not have five different names.</h2>
+        <div class="split-card">
+          <article>
+            <h3>Confusing labels</h3>
+            <ul>
+              <li>Register</li>
+              <li>RSVP</li>
+              <li>Get Tickets</li>
+              <li>Reserve Spot</li>
+              <li>Sign Up</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Consistent system</h3>
+            <ul>
+              <li>Use one main label for the main action</li>
+              <li>Use supporting copy to clarify details</li>
+              <li>Keep navigation, buttons, and page titles aligned</li>
+              <li>Choose labels users understand, not just internal terms</li>
+            </ul>
+          </article>
+        </div>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Label decision</p>
+            <h3 id="labelScenario">A free event needs visitors to save a spot before attending.</h3>
+            <p>Which label is clearest for the main call to action?</p>
+          </div>
+          <button class="primary-btn" id="newLabelBtn" type="button">New decision</button>
+        </div>
+        <div class="site-type-grid label-choice-grid" id="labelChoiceGrid" aria-label="Label choices"></div>
+        <div class="result-panel" id="labelResult" aria-live="polite">Choose a label.</div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-8" data-title="Organization Themes" data-section="Concept">
+      <div class="slide-inner">
+        <p class="eyebrow">Ways to organize information</p>
+        <h2>The same content can be organized in different ways.</h2>
+        <div class="question-grid hat-racks">
+          <article><strong>Category</strong><span>By similarity or topic</span></article>
+          <article><strong>Time</strong><span>By sequence, schedule, or timeline</span></article>
+          <article><strong>Location</strong><span>By place, map, area, or region</span></article>
+          <article><strong>Alphabetic</strong><span>By name, A–Z lists, dictionary, directory</span></article>
+          <article><strong>Continuum</strong><span>By price, rating, size, difficulty, or score</span></article>
+        </div>
+        <p class="takeaway">A useful organization scheme matches how the user thinks about the task.</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-9" data-title="Pick a Theme" data-section="Try">
+      <div class="slide-inner">
+        <p class="eyebrow">Try it</p>
+        <h2>Which organization theme fits the task?</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">User task</p>
+            <h3 id="themeTask">Find the cheapest ticket option.</h3>
+            <p id="themeHint">The user is comparing values.</p>
+          </div>
+          <button class="primary-btn" id="newThemeBtn" type="button">New task</button>
+        </div>
+        <div class="site-type-grid" id="themeChoiceGrid" aria-label="Organization theme choices"></div>
+        <div class="result-panel" id="themeResult" aria-live="polite">Choose the best organizing theme.</div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-10" data-title="Card Sort" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Content mapping</p>
+        <h2>Card sorting tests whether categories make sense.</h2>
+        <p class="lede small">Pick a card. Then choose where it belongs. Watch how a proposed navigation structure starts to form.</p>
+        <div class="card-sort-board">
+          <div class="sort-deck" aria-label="Unsorted cards">
+            <h3>Cards</h3>
+            <div id="sortCards" class="sort-cards"></div>
+          </div>
+          <div class="sort-buckets" aria-label="Category buckets" id="sortBuckets"></div>
+        </div>
+        <div class="result-panel" id="sortResult" aria-live="polite">Select a card, then place it in a category.</div>
+        <div class="choice-toolbar">
+          <span id="sortCount">0 cards placed</span>
+          <button class="ghost-btn" id="resetSortBtn" type="button">Reset sort</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-11" data-title="Chunking" data-section="Concept">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Segmenting information</p>
+          <h2>Most web content should be chunked for scanning.</h2>
+          <p class="lede">Users often come to a website with a specific question. Headings, short sections, lists, and consistent patterns help them find the relevant piece faster.</p>
+          <p class="takeaway">Chunking is not just shorter writing. It is content divided into useful, reusable pieces.</p>
+        </div>
+        <div class="chunk-card">
+          <div class="bad-chunk">
+            <h3>Unchunked</h3>
+            <p>The event has many things happening and visitors should know about the food, location, parking, schedule, vendor rules, ticket policies, and contact information before they arrive, especially because some activities change depending on time and weather.</p>
+          </div>
+          <div class="good-chunk">
+            <h3>Chunked</h3>
+            <ul>
+              <li><strong>When:</strong> Saturday, 6–10 PM</li>
+              <li><strong>Where:</strong> Main courtyard</li>
+              <li><strong>Bring:</strong> Student ID and payment card</li>
+              <li><strong>Plan ahead:</strong> Parking fills quickly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-12" data-title="Site Structure" data-section="Try">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Choosing a site structure</p>
+        <h2>Sequence, hierarchy, or web?</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Website need</p>
+            <h3 id="structureScenario">A training module should be completed from lesson 1 to lesson 6.</h3>
+            <p>Which structure supports this best?</p>
+          </div>
+          <button class="primary-btn" id="newStructureBtn" type="button">New need</button>
+        </div>
+        <div class="process-strip structure-strip" id="structureChoiceGrid" aria-label="Site structure choices"></div>
+        <div class="result-panel" id="structureResult" aria-live="polite">Choose a structure.</div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-13" data-title="Site Diagram" data-section="Build">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Presenting IA</p>
+        <h2>A site diagram turns organization into a shared map.</h2>
+        <div class="diagram-builder">
+          <div class="charter-form diagram-form">
+            <label>Site name
+              <input id="siteNameInput" value="Project Site" />
+            </label>
+            <label>Main categories
+              <textarea id="categoriesInput">About
+Services
+Events
+Resources
+Contact</textarea>
+            </label>
+            <label>Example subpages
+              <textarea id="subpagesInput">Overview, FAQ
+Packages, Pricing
+Schedule, Vendors
+Guides, Downloads
+Location, Form</textarea>
+            </label>
+          </div>
+          <div class="diagram-preview" aria-label="Generated site diagram">
+            <h3 id="diagramTitle">Project Site</h3>
+            <div id="diagramOutput" class="diagram-output"></div>
+          </div>
+        </div>
+        <p class="small-note">Site diagrams stay focused on structure: what exists, how it connects, and where users can go.</p>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-14" data-title="Wireframes" data-section="Concept">
+      <div class="slide-inner wide">
+        <p class="eyebrow">Wireframes</p>
+        <h2>Wireframes keep the conversation on structure, not decoration.</h2>
+        <div class="wireframe-stage">
+          <div class="wireframe-box" aria-label="Wireframe layout example">
+            <button data-wire="identity">Logo / identity</button>
+            <button data-wire="global">Global navigation</button>
+            <button data-wire="title">Page title</button>
+            <button data-wire="local">Local navigation</button>
+            <button data-wire="content">Primary content</button>
+            <button data-wire="action">Main action</button>
+            <button data-wire="footer">Footer / contact</button>
+          </div>
+          <div class="type-output" id="wireOutput">
+            <h3>Click a wireframe area</h3>
+            <p>Each area has a purpose before it has a final visual style.</p>
+          </div>
+        </div>
+        <p class="takeaway">A wireframe should answer: what goes here, why is it here, and how does it support navigation or content?</p>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-15" data-title="Findability Test" data-section="Test">
+      <div class="slide-inner">
+        <p class="eyebrow">Testing IA</p>
+        <h2>Can the user predict where to go?</h2>
+        <div class="interactive-card">
+          <div>
+            <p class="label">Task</p>
+            <h3 id="pathTask">Find out whether the event allows outside food.</h3>
+            <p>Choose the most likely navigation path.</p>
+          </div>
+          <button class="primary-btn" id="newPathBtn" type="button">New task</button>
+        </div>
+        <div class="site-type-grid" id="pathChoiceGrid" aria-label="Path choices"></div>
+        <div class="result-panel" id="pathResult" aria-live="polite">Choose a path.</div>
+      </div>
+    </section>
+
+    <section class="slide activity" id="slide-16" data-title="Checkpoint" data-section="Review">
+      <div class="slide-inner">
+        <p class="eyebrow">Checkpoint</p>
+        <h2>Quick review</h2>
+        <div class="quiz-card" id="quizCard">
+          <p class="quiz-question" id="quizQuestion">What is the main purpose of a content inventory?</p>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quizFeedback" id="quizFeedback" aria-live="polite"></div>
+          <button class="primary-btn" id="nextQuizBtn" type="button">Next question</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-17" data-title="Wrap" data-section="End">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="eyebrow">Takeaway</p>
+          <h2>Information architecture is how a site becomes understandable.</h2>
+          <p class="lede">Good IA helps people predict where things are, understand what labels mean, and move through a site with confidence.</p>
+        </div>
+        <div class="exit-ticket">
+          <h3>Exit ticket</h3>
+          <p>Complete one sentence:</p>
+          <blockquote>“A website is easier to use when its information is organized by ________ instead of ________.”</blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="deck-controls" aria-label="Slide controls">
+    <button class="ghost-btn" id="prevBtn" type="button">Back</button>
+    <div class="slide-status" id="slideStatus">1 / 17</div>
+    <button class="primary-btn" id="nextBtn" type="button">Next</button>
+  </footer>
+
+  <div class="overview-modal" id="overviewModal" aria-hidden="true" role="dialog" aria-label="Presentation overview">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Presentation overview</h2>
+        <button class="ghost-btn" id="closeOverviewBtn" type="button">Close</button>
+      </div>
+      <p>This deck follows Chapter 4 from content inventory to categories, labels, diagrams, wireframes, and IA testing.</p>
+      <div class="overview-grid" id="overviewGrid"></div>
+      <p class="source-note">Source material: Web Style Guide, Chapter 4: Information Architecture by Patrick J. Lynch and Sarah Horton.</p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
