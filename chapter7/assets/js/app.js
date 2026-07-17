@@ -1,0 +1,23 @@
+const slides = Array.from(document.querySelectorAll('.slide'));
+let current = 0;
+const slideList = document.querySelector('#slideList');
+const overviewGrid = document.querySelector('#overviewGrid');
+const status = document.querySelector('#slideStatus');
+const nextBtn = document.querySelector('#nextBtn');
+const prevBtn = document.querySelector('#prevBtn');
+const nextTopBtn = document.querySelector('#nextTopBtn');
+const presentBtn = document.querySelector('#presentBtn');
+const overviewBtn = document.querySelector('#overviewBtn');
+const overviewModal = document.querySelector('#overviewModal');
+const closeOverviewBtn = document.querySelector('#closeOverviewBtn');
+function makeSlideButton(slide,index,compact=false){const b=document.createElement('button');b.type='button';b.dataset.index=index;b.innerHTML=compact?`<strong>${String(index+1).padStart(2,'0')}. ${slide.dataset.title}</strong><span>${slide.dataset.section}</span>`:`<span class="num">${index+1}</span><span><span class="name">${slide.dataset.title}</span><span class="section">${slide.dataset.section}</span></span>`;b.addEventListener('click',()=>goTo(index));return b;}
+slides.forEach((s,i)=>{const li=document.createElement('li');li.appendChild(makeSlideButton(s,i));slideList.appendChild(li);overviewGrid.appendChild(makeSlideButton(s,i,true));});
+const navButtons=Array.from(slideList.querySelectorAll('button'));
+function goTo(i){current=Math.max(0,Math.min(slides.length-1,i));slides[current].scrollIntoView({behavior:'smooth',block:'start'});updateState();closeOverview();}
+function updateState(){status.textContent=`${current+1} / ${slides.length}`;navButtons.forEach((b,i)=>b.classList.toggle('active',i===current));prevBtn.disabled=current===0;nextBtn.textContent=current===slides.length-1?'Start over':'Next';nextTopBtn.textContent=current===slides.length-1?'Start over':'Next';}
+function nextSlide(){current===slides.length-1?goTo(0):goTo(current+1)}function prevSlide(){goTo(current-1)}
+nextBtn.addEventListener('click',nextSlide);nextTopBtn.addEventListener('click',nextSlide);prevBtn.addEventListener('click',prevSlide);
+document.addEventListener('keydown',e=>{const t=document.activeElement?.tagName?.toLowerCase();if(t==='input'||t==='textarea')return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();nextSlide()}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prevSlide()}if(e.key.toLowerCase()==='f')togglePresent();if(e.key==='Escape')closeOverview();});
+function togglePresent(){const a=document.body.classList.toggle('presenting');presentBtn.setAttribute('aria-pressed',String(a));presentBtn.textContent=a?'Exit Present':'Present'}presentBtn.addEventListener('click',togglePresent);
+function openOverview(){overviewModal.setAttribute('aria-hidden','false')}function closeOverview(){overviewModal.setAttribute('aria-hidden','true')}overviewBtn.addEventListener('click',openOverview);closeOverviewBtn.addEventListener('click',closeOverview);overviewModal.addEventListener('click',e=>{if(e.target===overviewModal)closeOverview()});updateState();
+const questions=[{q:'Which element belongs in the main content area?',a:'The unique page topic',o:['Repeated legal links','The unique page topic','A decorative banner','Hidden tracking code']},{q:'Why start with mobile-first blocks?',a:'It forces priority decisions',o:['It removes the need for desktop','It forces priority decisions','It makes graphics unnecessary','It avoids testing']},{q:'Where do users commonly expect site search?',a:'Upper right header area',o:['Inside the footer only','Upper right header area','Only on the home page','Behind the logo']}];let qi=0;const quizQuestion=document.querySelector('#quizQuestion'),quizOptions=document.querySelector('#quizOptions'),quizFeedback=document.querySelector('#quizFeedback'),nextQuizBtn=document.querySelector('#nextQuizBtn');function renderQuiz(){if(!quizQuestion)return;const item=questions[qi];quizQuestion.textContent=item.q;quizFeedback.textContent='';quizOptions.innerHTML='';item.o.forEach(opt=>{const b=document.createElement('button');b.type='button';b.textContent=opt;b.addEventListener('click',()=>{Array.from(quizOptions.children).forEach(x=>{x.disabled=true;x.classList.toggle('correct-choice',x.textContent===item.a);x.classList.toggle('incorrect-choice',x.textContent===opt&&opt!==item.a)});quizFeedback.textContent=opt===item.a?'Correct.':'Not quite. Look for the option that supports structure, access, or user expectation.'});quizOptions.appendChild(b)})}nextQuizBtn?.addEventListener('click',()=>{qi=(qi+1)%questions.length;renderQuiz()});renderQuiz();
