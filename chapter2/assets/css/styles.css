@@ -1317,3 +1317,174 @@ body.presenting .slide-inner {
     grid-template-columns: 1fr;
   }
 }
+
+/* Unified dark shell overrides */
+:root {
+  --bg: #0f1226;
+  --paper: #f8f6ef;
+  --ink: #151626;
+  --muted: #6b6f86;
+  --line: rgba(21, 22, 38, 0.14);
+  --accent: #ff7d62;
+  --accent-2: #6d70d6;
+  --accent-3: #ffc955;
+  --accent-soft: rgba(109, 112, 214, 0.14);
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 125, 98, 0.25), transparent 34%),
+    radial-gradient(circle at 80% 10%, rgba(109, 112, 214, 0.25), transparent 34%),
+    linear-gradient(135deg, var(--bg), #090b18 72%);
+}
+
+.topbar {
+  background: rgba(12, 15, 32, 0.72);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.brand strong,
+.brand span:last-child {
+  color: #ffffff;
+}
+
+.brand span:last-child {
+  opacity: 0.72;
+}
+
+.brand-mark {
+  color: #111;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+  box-shadow: 0 10px 30px rgba(255, 125, 98, 0.35);
+}
+
+.primary-btn,
+.ghost-btn,
+.deck-controls button,
+.overview-grid button {
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.primary-btn {
+  color: #11131f;
+  background: linear-gradient(135deg, var(--accent), #ff9a6b);
+  box-shadow: 0 12px 26px rgba(255, 125, 98, 0.25);
+}
+
+.ghost-btn {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.progress-panel {
+  background: rgba(12, 15, 32, 0.62);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+}
+
+.progress-title,
+.slide-list .section,
+.slide-status {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.slide-list button {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.slide-list button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.slide-list button.active {
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
+}
+
+.slide-list .num {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.slide-list .active .num {
+  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+  color: #111;
+}
+
+.slide-inner {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, #f8f6ef, #fffdfa);
+  box-shadow: var(--shadow);
+}
+
+.takeaway,
+.exit-ticket blockquote,
+.big-question,
+.hero-card,
+.statement-card,
+.prompt-card,
+.interactive-card,
+.slider-card,
+.quote-panel,
+.exit-ticket,
+.quiz-card,
+.comparison-grid article,
+.split-card article,
+.question-grid article,
+.feature-card,
+.type-output,
+.example-charter article,
+.charter-grid article,
+.role-board article,
+.process-strip > div,
+.overview-grid button,
+.modal-card {
+  border-color: var(--line);
+}
+
+.deck-controls {
+  background: rgba(12, 15, 32, 0.78);
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.deck-controls button {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+.deck-controls .primary-btn {
+  color: #11131f;
+  background: linear-gradient(135deg, var(--accent), #ff9a6b);
+}
+
+.overview-modal {
+  background: rgba(9, 11, 24, 0.88);
+}
+
+.modal-card {
+  background: linear-gradient(180deg, #f8f6ef, #fffdfa);
+}
+
+.overview-grid button {
+  background: #ffffff;
+}
+
+body.presenting {
+  background: linear-gradient(135deg, var(--bg), #090b18 72%);
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    background: rgba(12, 15, 32, 0.88);
+  }
+
+  .deck-controls {
+    background: rgba(9, 11, 24, 0.9);
+  }
+}

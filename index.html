@@ -12,15 +12,17 @@
         rel="stylesheet" />
     <style>
         :root {
-            --bg: #f7f4ee;
-            --paper: #fffaf2;
-            --ink: #15211f;
-            --muted: #415752;
-            --brand: #0f766e;
-            --brand-2: #f08a3e;
-            --line: #d6ddd3;
-            --shadow: 0 18px 40px rgba(21, 33, 31, 0.12);
-            --radius: 20px;
+            --bg: #0f1226;
+            --paper: #f8f6ef;
+            --paper-2: #fffdfa;
+            --ink: #151626;
+            --muted: #6b6f86;
+            --brand: #ff7d62;
+            --brand-2: #ffc955;
+            --brand-3: #6d70d6;
+            --line: rgba(21, 22, 38, 0.14);
+            --shadow: 0 28px 80px rgba(0, 0, 0, 0.25);
+            --radius: 28px;
         }
 
         * {
@@ -30,25 +32,25 @@
         body {
             margin: 0;
             font-family: "Manrope", "Segoe UI", sans-serif;
-            color: var(--ink);
+            color: #ffffff;
             background:
-                radial-gradient(circle at 8% 10%, #fff7e2 0%, transparent 28%),
-                radial-gradient(circle at 88% 16%, #d7efe6 0%, transparent 30%),
-                linear-gradient(180deg, #fefdf8 0%, var(--bg) 100%);
+                radial-gradient(circle at 14% 10%, rgba(255, 125, 98, 0.26) 0%, transparent 28%),
+                radial-gradient(circle at 84% 12%, rgba(109, 112, 214, 0.26) 0%, transparent 30%),
+                linear-gradient(135deg, var(--bg) 0%, #090b18 72%);
             min-height: 100vh;
         }
 
         .wrap {
-            width: min(1060px, 92vw);
+            width: min(1180px, 92vw);
             margin: 0 auto;
-            padding: 3.5rem 0 2.5rem;
+            padding: 2rem 0 2.75rem;
         }
 
         header {
-            background: var(--paper);
-            border: 1px solid var(--line);
+            background: linear-gradient(180deg, var(--paper), var(--paper-2));
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--radius);
-            padding: clamp(1.5rem, 4vw, 2.5rem);
+            padding: clamp(1.6rem, 4vw, 2.8rem);
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
@@ -57,13 +59,13 @@
         header::after {
             content: "";
             position: absolute;
-            right: -38px;
-            bottom: -36px;
-            width: 180px;
+            right: -42px;
+            bottom: -42px;
+            width: 220px;
             aspect-ratio: 1 / 1;
-            background: linear-gradient(135deg, #f9b77d, #ffd7a4);
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
             border-radius: 32% 68% 52% 48% / 43% 44% 56% 57%;
-            opacity: 0.5;
+            opacity: 0.72;
             pointer-events: none;
         }
 
@@ -73,8 +75,17 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             font-weight: 700;
-            color: var(--brand);
-            margin-bottom: 0.75rem;
+            color: var(--brand-3);
+            margin-bottom: 1rem;
+            text-decoration: none;
+            padding: 0.42rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(109, 112, 214, 0.12);
+        }
+
+        .eyebrow:hover,
+        .eyebrow:focus-visible {
+            text-decoration: underline;
         }
 
         h1 {
@@ -83,33 +94,45 @@
             line-height: 1.08;
             margin: 0;
             max-width: 16ch;
+            color: var(--ink);
         }
 
         .intro {
             color: var(--muted);
-            font-size: 1.05rem;
+            font-size: 1.08rem;
             margin: 1rem 0 0;
-            max-width: 58ch;
+            max-width: 62ch;
+            line-height: 1.55;
         }
 
         .chapter-grid {
-            margin-top: 1.7rem;
+            margin-top: 2rem;
             display: grid;
-            gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+            gap: 1.1rem;
+            grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
         }
 
         .chapter-card {
             background: #ffffff;
             border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 1rem 1rem 1.1rem;
+            border-radius: 22px;
+            padding: 1.15rem 1.15rem 1.2rem;
             display: flex;
             flex-direction: column;
-            gap: 0.7rem;
+            gap: 0.8rem;
             transform: translateY(18px);
             opacity: 0;
             animation: slide-in 520ms ease forwards;
+            box-shadow: 0 12px 32px rgba(20, 22, 40, 0.08);
+            transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+        }
+
+        .chapter-card:hover,
+        .chapter-card:focus-within {
+            transform: translateY(-4px);
+            opacity: 1;
+            box-shadow: 0 18px 36px rgba(20, 22, 40, 0.14);
+            border-color: rgba(109, 112, 214, 0.25);
         }
 
         .chapter-card:nth-child(2) {
@@ -136,12 +159,20 @@
             animation-delay: 720ms;
         }
 
+        .chapter-card:nth-child(8) {
+            animation-delay: 840ms;
+        }
+
+        .chapter-card:nth-child(9) {
+            animation-delay: 960ms;
+        }
+
         .chapter-no {
             width: fit-content;
-            padding: 0.24rem 0.62rem;
+            padding: 0.34rem 0.72rem;
             border-radius: 999px;
-            background: #e5f4f1;
-            color: #0d615a;
+            background: rgba(109, 112, 214, 0.12);
+            color: #4d50b8;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.05em;
@@ -164,24 +195,24 @@
         .actions {
             margin-top: auto;
             display: flex;
-            gap: 0.62rem;
+            gap: 0.7rem;
             flex-wrap: wrap;
         }
 
         .btn {
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 999px;
             border: 1px solid transparent;
             font-weight: 700;
             font-size: 0.9rem;
-            padding: 0.58rem 0.85rem;
-            transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+            padding: 0.72rem 1rem;
+            transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
         }
 
         .btn-primary {
-            background: var(--brand);
-            color: #ffffff;
-            box-shadow: 0 8px 18px rgba(15, 118, 110, 0.28);
+            background: linear-gradient(135deg, var(--brand), #ff9a6b);
+            color: #11131f;
+            box-shadow: 0 12px 26px rgba(255, 125, 98, 0.25);
         }
 
         .btn-secondary {
@@ -196,15 +227,19 @@
         }
 
         .resources {
-            margin-top: 1rem;
+            margin-top: 1.4rem;
             color: var(--muted);
-            font-size: 0.93rem;
+            font-size: 0.98rem;
+            padding: 1rem 1.1rem;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.7);
         }
 
         footer {
-            margin-top: 1.2rem;
-            color: #47605b;
-            font-size: 0.9rem;
+            margin-top: 1.3rem;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.92rem;
             text-align: center;
         }
 
@@ -217,11 +252,11 @@
 
         @media (max-width: 640px) {
             .wrap {
-                padding-top: 1.8rem;
+                padding-top: 1rem;
             }
 
             header {
-                border-radius: 14px;
+                border-radius: 22px;
             }
         }
     </style>
@@ -230,7 +265,7 @@
 <body>
     <main class="wrap">
         <header>
-            <span class="eyebrow">WST 157</span>
+            <a class="eyebrow" href="index.html">WST 157</a>
             <h1>Website Planning &amp; Production Chapter Hub</h1>
             <p class="intro">
                 Use this page as your starting point each week. Open a chapter presentation, then check the chapter
@@ -326,6 +361,32 @@
                     <div class="actions">
                         <a class="btn btn-primary" href="chapter7/index.html">Open Presentation</a>
                         <a class="btn btn-secondary" href="chapter7/README.md">Chapter Notes</a>
+                    </div>
+                </article>
+
+                <article class="chapter-card">
+                    <span class="chapter-no">Chapter 8</span>
+                    <h2>Graphic Design</h2>
+                    <p class="chapter-desc">
+                        Understand visual hierarchy, balance, and design as a planned tool for clarity, trust, and
+                        mood, not decoration.
+                    </p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="chapter8/index.html">Open Presentation</a>
+                        <a class="btn btn-secondary" href="chapter8/README.md">Chapter Notes</a>
+                    </div>
+                </article>
+
+                <article class="chapter-card">
+                    <span class="chapter-no">Chapter 9</span>
+                    <h2>Typography</h2>
+                    <p class="chapter-desc">
+                        Explore how type structures reading, connects visual hierarchy to semantic markup, and shapes
+                        comfortable body text.
+                    </p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="chapter9/index.html">Open Presentation</a>
+                        <a class="btn btn-secondary" href="chapter9/README.md">Chapter Notes</a>
                     </div>
                 </article>
             </section>
