@@ -108,83 +108,96 @@ const saved = parseInt(localStorage.getItem(document.body.dataset.deck || 'deck'
 showSlide(Number.isFinite(saved) ? saved : 0);
 
 // Generic toggles
-for(const btn of document.querySelectorAll('[data-reveal]')){
-  btn.addEventListener('click',()=>{
+for (const btn of document.querySelectorAll('[data-reveal]')) {
+  btn.addEventListener('click', () => {
     const target = document.querySelector(btn.dataset.reveal);
-    if(target) target.classList.toggle('show');
+    if (target) target.classList.toggle('show');
   });
 }
-for(const group of document.querySelectorAll('[data-choice-group]')){
-  group.addEventListener('click', e=>{
-    const btn=e.target.closest('button,.chip-choice,.priority-card,.audit-card');
-    if(!btn) return;
-    group.querySelectorAll('button,.chip-choice,.priority-card,.audit-card').forEach(x=>x.classList.remove('active','selected'));
-    btn.classList.add(btn.classList.contains('priority-card')?'selected':'active');
+for (const group of document.querySelectorAll('[data-choice-group]')) {
+  const activateChoice = (btn) => {
+    group.querySelectorAll('button,.chip-choice,.priority-card,.audit-card').forEach(x => x.classList.remove('active', 'selected'));
+    btn.classList.add(btn.classList.contains('priority-card') ? 'selected' : 'active');
     const target = group.dataset.target && document.querySelector(group.dataset.target);
-    if(target && btn.dataset.text) target.textContent = btn.dataset.text;
-    if(target && btn.dataset.html) target.innerHTML = btn.dataset.html;
+    if (target && btn.dataset.text) target.textContent = btn.dataset.text;
+    if (target && btn.dataset.html) target.innerHTML = btn.dataset.html;
+  };
+  group.addEventListener('click', e => {
+    const btn = e.target.closest('button,.chip-choice,.priority-card,.audit-card');
+    if (!btn) return;
+    activateChoice(btn);
+  });
+  group.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const btn = e.target.closest('.priority-card,.audit-card');
+    if (!btn) return;
+    e.preventDefault();
+    activateChoice(btn);
   });
 }
-for(const q of document.querySelectorAll('[data-quiz]')){
-  q.addEventListener('click', e=>{
-    const btn=e.target.closest('button'); if(!btn) return;
-    q.querySelectorAll('button').forEach(b=>{ b.classList.remove('correct','wrong'); b.disabled=true; });
-    const feedback=q.querySelector('.feedback');
-    if(btn.dataset.correct){ btn.classList.add('correct'); feedback.textContent='Correct — that answer supports the chapter idea.'; }
-    else { btn.classList.add('wrong'); feedback.textContent='Not quite — look for the answer that connects design decisions to meaning and usability.'; }
+for (const q of document.querySelectorAll('[data-quiz]')) {
+  q.addEventListener('click', e => {
+    const btn = e.target.closest('button'); if (!btn) return;
+    q.querySelectorAll('button').forEach(b => { b.classList.remove('correct', 'wrong'); b.disabled = true; });
+    const feedback = q.querySelector('.feedback');
+    if (btn.dataset.correct) { btn.classList.add('correct'); feedback.textContent = 'Correct — that answer supports the chapter idea.'; }
+    else { btn.classList.add('wrong'); feedback.textContent = 'Not quite — look for the answer that connects design decisions to meaning and usability.'; }
   });
 }
 
 // Ch8 specifics
 const balance = document.querySelector('#balanceRange');
-if(balance){
+if (balance) {
   const visual = document.querySelector('#balanceVisual');
   const info = document.querySelector('#balanceInfo');
   const output = document.querySelector('#balanceOutput');
-  balance.addEventListener('input',()=>{
-    const v=+balance.value;
+  balance.addEventListener('input', () => {
+    const v = +balance.value;
     visual.style.flex = v;
-    info.style.flex = 100-v;
+    info.style.flex = 100 - v;
     output.textContent = v < 35 ? 'Too much information: accurate, but tiring.' : v > 70 ? 'Too much visual sensation: exciting, but unclear.' : 'Balanced: visual interest supports useful information.';
   });
 }
 const hierarchyItems = document.querySelectorAll('[data-priority-demo] .priority-card');
-if(hierarchyItems.length){
-  hierarchyItems.forEach(card=>card.addEventListener('click',()=>{
-    hierarchyItems.forEach(c=>{ c.style.transform=''; c.style.fontSize=''; c.style.background=''; c.style.color=''; });
-    card.style.transform='scale(1.08)'; card.style.fontSize='1.18rem'; card.style.background='#161a36'; card.style.color='#fff';
+if (hierarchyItems.length) {
+  hierarchyItems.forEach(card => card.addEventListener('click', () => {
+    hierarchyItems.forEach(c => { c.style.transform = ''; c.style.fontSize = ''; c.style.background = ''; c.style.color = ''; });
+    card.style.transform = 'scale(1.08)'; card.style.fontSize = '1.18rem'; card.style.background = '#161a36'; card.style.color = '#fff';
   }));
 }
 const gridButtons = document.querySelectorAll('[data-grid-mode]');
 const gridDemo = document.querySelector('#gridDemo');
-if(gridButtons.length && gridDemo){
-  gridButtons.forEach(btn=>btn.addEventListener('click',()=>{
-    gridButtons.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+if (gridButtons.length && gridDemo) {
+  gridButtons.forEach(btn => btn.addEventListener('click', () => {
+    gridButtons.forEach(b => b.classList.remove('active')); btn.classList.add('active');
     gridDemo.style.gridTemplateColumns = btn.dataset.gridMode;
   }));
 }
 
 // Ch9 specifics
 const typeStage = document.querySelector('#typeStage');
-if(typeStage){
-  document.querySelectorAll('[data-type-action]').forEach(btn=>btn.addEventListener('click',()=>{
-    const a=btn.dataset.typeAction;
-    if(a==='small') typeStage.style.fontSize='12px';
-    if(a==='comfortable') typeStage.style.fontSize='18px';
-    if(a==='wide') typeStage.style.maxWidth='100%';
-    if(a==='narrow') typeStage.style.maxWidth='650px';
-    if(a==='tight') typeStage.style.setProperty('--customLine','1.05');
-    if(a==='open') typeStage.style.setProperty('--customLine','1.65');
-    typeStage.querySelectorAll('p').forEach(p=>{p.style.lineHeight=getComputedStyle(typeStage).getPropertyValue('--customLine') || '1.55'});
+if (typeStage) {
+  const typeButtons = document.querySelectorAll('[data-type-action]');
+  typeButtons.forEach(btn => btn.addEventListener('click', () => {
+    typeButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const a = btn.dataset.typeAction;
+    if (a === 'small') typeStage.style.fontSize = '12px';
+    if (a === 'comfortable') typeStage.style.fontSize = '18px';
+    if (a === 'wide') typeStage.style.maxWidth = '100%';
+    if (a === 'narrow') typeStage.style.maxWidth = '650px';
+    if (a === 'tight') typeStage.style.setProperty('--customLine', '1.05');
+    if (a === 'open') typeStage.style.setProperty('--customLine', '1.65');
+    typeStage.querySelectorAll('p').forEach(p => { p.style.lineHeight = getComputedStyle(typeStage).getPropertyValue('--customLine') || '1.55' });
   }));
 }
 const scale = document.querySelector('#scaleRange');
-if(scale){
+if (scale) {
   const output = document.querySelector('#scaleOutput');
-  scale.addEventListener('input',()=>{
+  scale.addEventListener('input', () => {
     const v = Number(scale.value);
-    output.querySelector('[data-h1]').style.fontSize = `${38 + v*4}px`;
-    output.querySelector('[data-h2]').style.fontSize = `${24 + v*2}px`;
+    output.querySelector('[data-h1]').style.fontSize = `${38 + v * 4}px`;
+    output.querySelector('[data-h2]').style.fontSize = `${24 + v * 2}px`;
     output.querySelector('[data-p]').style.fontSize = `${16 + v}px`;
   });
 }

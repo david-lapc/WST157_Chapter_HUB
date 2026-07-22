@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WST 157 · Chapter 8: Graphic Design</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body data-deck="wst157-ch8">
   <a class="skip-link" href="#slide-1">Skip to slides</a>
   <div class="deck-shell">
@@ -31,178 +33,323 @@
 
     <main class="slide-area" id="deck" aria-live="polite">
       <section class="slide" id="slide-1">
-<div class="kicker">Chapter 8 · Graphic Design</div>
-<h1 class="slide-title">Visual choices should have a job.</h1>
-<p class="subtitle">Graphic design is not decoration after the “real work.” It is the planned arrangement of words, images, space, contrast, and pattern so a page feels clear, trustworthy, and useful.</p>
-<div class="callout">Chapter question: <strong>What should the user notice first, and why?</strong></div>
-</section>
-<section class="slide">
-<div class="kicker">Opening discussion</div>
-<h2 class="big-question">When a site looks “good,” what are we actually responding to?</h2>
-<div class="grid three" style="margin-top:30px">
-  <div class="card"><h3>Trust</h3><p>Does this feel credible, careful, current, and intentional?</p></div>
-  <div class="card"><h3>Clarity</h3><p>Can the eye quickly tell what matters and what to do next?</p></div>
-  <div class="card"><h3>Mood</h3><p>Does the visual tone match the message, audience, and situation?</p></div>
-</div>
-<div class="callout">Aesthetic judgment happens fast. Design has to earn confidence before the user reads everything.</div>
-</section>
-<section class="slide">
-<div class="kicker">Design logic</div>
-<h2 class="big-question">A page needs visual interest and useful information.</h2>
-<p class="subtitle">Too plain can feel dead. Too flashy can become confusing. The design problem is finding the balance.</p>
-<div class="example-panel" style="margin-top:26px">
-  <div class="try">Try it</div>
-  <input id="balanceRange" type="range" min="10" max="90" value="50" style="width:100%" />
-  <div style="display:flex;height:80px;margin-top:16px;border-radius:18px;overflow:hidden;border:1px solid var(--line)">
-    <div id="balanceVisual" style="flex:50;background:linear-gradient(135deg,#6d70d6,#ff7d62,#ffc955);display:grid;place-items:center;color:white;font-weight:900">Visual sensation</div>
-    <div id="balanceInfo" style="flex:50;background:#fff;display:grid;place-items:center;font-weight:900">Information</div>
-  </div>
-  <p id="balanceOutput" class="large-text" style="font-size:26px;margin:18px 0 0">Balanced: visual interest supports useful information.</p>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">Design is not a skin</div>
-<h2 class="big-question">If design arrives after every important decision, it becomes decoration.</h2>
-<div class="compare">
-  <div class="card bad"><h3>Decoration thinking</h3><p>“The pages are already decided. Make it look nice.”</p></div>
-  <div class="card good"><h3>Design thinking</h3><p>“What should the user understand, feel, and do on this page?”</p></div>
-</div>
-<div class="list">
-  <div class="item"><span class="num">1</span><div><strong>Purpose</strong><span>What is this page trying to accomplish?</span></div></div>
-  <div class="item"><span class="num">2</span><div><strong>Priority</strong><span>What deserves the strongest visual weight?</span></div></div>
-  <div class="item"><span class="num">3</span><div><strong>Pattern</strong><span>How will repeated pieces stay consistent across the site?</span></div></div>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">The flexible web</div>
-<h2 class="big-question">The web has no fixed canvas.</h2>
-<p class="subtitle">A printed poster has known edges. A web page has many possible screens, settings, zoom levels, and contexts.</p>
-<div class="grid three" style="margin-top:28px">
-  <div class="fake-browser"><div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="browser-page"><div class="hero-mini">Phone</div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div></div>
-  <div class="fake-browser"><div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="browser-page"><div class="hero-mini">Tablet</div><div class="grid two"><div class="skeleton-line"></div><div class="skeleton-line"></div></div><div class="skeleton-line med"></div></div></div>
-  <div class="fake-browser"><div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="browser-page"><div class="hero-mini">Desktop</div><div class="grid three"><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></div><div class="skeleton-line med"></div></div></div>
-</div>
-<div class="callout">Modern graphic design for the web starts with content and adapts outward.</div>
-</section>
-<section class="slide">
-<div class="kicker">Visual hierarchy</div>
-<h2 class="big-question">Hierarchy answers: “Where should the eye go first?”</h2>
-<p class="subtitle">Click the item that should be most important on an event homepage.</p>
-<div class="priority-board" data-priority-demo>
-  <div class="priority-card"><small>Date + Time</small>When is it happening?</div>
-  <div class="priority-card"><small>Main Image</small>What does the event feel like?</div>
-  <div class="priority-card"><small>RSVP Button</small>What action should happen next?</div>
-  <div class="priority-card"><small>Vendor List</small>Who will be there?</div>
-  <div class="priority-card"><small>Location</small>Where is it?</div>
-  <div class="priority-card"><small>FAQ</small>What details reduce hesitation?</div>
-</div>
-<div class="callout">A page with no hierarchy makes every item compete. A page with strong hierarchy turns content into a guided path.</div>
-</section>
-<section class="slide">
-<div class="kicker">Gestalt principles</div>
-<h2 class="big-question">People group things before they read every label.</h2>
-<div class="grid four" data-choice-group data-target="#gestaltText" style="margin-top:24px">
-  <button class="chip-choice active" data-text="Proximity: items near each other feel related. Use spacing to create groups.">Proximity</button>
-  <button class="chip-choice" data-text="Similarity: items that look alike feel like the same type of thing. Use repeated styles for repeated roles.">Similarity</button>
-  <button class="chip-choice" data-text="Continuity: the eye follows lines, paths, and repeated rhythms. Use alignment to guide scanning.">Continuity</button>
-  <button class="chip-choice" data-text="Closure: the mind completes incomplete shapes. Use simple icons and containers carefully.">Closure</button>
-</div>
-<div class="gestalt-stage">
-  <div class="gestalt-demo">
-    <span class="shape" style="width:56px;height:56px;left:28px;top:42px"></span><span class="shape" style="width:56px;height:56px;left:94px;top:42px"></span><span class="shape" style="width:56px;height:56px;right:42px;top:42px;background:#ffc955"></span>
-    <span class="circle" style="width:46px;height:46px;left:40px;bottom:44px"></span><span class="circle" style="width:46px;height:46px;left:98px;bottom:44px"></span><span class="circle" style="width:46px;height:46px;right:58px;bottom:44px;background:#6d70d6"></span>
-  </div>
-  <div class="card"><h3>Design reading</h3><p id="gestaltText">Proximity: items near each other feel related. Use spacing to create groups.</p></div>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">Color and contrast</div>
-<h2 class="big-question">Color should support meaning, not fight readability.</h2>
-<div class="grid three" style="margin-top:28px">
-  <div class="card"><h3>Contrast</h3><p>Text has to separate clearly from its background, especially on phones and in glare.</p><div class="swatches"><span class="swatch" style="background:#fff"></span><span class="swatch" style="background:#11152d"></span></div></div>
-  <div class="card"><h3>Emphasis</h3><p>Strong color is best saved for moments of maximum importance.</p><div class="swatches"><span class="swatch" style="background:#ff7d62"></span><span class="swatch" style="background:#ffc955"></span></div></div>
-  <div class="card"><h3>Meaning</h3><p>Do not rely on color alone. Add labels, icons, shape, or position.</p><div class="tagrow"><span class="tag">Open</span><span class="tag">Closed</span><span class="tag">Sold Out</span></div></div>
-</div>
-<div class="callout">A color choice is also a usability choice.</div>
-</section>
-<section class="slide">
-<div class="kicker">White space</div>
-<h2 class="big-question">White space is not empty. It organizes the page.</h2>
-<div class="noise-wrap">
-  <div class="noise noisy">
-    <h3>Everything competes</h3><div class="fake-ad">SPECIAL ANNOUNCEMENT!</div><p>Food vendors, performers, parking, tickets, rules, sponsors, forms, social links, maps, photos, and updates all appear at once.</p><button>Buy Tickets</button><div class="fake-ad">FOLLOW NOW!</div><p>Nothing gets enough room to feel important.</p>
-  </div>
-  <div class="noise">
-    <h3>Clear groupings</h3><p>Essential event details appear first.</p><p>Related details are grouped into calm sections.</p><button>RSVP</button><p>Spacing creates order and confidence.</p>
-  </div>
-</div>
-<div class="callout">When everything shouts, nothing is heard.</div>
-</section>
-<section class="slide">
-<div class="kicker">Page grids</div>
-<h2 class="big-question">Grids make pages predictable without making them boring.</h2>
-<div class="type-controls">
-  <button class="chip-choice active" data-grid-mode="1fr">Single column</button>
-  <button class="chip-choice" data-grid-mode="1fr 1fr">Two columns</button>
-  <button class="chip-choice" data-grid-mode="2fr 1fr 1fr">Feature + support</button>
-</div>
-<div id="gridDemo" class="grid-demo" style="grid-template-columns:1fr;margin-top:18px">
-  <div class="module hero">Feature story / hero</div>
-  <div class="module">Card</div>
-  <div class="module">Card</div>
-  <div class="module">Card</div>
-</div>
-<div class="callout">The grid is a structure for decision-making: what aligns, what repeats, and what gets special emphasis?</div>
-</section>
-<section class="slide">
-<div class="kicker">Pattern libraries</div>
-<h2 class="big-question">A site feels trustworthy when repeated parts behave consistently.</h2>
-<div class="grid three" style="margin-top:28px">
-  <div class="card"><h3>Buttons</h3><p>Primary, secondary, disabled, warning.</p><div class="tagrow" style="margin-top:14px"><span class="button">Primary</span><span class="tag">Secondary</span></div></div>
-  <div class="card"><h3>Cards</h3><p>Same structure for vendors, articles, places, products, or events.</p><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-  <div class="card"><h3>Forms</h3><p>Inputs, help text, errors, success messages, and spacing.</p><div class="skeleton-line med"></div><div class="skeleton-line"></div></div>
-</div>
-<div class="callout">Consistency reduces learning time. Users should not have to re-learn the interface on every page.</div>
-</section>
-<section class="slide">
-<div class="kicker">Class project connection</div>
-<h2 class="big-question">Build a quick style tile.</h2>
-<p class="subtitle">A style tile is not a full design. It is a visual direction that helps the team discuss tone before final layouts.</p>
-<div class="style-tile" style="margin-top:26px">
-  <div class="mini-ui"><h3>Visual tone</h3><div class="tagrow"><span class="tag">Bold</span><span class="tag">Calm</span><span class="tag">Playful</span><span class="tag">Premium</span><span class="tag">Useful</span></div><h3 style="margin-top:22px">Color sample</h3><div class="swatches"><span class="swatch" style="background:#161a36"></span><span class="swatch" style="background:#ff7d62"></span><span class="swatch" style="background:#ffc955"></span><span class="swatch" style="background:#f8f6ef"></span></div></div>
-  <div class="mini-ui"><h3>Components</h3><button class="accent">Main action</button> <button class="secondary">Secondary</button><div class="card" style="margin-top:18px"><h3>Content card</h3><p>Title, short description, action.</p></div></div>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">Critique lens</div>
-<h2 class="big-question">Graphic design critique should be more than “I like it.”</h2>
-<div class="grid three" style="margin-top:30px">
-  <div class="card"><h3>1. Priority</h3><p>What does the page make most important?</p></div>
-  <div class="card"><h3>2. Relationship</h3><p>What items feel grouped, separated, repeated, or connected?</p></div>
-  <div class="card"><h3>3. Fit</h3><p>Does the visual style fit the content, audience, and goal?</p></div>
-</div>
-<div class="callout">Better critique: “This works because…” or “This confuses the user because…”</div>
-</section>
-<section class="slide">
-<div class="kicker">Quick review</div>
-<h2 class="big-question">Which statement best matches Chapter 8?</h2>
-<div class="quiz-options" data-quiz>
-  <button>Graphic design should be added after content and structure are finished.</button>
-  <button data-correct="true">Graphic design creates visual logic that helps users understand content and trust the site.</button>
-  <button>Graphic design means making every page as visually exciting as possible.</button>
-  <button>Graphic design only matters on portfolio or art websites.</button>
-  <div class="feedback"></div>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">Exit ticket</div>
-<h2 class="big-question">A visual choice is successful when ________.</h2>
-<div class="grid two" style="margin-top:28px">
-  <div class="card"><h3>Strong answer</h3><p>It helps the user understand what matters, where to look, and what action to take.</p></div>
-  <div class="card"><h3>Project check</h3><p>Choose one page from the class project and name the first thing the user should notice.</p></div>
-</div>
-<p class="source-note">Source: Web Style Guide, Chapter 8: Graphic Design.</p>
-</section>
+        <div class="kicker">Chapter 8 · Graphic Design</div>
+        <h1 class="slide-title">Visual choices should have a job.</h1>
+        <p class="subtitle">Graphic design is not decoration after the “real work.” It is the planned arrangement of
+          words, images, space, contrast, and pattern so a page feels clear, trustworthy, and useful.</p>
+        <div class="callout">Chapter question: <strong>What should the user notice first, and why?</strong></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Opening discussion</div>
+        <h2 class="big-question">When a site looks “good,” what are we actually responding to?</h2>
+        <div class="grid three" style="margin-top:30px">
+          <div class="card">
+            <h3>Trust</h3>
+            <p>Does this feel credible, careful, current, and intentional?</p>
+          </div>
+          <div class="card">
+            <h3>Clarity</h3>
+            <p>Can the eye quickly tell what matters and what to do next?</p>
+          </div>
+          <div class="card">
+            <h3>Mood</h3>
+            <p>Does the visual tone match the message, audience, and situation?</p>
+          </div>
+        </div>
+        <div class="callout">Aesthetic judgment happens fast. Design has to earn confidence before the user reads
+          everything.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Design logic</div>
+        <h2 class="big-question">A page needs visual interest and useful information.</h2>
+        <p class="subtitle">Too plain can feel dead. Too flashy can become confusing. The design problem is finding the
+          balance.</p>
+        <div class="example-panel" style="margin-top:26px">
+          <div class="try">Try it</div>
+          <input id="balanceRange" type="range" min="10" max="90" value="50" style="width:100%" />
+          <div
+            style="display:flex;height:80px;margin-top:16px;border-radius:18px;overflow:hidden;border:1px solid var(--line)">
+            <div id="balanceVisual"
+              style="flex:50;background:linear-gradient(135deg,#6d70d6,#ff7d62,#ffc955);display:grid;place-items:center;color:white;font-weight:900">
+              Visual sensation</div>
+            <div id="balanceInfo" style="flex:50;background:#fff;display:grid;place-items:center;font-weight:900">
+              Information</div>
+          </div>
+          <p id="balanceOutput" class="large-text" style="font-size:26px;margin:18px 0 0">Balanced: visual interest
+            supports useful information.</p>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Design is not a skin</div>
+        <h2 class="big-question">If design arrives after every important decision, it becomes decoration.</h2>
+        <div class="compare">
+          <div class="card bad">
+            <h3>Decoration thinking</h3>
+            <p>“The pages are already decided. Make it look nice.”</p>
+          </div>
+          <div class="card good">
+            <h3>Design thinking</h3>
+            <p>“What should the user understand, feel, and do on this page?”</p>
+          </div>
+        </div>
+        <div class="list">
+          <div class="item"><span class="num">1</span>
+            <div><strong>Purpose</strong><span>What is this page trying to accomplish?</span></div>
+          </div>
+          <div class="item"><span class="num">2</span>
+            <div><strong>Priority</strong><span>What deserves the strongest visual weight?</span></div>
+          </div>
+          <div class="item"><span class="num">3</span>
+            <div><strong>Pattern</strong><span>How will repeated pieces stay consistent across the site?</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">The flexible web</div>
+        <h2 class="big-question">The web has no fixed canvas.</h2>
+        <p class="subtitle">A printed poster has known edges. A web page has many possible screens, settings, zoom
+          levels, and contexts.</p>
+        <div class="grid three" style="margin-top:28px">
+          <div class="fake-browser">
+            <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="browser-page">
+              <div class="hero-mini">Phone</div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line short"></div>
+            </div>
+          </div>
+          <div class="fake-browser">
+            <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="browser-page">
+              <div class="hero-mini">Tablet</div>
+              <div class="grid two">
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+              </div>
+              <div class="skeleton-line med"></div>
+            </div>
+          </div>
+          <div class="fake-browser">
+            <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="browser-page">
+              <div class="hero-mini">Desktop</div>
+              <div class="grid three">
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+              </div>
+              <div class="skeleton-line med"></div>
+            </div>
+          </div>
+        </div>
+        <div class="callout">Modern graphic design for the web starts with content and adapts outward.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Visual hierarchy</div>
+        <h2 class="big-question">Hierarchy answers: “Where should the eye go first?”</h2>
+        <p class="subtitle">Click the item that should be most important on an event homepage.</p>
+        <div class="priority-board" data-priority-demo>
+          <div class="priority-card" role="button" tabindex="0"><small>Date + Time</small>When is it happening?</div>
+          <div class="priority-card" role="button" tabindex="0"><small>Main Image</small>What does the event feel like?
+          </div>
+          <div class="priority-card" role="button" tabindex="0" data-correct="true"><small>RSVP Button</small>What
+            action should happen next?</div>
+          <div class="priority-card" role="button" tabindex="0"><small>Vendor List</small>Who will be there?</div>
+          <div class="priority-card" role="button" tabindex="0"><small>Location</small>Where is it?</div>
+          <div class="priority-card" role="button" tabindex="0"><small>FAQ</small>What details reduce hesitation?</div>
+        </div>
+        <div class="feedback" data-priority-feedback></div>
+        <div class="callout">A page with no hierarchy makes every item compete. A page with strong hierarchy turns
+          content into a guided path.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Gestalt principles</div>
+        <h2 class="big-question">People group things before they read every label.</h2>
+        <div class="grid four" data-choice-group data-target="#gestaltText" style="margin-top:24px">
+          <button class="chip-choice active" data-demo="proximity"
+            data-text="Proximity: items near each other feel related. Use spacing to create groups.">Proximity</button>
+          <button class="chip-choice" data-demo="similarity"
+            data-text="Similarity: items that look alike feel like the same type of thing. Use repeated styles for repeated roles.">Similarity</button>
+          <button class="chip-choice" data-demo="continuity"
+            data-text="Continuity: the eye follows lines, paths, and repeated rhythms. Use alignment to guide scanning.">Continuity</button>
+          <button class="chip-choice" data-demo="closure"
+            data-text="Closure: the mind completes incomplete shapes. Use simple icons and containers carefully.">Closure</button>
+        </div>
+        <div class="gestalt-stage">
+          <div class="gestalt-demo" id="gestaltDemo">
+            <span class="shape" style="width:40px;height:40px;left:8%;top:20%"></span><span class="shape"
+              style="width:40px;height:40px;left:24%;top:20%"></span><span class="shape"
+              style="width:40px;height:40px;left:8%;top:58%"></span><span class="shape"
+              style="width:40px;height:40px;left:24%;top:58%"></span><span class="circle"
+              style="width:40px;height:40px;left:64%;top:30%;background:#ffc955"></span><span class="circle"
+              style="width:40px;height:40px;left:80%;top:30%;background:#ffc955"></span><span class="circle"
+              style="width:40px;height:40px;left:72%;top:60%;background:#ffc955"></span>
+          </div>
+          <div class="card">
+            <h3>Design reading</h3>
+            <p id="gestaltText">Proximity: items near each other feel related. Use spacing to create groups.</p>
+          </div>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Color and contrast</div>
+        <h2 class="big-question">Color should support meaning, not fight readability.</h2>
+        <div class="grid three" style="margin-top:28px">
+          <div class="card">
+            <h3>Contrast</h3>
+            <p>Text has to separate clearly from its background, especially on phones and in glare.</p>
+            <div class="swatches"><span class="swatch" style="background:#fff"></span><span class="swatch"
+                style="background:#11152d"></span></div>
+          </div>
+          <div class="card">
+            <h3>Emphasis</h3>
+            <p>Strong color is best saved for moments of maximum importance.</p>
+            <div class="swatches"><span class="swatch" style="background:#ff7d62"></span><span class="swatch"
+                style="background:#ffc955"></span></div>
+          </div>
+          <div class="card">
+            <h3>Meaning</h3>
+            <p>Do not rely on color alone. Add labels, icons, shape, or position.</p>
+            <div class="tagrow"><span class="tag">Open</span><span class="tag">Closed</span><span class="tag">Sold
+                Out</span></div>
+          </div>
+        </div>
+        <div class="callout">A color choice is also a usability choice.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">White space</div>
+        <h2 class="big-question">White space is not empty. It organizes the page.</h2>
+        <div class="noise-wrap">
+          <div class="noise noisy">
+            <h3>Everything competes</h3>
+            <div class="fake-ad">SPECIAL ANNOUNCEMENT!</div>
+            <p>Food vendors, performers, parking, tickets, rules, sponsors, forms, social links, maps, photos, and
+              updates all appear at once.</p><button>Buy Tickets</button>
+            <div class="fake-ad">FOLLOW NOW!</div>
+            <p>Nothing gets enough room to feel important.</p>
+          </div>
+          <div class="noise">
+            <h3>Clear groupings</h3>
+            <p>Essential event details appear first.</p>
+            <p>Related details are grouped into calm sections.</p><button>RSVP</button>
+            <p>Spacing creates order and confidence.</p>
+          </div>
+        </div>
+        <div class="callout">When everything shouts, nothing is heard.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Page grids</div>
+        <h2 class="big-question">Grids make pages predictable without making them boring.</h2>
+        <div class="type-controls">
+          <button class="chip-choice active" data-grid-mode="1fr">Single column</button>
+          <button class="chip-choice" data-grid-mode="1fr 1fr">Two columns</button>
+          <button class="chip-choice" data-grid-mode="2fr 1fr 1fr">Feature + support</button>
+        </div>
+        <div id="gridDemo" class="grid-demo" style="grid-template-columns:1fr;margin-top:18px">
+          <div class="module hero">Feature story / hero</div>
+          <div class="module">Card</div>
+          <div class="module">Card</div>
+          <div class="module">Card</div>
+        </div>
+        <div class="callout">The grid is a structure for decision-making: what aligns, what repeats, and what gets
+          special emphasis?</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Pattern libraries</div>
+        <h2 class="big-question">A site feels trustworthy when repeated parts behave consistently.</h2>
+        <div class="grid three" style="margin-top:28px">
+          <div class="card">
+            <h3>Buttons</h3>
+            <p>Primary, secondary, disabled, warning.</p>
+            <div class="tagrow" style="margin-top:14px"><span class="button">Primary</span><span
+                class="tag">Secondary</span></div>
+          </div>
+          <div class="card">
+            <h3>Cards</h3>
+            <p>Same structure for vendors, articles, places, products, or events.</p>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line short"></div>
+          </div>
+          <div class="card">
+            <h3>Forms</h3>
+            <p>Inputs, help text, errors, success messages, and spacing.</p>
+            <div class="skeleton-line med"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+        <div class="callout">Consistency reduces learning time. Users should not have to re-learn the interface on every
+          page.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Class project connection</div>
+        <h2 class="big-question">Build a quick style tile.</h2>
+        <p class="subtitle">A style tile is not a full design. It is a visual direction that helps the team discuss tone
+          before final layouts.</p>
+        <div class="style-tile" style="margin-top:26px">
+          <div class="mini-ui">
+            <h3>Visual tone</h3>
+            <div class="tagrow"><span class="tag">Bold</span><span class="tag">Calm</span><span
+                class="tag">Playful</span><span class="tag">Premium</span><span class="tag">Useful</span></div>
+            <h3 style="margin-top:22px">Color sample</h3>
+            <div class="swatches"><span class="swatch" style="background:#161a36"></span><span class="swatch"
+                style="background:#ff7d62"></span><span class="swatch" style="background:#ffc955"></span><span
+                class="swatch" style="background:#f8f6ef"></span></div>
+          </div>
+          <div class="mini-ui">
+            <h3>Components</h3><button class="accent">Main action</button> <button class="secondary">Secondary</button>
+            <div class="card" style="margin-top:18px">
+              <h3>Content card</h3>
+              <p>Title, short description, action.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Critique lens</div>
+        <h2 class="big-question">Graphic design critique should be more than “I like it.”</h2>
+        <div class="grid three" style="margin-top:30px">
+          <div class="card">
+            <h3>1. Priority</h3>
+            <p>What does the page make most important?</p>
+          </div>
+          <div class="card">
+            <h3>2. Relationship</h3>
+            <p>What items feel grouped, separated, repeated, or connected?</p>
+          </div>
+          <div class="card">
+            <h3>3. Fit</h3>
+            <p>Does the visual style fit the content, audience, and goal?</p>
+          </div>
+        </div>
+        <div class="callout">Better critique: “This works because…” or “This confuses the user because…”</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Quick review</div>
+        <h2 class="big-question">Which statement best matches Chapter 8?</h2>
+        <div class="quiz-options" data-quiz>
+          <button>Graphic design should be added after content and structure are finished.</button>
+          <button data-correct="true">Graphic design creates visual logic that helps users understand content and trust
+            the site.</button>
+          <button>Graphic design means making every page as visually exciting as possible.</button>
+          <button>Graphic design only matters on portfolio or art websites.</button>
+          <div class="feedback"></div>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Exit ticket</div>
+        <h2 class="big-question">A visual choice is successful when ________.</h2>
+        <div class="grid two" style="margin-top:28px">
+          <div class="card">
+            <h3>Strong answer</h3>
+            <p>It helps the user understand what matters, where to look, and what action to take.</p>
+          </div>
+          <div class="card">
+            <h3>Project check</h3>
+            <p>Choose one page from the class project and name the first thing the user should notice.</p>
+          </div>
+        </div>
+        <p class="source-note">Source: Web Style Guide, Chapter 8: Graphic Design.</p>
+      </section>
     </main>
 
     <footer class="deck-controls" aria-label="Slide controls">
@@ -227,4 +374,5 @@
 
   <script src="assets/js/app.js"></script>
 </body>
+
 </html>

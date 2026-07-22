@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WST 157 · Chapter 9: Typography</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
+
 <body data-deck="wst157-ch9">
   <a class="skip-link" href="#slide-1">Skip to slides</a>
   <div class="deck-shell">
@@ -31,175 +33,274 @@
 
     <main class="slide-area" id="deck" aria-live="polite">
       <section class="slide" id="slide-1">
-<div class="kicker">Chapter 9 · Typography</div>
-<h1 class="slide-title">Type is content with structure.</h1>
-<p class="subtitle">Typography controls how text is read, scanned, understood, and trusted. On the web, typography also connects visual hierarchy to semantic structure.</p>
-<div class="callout">Chapter question: <strong>Can users read, scan, and understand the page?</strong></div>
-</section>
-<section class="slide">
-<div class="kicker">Opening discussion</div>
-<h2 class="big-question">What makes text feel easy or hard to read online?</h2>
-<div class="grid four" style="margin-top:28px">
-  <div class="card"><h3>Size</h3><p>Can the text be read without strain?</p></div>
-  <div class="card"><h3>Spacing</h3><p>Do lines and paragraphs have enough room?</p></div>
-  <div class="card"><h3>Hierarchy</h3><p>Can users scan headings and sections?</p></div>
-  <div class="card"><h3>Contrast</h3><p>Does text separate clearly from the background?</p></div>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">Typography and meaning</div>
-<h2 class="big-question">Typography is visual semantics.</h2>
-<p class="subtitle">Headings, lists, paragraphs, captions, quotes, and links are not just styles. They tell people and machines what the content is.</p>
-<div class="compare">
-  <div class="card bad"><h3>Looks like a heading</h3><p><strong style="font-size:28px">About the Event</strong></p><p>Made large manually, but still coded like normal text.</p></div>
-  <div class="card good"><h3>Is a heading</h3><div class="code-card">&lt;h2&gt;About the Event&lt;/h2&gt;</div><p style="margin-top:12px">Styled visually and identified structurally.</p></div>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">Semantic markup</div>
-<h2 class="big-question">Choose structure first. Style comes after.</h2>
-<div class="grid two" style="margin-top:28px">
-  <div class="code-card">&lt;h1&gt;The Night Market&lt;/h1&gt;
-&lt;p&gt;Food, art, music, and student creators.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Free entry&lt;/li&gt;
-  &lt;li&gt;Friday, 6–10 PM&lt;/li&gt;
-&lt;/ul&gt;</div>
-  <div class="card"><h3>Why it matters</h3><p>Semantic markup makes the information hierarchy available to browsers, search engines, assistive technologies, and future stylesheets.</p></div>
-</div>
-<div class="callout">Do not pick a heading because it “looks big.” Pick it because it is the correct level in the outline.</div>
-</section>
-<section class="slide">
-<div class="kicker">Information hierarchy</div>
-<h2 class="big-question">A page should have a readable outline.</h2>
-<div class="type-scale">
-  <div style="font-size:52px;font-weight:900;letter-spacing:-.05em">H1 · Page topic</div>
-  <div style="font-size:34px;font-weight:900">H2 · Major section</div>
-  <div style="font-size:24px;font-weight:900">H3 · Subsection</div>
-  <div style="font-size:18px">Paragraph · Explanation, detail, context, support.</div>
-  <div style="font-size:15px;color:var(--muted)">Caption / helper text · Extra information.</div>
-</div>
-<div class="callout">Good hierarchy lets users skim before they commit to reading.</div>
-</section>
-<section class="slide">
-<div class="kicker">Body text</div>
-<h2 class="big-question">Comfortable reading is designed.</h2>
-<div class="type-controls">
-  <button data-type-action="small">Tiny text</button>
-  <button data-type-action="comfortable">Comfortable text</button>
-  <button data-type-action="wide">Wide measure</button>
-  <button data-type-action="narrow">Readable measure</button>
-  <button data-type-action="tight">Tight leading</button>
-  <button data-type-action="open">Open leading</button>
-</div>
-<div id="typeStage" class="typography-stage" style="max-width:700px">
-  <h2>Featured Vendors</h2>
-  <p>Browse food, art, music, and student-created products before arriving. Each listing should be short enough to scan and clear enough to help visitors decide what they want to see first.</p>
-  <p>Readable type depends on size, line length, line height, contrast, and spacing around paragraphs.</p>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">Display type</div>
-<h2 class="big-question">Display type creates landmarks.</h2>
-<div class="grid two" style="margin-top:28px">
-  <div class="card"><h3>Without landmarks</h3><p>Long text blocks become a wall. Users cannot quickly see sections, actions, or priority.</p></div>
-  <div class="card"><h3>With landmarks</h3><p>Headlines, subheads, pull quotes, labels, and buttons create a path through the content.</p></div>
-</div>
-<div class="callout">Display type should guide the scan, not compete with every other element.</div>
-</section>
-<section class="slide">
-<div class="kicker">White space and alignment</div>
-<h2 class="big-question">Margins and spacing are part of typography.</h2>
-<div class="compare">
-  <div class="card bad"><h3 style="margin-bottom:0">Crowded</h3><p style="line-height:1.05;margin-top:2px">The content feels harder to scan because the heading, paragraph, and buttons are packed too closely together.</p><button style="margin-top:2px">Learn More</button></div>
-  <div class="card good"><h3>Readable</h3><p>The content feels calmer because spacing creates clear relationships between heading, paragraph, and action.</p><button>Learn More</button></div>
-</div>
-<div class="callout">Spacing tells the eye what belongs together and what is separate.</div>
-</section>
-<section class="slide">
-<div class="kicker">Emphasis</div>
-<h2 class="big-question">If everything is emphasized, nothing is emphasized.</h2>
-<div class="grid four" data-choice-group data-target="#emphasisResult" style="margin-top:24px">
-  <button class="chip-choice" data-text="Bold works well for short emphasis and headings, but loses power when used too much.">Bold</button>
-  <button class="chip-choice" data-text="Italic works for titles, terms, and brief stress, but large italic blocks reduce readability.">Italic</button>
-  <button class="chip-choice" data-text="Underlining usually signals a link on the web. Non-link underlines can confuse users.">Underline</button>
-  <button class="chip-choice" data-text="All caps are hard to scan because words become similar rectangular shapes. Use sparingly.">ALL CAPS</button>
-</div>
-<div class="card" style="margin-top:20px"><h3>Emphasis rule</h3><p id="emphasisResult">Choose one emphasis method and use it with restraint.</p></div>
-</section>
-<section class="slide">
-<div class="kicker">Links and color</div>
-<h2 class="big-question">A link should look like something that can be clicked.</h2>
-<div class="grid two" style="margin-top:28px">
-  <div class="card"><h3>Weak signal</h3><p>Click <span style="color:#6d70d6">here</span> to see the schedule.</p><p class="mini">Color alone may not be enough.</p></div>
-  <div class="card"><h3>Clear signal</h3><p><a href="#" style="color:#1f55d6;text-decoration:underline;font-weight:800">View the full event schedule</a></p><p class="mini">Meaningful link text + recognizable link styling.</p></div>
-</div>
-<div class="callout">Do not use underline for decoration if users may read it as a link.</div>
-</section>
-<section class="slide">
-<div class="kicker">Responsive typography</div>
-<h2 class="big-question">Text has to survive zoom, phones, and user preferences.</h2>
-<p class="subtitle">Use flexible thinking: relative units, readable line length, scalable spacing, and layouts that adapt when text gets larger.</p>
-<div class="rubric">
-  <div class="yes">Scales</div><div class="yes">Wraps</div><div class="yes">Reflows</div><div class="yes">Stays readable</div>
-</div>
-<div class="callout">A design that only works at one exact size is fragile.</div>
-</section>
-<section class="slide">
-<div class="kicker">Type system</div>
-<h2 class="big-question">Create repeatable type styles.</h2>
-<div class="example-panel" style="margin-top:24px">
-  <div class="try">Try it</div>
-  <input id="scaleRange" type="range" min="0" max="6" value="2" style="width:100%" />
-  <div id="scaleOutput" class="type-scale">
-    <div data-h1 style="font-size:46px;font-weight:900;letter-spacing:-.04em">Page title</div>
-    <div data-h2 style="font-size:28px;font-weight:900">Section heading</div>
-    <div data-p style="font-size:18px;line-height:1.55">Body copy explains the details in readable lines.</div>
-  </div>
-</div>
-<div class="callout">A type scale makes the whole site feel intentional.</div>
-</section>
-<section class="slide">
-<div class="kicker">Typeface choice</div>
-<h2 class="big-question">Fonts are chosen for context, not just personality.</h2>
-<div class="grid three" style="margin-top:28px">
-  <div class="card"><h3>Legibility</h3><p>Can people read it comfortably at the sizes where it will actually appear?</p></div>
-  <div class="card"><h3>Tone</h3><p>Does the typeface fit the message: serious, playful, premium, urgent, calm?</p></div>
-  <div class="card"><h3>System</h3><p>Does it work as a family of headings, body text, buttons, captions, and labels?</p></div>
-</div>
-<div class="callout">A beautiful font can still be the wrong font.</div>
-</section>
-<section class="slide">
-<div class="kicker">Typography audit</div>
-<h2 class="big-question">Click a common typography problem.</h2>
-<div class="grid four" data-choice-group data-target="#auditResult" style="margin-top:24px">
-  <div class="audit-card" data-text="Problem: too many type styles. Fix: reduce the system to a few consistent roles."><strong>Too many styles</strong><p>Every section uses a different look.</p></div>
-  <div class="audit-card" data-text="Problem: weak hierarchy. Fix: make the scan path clear with size, weight, spacing, and headings."><strong>Weak hierarchy</strong><p>Nothing clearly leads the page.</p></div>
-  <div class="audit-card" data-text="Problem: poor spacing. Fix: add line height, paragraph spacing, margins, and consistent grouping."><strong>Poor spacing</strong><p>Text feels crowded.</p></div>
-  <div class="audit-card" data-text="Problem: fake structure. Fix: use actual heading, list, table, quote, and link markup."><strong>Fake structure</strong><p>Styled text pretends to be markup.</p></div>
-</div>
-<div class="card" style="margin-top:20px"><h3>Audit result</h3><p id="auditResult">Choose a problem to diagnose it.</p></div>
-</section>
-<section class="slide">
-<div class="kicker">Quick review</div>
-<h2 class="big-question">Which statement best matches Chapter 9?</h2>
-<div class="quiz-options" data-quiz>
-  <button>Typography is mainly about picking an attractive font.</button>
-  <button>Headings should be chosen based on whichever one looks best visually.</button>
-  <button data-correct="true">Typography helps create readable visual hierarchy and should be supported by semantic markup.</button>
-  <button>All caps are the best way to make important information easier to scan.</button>
-  <div class="feedback"></div>
-</div>
-</section>
-<section class="slide">
-<div class="kicker">Exit ticket</div>
-<h2 class="big-question">Typography is successful when ________.</h2>
-<div class="grid two" style="margin-top:28px">
-  <div class="card"><h3>Strong answer</h3><p>Users can read comfortably, scan the hierarchy, and understand the structure of the content.</p></div>
-  <div class="card"><h3>Project check</h3><p>Choose one page from the class project and define H1, H2, body text, link, button, and caption styles.</p></div>
-</div>
-<p class="source-note">Source: Web Style Guide, Chapter 9: Typography.</p>
-</section>
+        <div class="kicker">Chapter 9 · Typography</div>
+        <h1 class="slide-title">Type is content with structure.</h1>
+        <p class="subtitle">Typography controls how text is read, scanned, understood, and trusted. On the web,
+          typography also connects visual hierarchy to semantic structure.</p>
+        <div class="callout">Chapter question: <strong>Can users read, scan, and understand the page?</strong></div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Opening discussion</div>
+        <h2 class="big-question">What makes text feel easy or hard to read online?</h2>
+        <div class="grid four" style="margin-top:28px">
+          <div class="card">
+            <h3>Size</h3>
+            <p>Can the text be read without strain?</p>
+          </div>
+          <div class="card">
+            <h3>Spacing</h3>
+            <p>Do lines and paragraphs have enough room?</p>
+          </div>
+          <div class="card">
+            <h3>Hierarchy</h3>
+            <p>Can users scan headings and sections?</p>
+          </div>
+          <div class="card">
+            <h3>Contrast</h3>
+            <p>Does text separate clearly from the background?</p>
+          </div>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Typography and meaning</div>
+        <h2 class="big-question">Typography is visual semantics.</h2>
+        <p class="subtitle">Headings, lists, paragraphs, captions, quotes, and links are not just styles. They tell
+          people and machines what the content is.</p>
+        <div class="compare">
+          <div class="card bad">
+            <h3>Looks like a heading</h3>
+            <p><strong style="font-size:28px">About the Event</strong></p>
+            <p>Made large manually, but still coded like normal text.</p>
+          </div>
+          <div class="card good">
+            <h3>Is a heading</h3>
+            <div class="code-card">&lt;h2&gt;About the Event&lt;/h2&gt;</div>
+            <p style="margin-top:12px">Styled visually and identified structurally.</p>
+          </div>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Semantic markup</div>
+        <h2 class="big-question">Choose structure first. Style comes after.</h2>
+        <div class="grid two" style="margin-top:28px">
+          <div class="code-card">&lt;h1&gt;The Night Market&lt;/h1&gt;
+            &lt;p&gt;Food, art, music, and student creators.&lt;/p&gt;
+            &lt;ul&gt;
+            &lt;li&gt;Free entry&lt;/li&gt;
+            &lt;li&gt;Friday, 6–10 PM&lt;/li&gt;
+            &lt;/ul&gt;</div>
+          <div class="card">
+            <h3>Why it matters</h3>
+            <p>Semantic markup makes the information hierarchy available to browsers, search engines, assistive
+              technologies, and future stylesheets.</p>
+          </div>
+        </div>
+        <div class="callout">Do not pick a heading because it “looks big.” Pick it because it is the correct level in
+          the outline.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Information hierarchy</div>
+        <h2 class="big-question">A page should have a readable outline.</h2>
+        <div class="type-scale">
+          <div style="font-size:52px;font-weight:900;letter-spacing:-.05em">H1 · Page topic</div>
+          <div style="font-size:34px;font-weight:900">H2 · Major section</div>
+          <div style="font-size:24px;font-weight:900">H3 · Subsection</div>
+          <div style="font-size:18px">Paragraph · Explanation, detail, context, support.</div>
+          <div style="font-size:15px;color:var(--muted)">Caption / helper text · Extra information.</div>
+        </div>
+        <div class="callout">Good hierarchy lets users skim before they commit to reading.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Body text</div>
+        <h2 class="big-question">Comfortable reading is designed.</h2>
+        <div class="type-controls">
+          <button class="chip-choice" data-type-action="small">Tiny text</button>
+          <button class="chip-choice" data-type-action="comfortable">Comfortable text</button>
+          <button class="chip-choice" data-type-action="wide">Wide measure</button>
+          <button class="chip-choice" data-type-action="narrow">Readable measure</button>
+          <button class="chip-choice" data-type-action="tight">Tight leading</button>
+          <button class="chip-choice" data-type-action="open">Open leading</button>
+        </div>
+        <div id="typeStage" class="typography-stage" style="max-width:700px">
+          <h2>Featured Vendors</h2>
+          <p>Browse food, art, music, and student-created products before arriving. Each listing should be short enough
+            to scan and clear enough to help visitors decide what they want to see first.</p>
+          <p>Readable type depends on size, line length, line height, contrast, and spacing around paragraphs.</p>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Display type</div>
+        <h2 class="big-question">Display type creates landmarks.</h2>
+        <div class="grid two" style="margin-top:28px">
+          <div class="card">
+            <h3>Without landmarks</h3>
+            <p>Long text blocks become a wall. Users cannot quickly see sections, actions, or priority.</p>
+          </div>
+          <div class="card">
+            <h3>With landmarks</h3>
+            <p>Headlines, subheads, pull quotes, labels, and buttons create a path through the content.</p>
+          </div>
+        </div>
+        <div class="callout">Display type should guide the scan, not compete with every other element.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">White space and alignment</div>
+        <h2 class="big-question">Margins and spacing are part of typography.</h2>
+        <div class="compare">
+          <div class="card bad">
+            <h3 style="margin-bottom:0">Crowded</h3>
+            <p style="line-height:1.05;margin-top:2px">The content feels harder to scan because the heading, paragraph,
+              and buttons are packed too closely together.</p><button style="margin-top:2px">Learn More</button>
+          </div>
+          <div class="card good">
+            <h3>Readable</h3>
+            <p>The content feels calmer because spacing creates clear relationships between heading, paragraph, and
+              action.</p><button>Learn More</button>
+          </div>
+        </div>
+        <div class="callout">Spacing tells the eye what belongs together and what is separate.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Emphasis</div>
+        <h2 class="big-question">If everything is emphasized, nothing is emphasized.</h2>
+        <div class="grid four" data-choice-group data-target="#emphasisResult" style="margin-top:24px">
+          <button class="chip-choice"
+            data-text="Bold works well for short emphasis and headings, but loses power when used too much.">Bold</button>
+          <button class="chip-choice"
+            data-text="Italic works for titles, terms, and brief stress, but large italic blocks reduce readability.">Italic</button>
+          <button class="chip-choice"
+            data-text="Underlining usually signals a link on the web. Non-link underlines can confuse users.">Underline</button>
+          <button class="chip-choice"
+            data-text="All caps are hard to scan because words become similar rectangular shapes. Use sparingly.">ALL
+            CAPS</button>
+        </div>
+        <div class="card" style="margin-top:20px">
+          <h3>Emphasis rule</h3>
+          <p id="emphasisResult">Choose one emphasis method and use it with restraint.</p>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Links and color</div>
+        <h2 class="big-question">A link should look like something that can be clicked.</h2>
+        <div class="grid two" style="margin-top:28px">
+          <div class="card">
+            <h3>Weak signal</h3>
+            <p>Click <span style="color:#6d70d6">here</span> to see the schedule.</p>
+            <p class="mini">Color alone may not be enough.</p>
+          </div>
+          <div class="card">
+            <h3>Clear signal</h3>
+            <p><a href="#" style="color:#1f55d6;text-decoration:underline;font-weight:800">View the full event
+                schedule</a></p>
+            <p class="mini">Meaningful link text + recognizable link styling.</p>
+          </div>
+        </div>
+        <div class="callout">Do not use underline for decoration if users may read it as a link.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Responsive typography</div>
+        <h2 class="big-question">Text has to survive zoom, phones, and user preferences.</h2>
+        <p class="subtitle">Use flexible thinking: relative units, readable line length, scalable spacing, and layouts
+          that adapt when text gets larger.</p>
+        <div class="rubric">
+          <div class="yes">Scales</div>
+          <div class="yes">Wraps</div>
+          <div class="yes">Reflows</div>
+          <div class="yes">Stays readable</div>
+        </div>
+        <div class="callout">A design that only works at one exact size is fragile.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Type system</div>
+        <h2 class="big-question">Create repeatable type styles.</h2>
+        <div class="example-panel" style="margin-top:24px">
+          <div class="try">Try it</div>
+          <input id="scaleRange" type="range" min="0" max="6" value="2" style="width:100%" />
+          <div id="scaleOutput" class="type-scale">
+            <div data-h1 style="font-size:46px;font-weight:900;letter-spacing:-.04em">Page title</div>
+            <div data-h2 style="font-size:28px;font-weight:900">Section heading</div>
+            <div data-p style="font-size:18px;line-height:1.55">Body copy explains the details in readable lines.</div>
+          </div>
+        </div>
+        <div class="callout">A type scale makes the whole site feel intentional.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Typeface choice</div>
+        <h2 class="big-question">Fonts are chosen for context, not just personality.</h2>
+        <div class="grid three" style="margin-top:28px">
+          <div class="card">
+            <h3>Legibility</h3>
+            <p>Can people read it comfortably at the sizes where it will actually appear?</p>
+          </div>
+          <div class="card">
+            <h3>Tone</h3>
+            <p>Does the typeface fit the message: serious, playful, premium, urgent, calm?</p>
+          </div>
+          <div class="card">
+            <h3>System</h3>
+            <p>Does it work as a family of headings, body text, buttons, captions, and labels?</p>
+          </div>
+        </div>
+        <div class="callout">A beautiful font can still be the wrong font.</div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Typography audit</div>
+        <h2 class="big-question">Click a common typography problem.</h2>
+        <div class="grid four" data-choice-group data-target="#auditResult" style="margin-top:24px">
+          <div class="audit-card" role="button" tabindex="0"
+            data-text="Problem: too many type styles. Fix: reduce the system to a few consistent roles."><strong>Too
+              many styles</strong>
+            <p>Every section uses a different look.</p>
+          </div>
+          <div class="audit-card" role="button" tabindex="0"
+            data-text="Problem: weak hierarchy. Fix: make the scan path clear with size, weight, spacing, and headings.">
+            <strong>Weak hierarchy</strong>
+            <p>Nothing clearly leads the page.</p>
+          </div>
+          <div class="audit-card" role="button" tabindex="0"
+            data-text="Problem: poor spacing. Fix: add line height, paragraph spacing, margins, and consistent grouping.">
+            <strong>Poor spacing</strong>
+            <p>Text feels crowded.</p>
+          </div>
+          <div class="audit-card" role="button" tabindex="0"
+            data-text="Problem: fake structure. Fix: use actual heading, list, table, quote, and link markup.">
+            <strong>Fake structure</strong>
+            <p>Styled text pretends to be markup.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top:20px">
+          <h3>Audit result</h3>
+          <p id="auditResult">Choose a problem to diagnose it.</p>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Quick review</div>
+        <h2 class="big-question">Which statement best matches Chapter 9?</h2>
+        <div class="quiz-options" data-quiz>
+          <button>Typography is mainly about picking an attractive font.</button>
+          <button>Headings should be chosen based on whichever one looks best visually.</button>
+          <button data-correct="true">Typography helps create readable visual hierarchy and should be supported by
+            semantic markup.</button>
+          <button>All caps are the best way to make important information easier to scan.</button>
+          <div class="feedback"></div>
+        </div>
+      </section>
+      <section class="slide">
+        <div class="kicker">Exit ticket</div>
+        <h2 class="big-question">Typography is successful when ________.</h2>
+        <div class="grid two" style="margin-top:28px">
+          <div class="card">
+            <h3>Strong answer</h3>
+            <p>Users can read comfortably, scan the hierarchy, and understand the structure of the content.</p>
+          </div>
+          <div class="card">
+            <h3>Project check</h3>
+            <p>Choose one page from the class project and define H1, H2, body text, link, button, and caption styles.
+            </p>
+          </div>
+        </div>
+        <p class="source-note">Source: Web Style Guide, Chapter 9: Typography.</p>
+      </section>
     </main>
 
     <footer class="deck-controls" aria-label="Slide controls">
@@ -224,4 +325,5 @@
 
   <script src="assets/js/app.js"></script>
 </body>
+
 </html>
