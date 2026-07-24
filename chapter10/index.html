@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WST 157 · Chapter 10: Editorial Style</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body data-deck="wst157-ch10-editorial-style">
+  <a class="skip-link" href="#slide-1">Skip to slides</a>
+
+  <div class="deck-shell">
+    <header class="topbar" aria-label="Presentation controls">
+      <div class="brand">
+        <a href="../" class="brand-mark" aria-label="WST 157 home">WST</a>
+        <div>
+          <strong>WST 157</strong>
+          <span>Chapter 10 · Editorial Style</span>
+        </div>
+      </div>
+      <nav class="top-actions" aria-label="Deck navigation">
+        <button class="ghost-btn" id="overviewBtn" type="button">Overview</button>
+        <button class="ghost-btn" id="presentBtn" type="button" aria-pressed="false">Present</button>
+        <button class="primary-btn" id="nextTopBtn" type="button">Next</button>
+      </nav>
+    </header>
+
+    <aside class="progress-panel" id="progressPanel" aria-label="Slide progress">
+      <div class="progress-title">Chapter 10 Route</div>
+      <ol id="slideList" class="slide-list"></ol>
+    </aside>
+
+    <main class="slide-area" id="deck" aria-live="polite">
+      <section class="slide" id="slide-1">
+        <div class="kicker">Chapter 10 · Editorial Style</div>
+        <h1 class="slide-title">Good writing is usability.</h1>
+        <p class="subtitle">A website can have strong visuals and still fail if the words are vague, bloated, hidden, or
+          hard to act on.</p>
+        <div class="callout">Chapter question: <strong>Can users find, understand, and use the content?</strong></div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Opening question</div>
+        <h2 class="big-question">What do people actually read on a web page?</h2>
+        <div class="grid four" style="margin-top:28px">
+          <div class="card">
+            <h3>Titles</h3>
+            <p>The first promise a page makes.</p>
+          </div>
+          <div class="card">
+            <h3>Headings</h3>
+            <p>Landmarks for scanning and deciding.</p>
+          </div>
+          <div class="card">
+            <h3>Links</h3>
+            <p>Signposts for where to go next.</p>
+          </div>
+          <div class="card">
+            <h3>First lines</h3>
+            <p>The strongest chance to earn attention.</p>
+          </div>
+        </div>
+        <div class="callout">Most web reading begins as scanning. Editorial style supports that behavior instead of
+          fighting it.</div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Useful content</div>
+        <h2 class="big-question">Content should serve a real need.</h2>
+        <p class="subtitle">Strong editorial style starts with usefulness: what the user needs, what the organization
+          needs, and where those goals overlap.</p>
+        <div class="compare">
+          <div class="card bad">
+            <h3>Organization-first</h3>
+            <p>“Welcome to our website. We are proud to announce our commitment to excellence and community values.”</p>
+          </div>
+          <div class="card good">
+            <h3>User-first</h3>
+            <p>“Applications close March 14. Start with the checklist, then upload documents before orientation.”</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Writing for engagement</div>
+        <h2 class="big-question">Engagement is not decoration.</h2>
+        <div class="grid three" style="margin-top:26px">
+          <div class="card">
+            <h3>Relevant</h3>
+            <p>The content answers a question people came with.</p>
+          </div>
+          <div class="card">
+            <h3>Targeted</h3>
+            <p>The language matches the audience’s knowledge and situation.</p>
+          </div>
+          <div class="card">
+            <h3>Respectful</h3>
+            <p>The page does not waste time with filler or confusion.</p>
+          </div>
+        </div>
+        <div class="prompt-card">Prompt: <strong>What question did the user bring to this page?</strong></div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Cut the filler</div>
+        <h2 class="big-question">Start with the information.</h2>
+        <div class="rewrite-lab">
+          <div class="before-card">
+            <span>Before</span>
+            <p>Welcome to our event information page. On this page, you will find important details about the upcoming
+              Night Market and everything you need to know before attending.</p>
+          </div>
+          <div class="after-card" id="rewriteOutput">
+            <span>After</span>
+            <p>Night Market is Friday from 6–10 PM. Entry is free. Food vendors, student creators, and live music will
+              be in the courtyard.</p>
+          </div>
+        </div>
+        <button class="primary-btn inline" data-rewrite="filler">Show another rewrite</button>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Content chunks</div>
+        <h2 class="big-question">A chunk should answer a complete question.</h2>
+        <p class="subtitle">Chunking does not mean breaking content into tiny fragments. It means shaping content into
+          useful units that match what people are trying to find or do.</p>
+        <div class="chunk-demo" data-choice-group data-target="#chunkResult">
+          <button class="chunk-card"
+            data-text="Too broad: users may need to search through too many unrelated details."><strong>All event
+              details</strong><span>One long page</span></button>
+          <button class="chunk-card"
+            data-text="Useful chunk: a focused unit that answers a practical question."><strong>Parking and
+              transit</strong><span>One focused section</span></button>
+          <button class="chunk-card"
+            data-text="Too fragmented: users must jump around to finish one task."><strong>Parking lot
+              address</strong><span>Separate page from directions</span></button>
+        </div>
+        <div class="card result-card">
+          <h3>Chunk test</h3>
+          <p id="chunkResult">Choose a chunk and judge whether it helps someone complete a task.</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Headings</div>
+        <h2 class="big-question">Headings are promises.</h2>
+        <div class="grid two" data-choice-group data-target="#headingResult" style="margin-top:26px">
+          <button class="choice-card"
+            data-text="Weak: the heading is vague and does not tell users what section they are entering."><strong>Important
+              Information</strong><span>Vague label</span></button>
+          <button class="choice-card"
+            data-text="Better: the heading starts with useful keywords and names the content clearly."><strong>Parking,
+              Transit, and Entrance</strong><span>Descriptive label</span></button>
+        </div>
+        <div class="callout" id="headingResult">Headings should help users predict what they will get if they keep
+          reading.</div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Plain language</div>
+        <h2 class="big-question">Clear does not mean childish.</h2>
+        <p class="subtitle">Plain language reduces effort. It lets more people understand the page the first time they
+          read it.</p>
+        <div class="plain-language-game">
+          <button data-plain="commence">commence</button>
+          <button data-plain="utilize">utilize</button>
+          <button data-plain="in the event of">in the event of</button>
+          <button data-plain="prior to">prior to</button>
+          <button data-plain="approximately">approximately</button>
+          <button data-plain="assist">assist</button>
+        </div>
+        <div class="word-swap" id="plainResult"><span>Choose a phrase</span><strong>Replace formal wording with familiar
+            wording.</strong></div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Inverted pyramid</div>
+        <h2 class="big-question">Put the answer before the explanation.</h2>
+        <div class="pyramid">
+          <div class="pyramid-tier top">Most important answer</div>
+          <div class="pyramid-tier mid">Useful details and context</div>
+          <div class="pyramid-tier low">Background, history, extra notes</div>
+        </div>
+        <div class="callout">Good web writing often starts with the conclusion because users may only read the
+          beginning.</div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Prioritize the lead</div>
+        <h2 class="big-question">Which opening works better?</h2>
+        <div class="grid two" data-choice-group data-target="#leadResult" style="margin-top:26px">
+          <button class="choice-card"
+            data-text="Not the best opening. The user must read through background before getting the main point."><strong>Option
+              A</strong><span>“For several months, the planning committee has been working hard to organize this year’s
+              community celebration…”</span></button>
+          <button class="choice-card"
+            data-text="Stronger opening. The key facts come first: what, when, where, and why it matters."><strong>Option
+              B</strong><span>“Night Market is Friday, 6–10 PM in the courtyard, with free entry, food vendors, and live
+              music.”</span></button>
+        </div>
+        <div class="feedback-card" id="leadResult">Choose the stronger lead.</div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Keywords</div>
+        <h2 class="big-question">Use the words users would search for.</h2>
+        <p class="subtitle">Keywords belong in titles, headings, first paragraphs, and meaningful links — not repeated
+          awkwardly just to manipulate search engines.</p>
+        <div class="keyword-board">
+          <div class="keyword-slot"><span>Page title</span><strong>Parking and Transit · Night Market</strong></div>
+          <div class="keyword-slot"><span>H1</span><strong>Parking and Transit</strong></div>
+          <div class="keyword-slot"><span>First line</span><strong>Free parking is available in Lot B after 5
+              PM.</strong></div>
+          <div class="keyword-slot"><span>Link</span><strong>View parking map</strong></div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Descriptive links</div>
+        <h2 class="big-question">A link should describe its destination.</h2>
+        <div class="link-lab">
+          <div class="card bad">
+            <h3>Weak link</h3>
+            <p>For parking details, <a href="#">click here</a>.</p>
+          </div>
+          <div class="card good">
+            <h3>Better link</h3>
+            <p><a href="#">View parking and entrance details</a>.</p>
+          </div>
+        </div>
+        <div class="callout">Link text should make sense out of context because users and screen readers may scan links
+          as a list.</div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Visual landmarks</div>
+        <h2 class="big-question">Composition creates entry points.</h2>
+        <div class="landmark-demo">
+          <article class="article-card messy">
+            <h3>No landmarks</h3>
+            <p>The event will feature vendors performers parking information schedule details safety notes food options
+              merchandise and other information that visitors may want to review before arriving at the venue.</p>
+          </article>
+          <article class="article-card clean">
+            <h3>Clear landmarks</h3>
+            <h4>When and where</h4>
+            <p>Friday, 6–10 PM · Courtyard</p>
+            <h4>What to expect</h4>
+            <p>Food, art, music, and student creator booths.</p>
+            <h4>Before arriving</h4>
+            <p>Check parking, transit, and vendor list.</p>
+          </article>
+        </div>
+        <div class="callout">Headings, lists, captions, and short sections help both scanners and careful readers.</div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Lists</div>
+        <h2 class="big-question">Lists should be parallel.</h2>
+        <div class="grid two" style="margin-top:26px">
+          <div class="card bad">
+            <h3>Mixed structure</h3>
+            <ul>
+              <li>Parking is free</li>
+              <li>Use the south entrance</li>
+              <li>Food vendors</li>
+              <li>Bring cash if possible</li>
+            </ul>
+          </div>
+          <div class="card good">
+            <h3>Parallel structure</h3>
+            <ul>
+              <li>Park for free in Lot B</li>
+              <li>Enter through the south gate</li>
+              <li>Browse food vendors near the stage</li>
+              <li>Bring cash for small booths</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout">Parallel list items are easier to scan because each item follows the same pattern.</div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Structural markup</div>
+        <h2 class="big-question">Markup says what the content is.</h2>
+        <div class="compare">
+          <div class="card bad">
+            <h3>Only looks structured</h3>
+            <div class="code-card">&lt;b&gt;Schedule&lt;/b&gt;<br>&lt;br&gt;6:00 PM · Doors open</div>
+            <p>Software only sees bold text and a line break.</p>
+          </div>
+          <div class="card good">
+            <h3>Actually structured</h3>
+            <div class="code-card">&lt;h2&gt;Schedule&lt;/h2&gt;<br>&lt;ul&gt;<br>&nbsp;&lt;li&gt;6:00 PM · Doors
+              open&lt;/li&gt;<br>&lt;/ul&gt;</div>
+            <p>Software understands the heading and related list.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Link visibility</div>
+        <h2 class="big-question">Links need more than color.</h2>
+        <div class="grid three" style="margin-top:26px">
+          <div class="card">
+            <h3>Readable</h3>
+            <p>Body links need enough contrast against surrounding text.</p>
+          </div>
+          <div class="card">
+            <h3>Recognizable</h3>
+            <p>Underlines remain one of the clearest signals for links in body copy.</p>
+          </div>
+          <div class="card">
+            <h3>Trackable</h3>
+            <p>Visited states help users avoid repeating dead-end paths.</p>
+          </div>
+        </div>
+        <div class="link-state-demo"><a href="#">Unvisited event map</a><a href="#" class="visited-look">Visited vendor
+            list</a></div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Rhetoric</div>
+        <h2 class="big-question">Websites persuade through trust, feeling, and logic.</h2>
+        <div class="grid three" data-choice-group data-target="#rhetoricResult" style="margin-top:26px">
+          <button class="choice-card"
+            data-text="Ethos: credibility. Typos, broken links, outdated content, and sloppy details damage trust."><strong>Ethos</strong><span>Can
+              this source be trusted?</span></button>
+          <button class="choice-card"
+            data-text="Pathos: emotional response. The tone, visuals, and wording can make people feel welcome, excited, cautious, or excluded."><strong>Pathos</strong><span>How
+              does this feel?</span></button>
+          <button class="choice-card"
+            data-text="Logos: reason and evidence. Clear facts, examples, data, and explanations support decision-making."><strong>Logos</strong><span>Does
+              this make sense?</span></button>
+        </div>
+        <div class="feedback-card" id="rhetoricResult">Choose one rhetorical appeal.</div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Editorial style guide</div>
+        <h2 class="big-question">A style guide keeps content consistent.</h2>
+        <div class="styleguide-grid">
+          <label><span>Voice</span><input id="voiceInput" value="clear, direct, friendly" /></label>
+          <label><span>Date format</span><input id="dateInput" value="Friday, March 14" /></label>
+          <label><span>Button text</span><input id="buttonInput" value="verb + noun: View schedule" /></label>
+          <label><span>Avoid</span><input id="avoidInput" value="welcome filler, click here, jargon" /></label>
+        </div>
+        <div class="card guide-output">
+          <h3>Mini style guide</h3>
+          <p id="styleGuideOutput">Voice: clear, direct, friendly · Date format: Friday, March 14 · Button text: verb +
+            noun: View schedule · Avoid: welcome filler, click here, jargon</p>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Rewrite workshop</div>
+        <h2 class="big-question">Turn a vague section into useful web content.</h2>
+        <div class="workshop-card">
+          <h3>Original</h3>
+          <p>Welcome to the official information area for our event. Please review the information below in order to
+            learn more about different aspects of what will be taking place.</p>
+          <div class="workshop-actions">
+            <button class="chip-choice" data-workshop="lead">Make the lead useful</button>
+            <button class="chip-choice" data-workshop="heading">Add a descriptive heading</button>
+            <button class="chip-choice" data-workshop="list">Turn details into a list</button>
+          </div>
+          <div class="workshop-result" id="workshopResult">Choose a rewrite move.</div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Chapter check</div>
+        <h2 class="big-question">Which version supports web reading better?</h2>
+        <div class="quiz" data-quiz>
+          <button type="button">“Click here to find out about available transportation options.”</button>
+          <button type="button" data-correct="true">“View parking, rideshare, and transit options.”</button>
+          <button type="button">“The information below has been provided for your convenience.”</button>
+          <div class="feedback" aria-live="polite">Choose an answer.</div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="kicker">Chapter 10 takeaway</div>
+        <h2 class="big-question">Editorial style is part of the user interface.</h2>
+        <div class="takeaway-grid">
+          <div><strong>Start useful.</strong><span>Answer the user’s question quickly.</span></div>
+          <div><strong>Write plainly.</strong><span>Reduce effort without reducing meaning.</span></div>
+          <div><strong>Structure content.</strong><span>Use headings, lists, links, and semantic markup.</span></div>
+          <div><strong>Build trust.</strong><span>Accuracy, consistency, and tone affect credibility.</span></div>
+        </div>
+        <div class="exit-ticket">Exit ticket: <strong>Rewrite one sentence from any website so it becomes clearer,
+            shorter, and more useful.</strong></div>
+      </section>
+    </main>
+
+    <footer class="deck-controls" aria-label="Slide controls">
+      <button class="ghost-btn" id="prevBtn" type="button">Back</button>
+      <div class="slide-status"><span id="slideStatus">1 / 1</span>
+        <div class="bar"><i id="progressBar"></i></div>
+      </div>
+      <button class="primary-btn" id="nextBtn" type="button">Next</button>
+    </footer>
+  </div>
+
+  <div class="modal" id="overviewModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Slide overview">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div><strong>Chapter 10 Overview</strong><span>Jump to any slide</span></div>
+        <button class="ghost-btn" id="closeOverviewBtn" type="button">Close</button>
+      </div>
+      <div class="overview-grid" id="overviewGrid"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>
